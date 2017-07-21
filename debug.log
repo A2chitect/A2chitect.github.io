@@ -1,0 +1,575 @@
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Hexo version: 3.3.8","time":"2017-07-21T08:21:08.076Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Working directory: E:\\Blog\\","time":"2017-07-21T08:21:08.084Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Config loaded: E:\\Blog\\_config.yml","time":"2017-07-21T08:21:08.480Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Plugin loaded: hexo-generator-archive","time":"2017-07-21T08:21:08.544Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Plugin loaded: hexo-generator-category","time":"2017-07-21T08:21:08.552Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Plugin loaded: hexo-deployer-git","time":"2017-07-21T08:21:08.628Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Plugin loaded: hexo-generator-tag","time":"2017-07-21T08:21:08.636Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Plugin loaded: hexo-generator-index","time":"2017-07-21T08:21:08.640Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Plugin loaded: hexo-renderer-ejs","time":"2017-07-21T08:21:08.652Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Plugin loaded: hexo-renderer-marked","time":"2017-07-21T08:21:08.680Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Plugin loaded: hexo-renderer-stylus","time":"2017-07-21T08:21:08.684Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Script loaded: themes\\next\\scripts\\merge-configs.js","time":"2017-07-21T08:21:08.696Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Plugin loaded: hexo-server","time":"2017-07-21T08:21:08.948Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\button.js","time":"2017-07-21T08:21:08.952Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Script loaded: themes\\next\\scripts\\merge.js","time":"2017-07-21T08:21:08.964Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\exturl.js","time":"2017-07-21T08:21:08.968Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\full-image.js","time":"2017-07-21T08:21:08.968Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\center-quote.js","time":"2017-07-21T08:21:08.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\group-pictures.js","time":"2017-07-21T08:21:08.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\note.js","time":"2017-07-21T08:21:08.976Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Loading database.","time":"2017-07-21T08:21:09.012Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":30,"msg":"Start processing","time":"2017-07-21T08:21:09.044Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: debug.log","time":"2017-07-21T08:21:09.204Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Theme config loaded.","time":"2017-07-21T08:21:09.476Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: _config.yml","time":"2017-07-21T08:21:09.476Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/css/main.styl","time":"2017-07-21T08:21:09.552Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/images/algolia_logo.svg","time":"2017-07-21T08:21:09.556Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/images/avatar.gif","time":"2017-07-21T08:21:09.556Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/images/cc-by-nc-nd.svg","time":"2017-07-21T08:21:09.556Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/images/cc-by-nc-sa.svg","time":"2017-07-21T08:21:09.560Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/images/cc-by-nd.svg","time":"2017-07-21T08:21:09.560Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/images/cc-by-nc.svg","time":"2017-07-21T08:21:09.560Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/images/cc-by-sa.svg","time":"2017-07-21T08:21:09.560Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/images/cc-by.svg","time":"2017-07-21T08:21:09.568Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/images/cc-zero.svg","time":"2017-07-21T08:21:09.572Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/images/loading.gif","time":"2017-07-21T08:21:09.572Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/images/placeholder.gif","time":"2017-07-21T08:21:09.576Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/images/quote-l.svg","time":"2017-07-21T08:21:09.576Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/images/quote-r.svg","time":"2017-07-21T08:21:09.576Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/images/searchicon.png","time":"2017-07-21T08:21:09.580Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_layout.swig","time":"2017-07-21T08:21:10.320Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/archive.swig","time":"2017-07-21T08:21:10.320Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/index.swig","time":"2017-07-21T08:21:10.320Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/category.swig","time":"2017-07-21T08:21:10.320Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/page.swig","time":"2017-07-21T08:21:10.324Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/post.swig","time":"2017-07-21T08:21:10.324Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/schedule.swig","time":"2017-07-21T08:21:10.324Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":50,"err":{"message":"can not read a block mapping entry; a multiline key may not be an implicit key at line 5, column 1:\n    \n    ^","name":"YAMLException","stack":"YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 5, column 1:\n    \n    ^\n    at generateError (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:165:10)\n    at throwError (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:171:9)\n    at readBlockMapping (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:1046:9)\n    at composeNode (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:1332:12)\n    at readDocument (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:1492:3)\n    at loadDocuments (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:1548:5)\n    at Object.load (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:1569:19)\n    at parseYAML (E:\\Blog\\node_modules\\hexo-front-matter\\lib\\front_matter.js:80:21)\n    at parse (E:\\Blog\\node_modules\\hexo-front-matter\\lib\\front_matter.js:56:12)\n    at E:\\Blog\\node_modules\\hexo\\lib\\plugins\\processor\\asset.js:34:18\n    at tryCatcher (E:\\Blog\\node_modules\\bluebird\\js\\release\\util.js:16:23)\n    at Promise._settlePromiseFromHandler (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:509:35)\n    at Promise._settlePromise (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:569:18)\n    at Promise._settlePromise0 (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:614:10)\n    at Promise._settlePromises (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:693:18)\n    at Promise._fulfill (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:638:18)\n    at PromiseArray._resolve (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:126:19)\n    at PromiseArray._promiseFulfilled (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:144:14)\n    at PromiseArray._iterate (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:114:31)\n    at PromiseArray.init [as _init] (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:78:10)\n    at Promise._settlePromise (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:566:21)\n    at Promise._settlePromise0 (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:614:10)\n    at Promise._settlePromises (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:693:18)\n    at Promise._fulfill (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:638:18)\n    at PromiseArray._resolve (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:126:19)\n    at PromiseArray._promiseFulfilled (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:144:14)\n    at Promise._settlePromise (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:574:26)"},"msg":"Process failed: tags/index.md","time":"2017-07-21T08:21:10.360Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: _posts/hello-world.md","time":"2017-07-21T08:21:10.368Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: languages/default.yml","time":"2017-07-21T08:21:10.368Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: languages/de.yml","time":"2017-07-21T08:21:10.368Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: languages/en.yml","time":"2017-07-21T08:21:10.368Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: languages/fr-FR.yml","time":"2017-07-21T08:21:10.368Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: languages/ja.yml","time":"2017-07-21T08:21:10.368Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: languages/id.yml","time":"2017-07-21T08:21:10.368Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: languages/ko.yml","time":"2017-07-21T08:21:10.372Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: languages/pt-BR.yml","time":"2017-07-21T08:21:10.372Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: languages/pt.yml","time":"2017-07-21T08:21:10.372Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: languages/ru.yml","time":"2017-07-21T08:21:10.372Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: languages/zh-Hans.yml","time":"2017-07-21T08:21:10.372Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: languages/zh-tw.yml","time":"2017-07-21T08:21:10.372Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: languages/zh-hk.yml","time":"2017-07-21T08:21:10.372Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/tag.swig","time":"2017-07-21T08:21:10.576Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/js/src/affix.js","time":"2017-07-21T08:21:10.584Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/js/src/algolia-search.js","time":"2017-07-21T08:21:10.584Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/js/src/bootstrap.js","time":"2017-07-21T08:21:10.588Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/js/src/exturl.js","time":"2017-07-21T08:21:10.588Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/js/src/hook-duoshuo.js","time":"2017-07-21T08:21:10.588Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/js/src/motion.js","time":"2017-07-21T08:21:10.588Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/js/src/post-details.js","time":"2017-07-21T08:21:10.592Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/js/src/scrollspy.js","time":"2017-07-21T08:21:10.592Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/js/src/utils.js","time":"2017-07-21T08:21:10.596Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/algolia-instant-search/instantsearch.min.css","time":"2017-07-21T08:21:10.596Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/canvas-nest/canvas-nest.min.js","time":"2017-07-21T08:21:10.600Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fastclick/LICENSE","time":"2017-07-21T08:21:10.600Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fastclick/README.md","time":"2017-07-21T08:21:10.600Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fastclick/bower.json","time":"2017-07-21T08:21:10.600Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/font-awesome/HELP-US-OUT.txt","time":"2017-07-21T08:21:10.612Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/font-awesome/bower.json","time":"2017-07-21T08:21:10.612Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/jquery_lazyload/CONTRIBUTING.md","time":"2017-07-21T08:21:10.612Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/jquery_lazyload/README.md","time":"2017-07-21T08:21:10.616Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/jquery_lazyload/bower.json","time":"2017-07-21T08:21:10.616Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/jquery_lazyload/jquery.scrollstop.js","time":"2017-07-21T08:21:10.620Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/jquery_lazyload/jquery.lazyload.js","time":"2017-07-21T08:21:10.624Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/three/three-waves.min.js","time":"2017-07-21T08:21:10.632Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/velocity/bower.json","time":"2017-07-21T08:21:10.636Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/velocity/velocity.min.js","time":"2017-07-21T08:21:10.636Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/velocity/velocity.ui.min.js","time":"2017-07-21T08:21:10.640Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/velocity/velocity.ui.js","time":"2017-07-21T08:21:10.640Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_custom/header.swig","time":"2017-07-21T08:21:10.840Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_custom/sidebar.swig","time":"2017-07-21T08:21:10.844Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_macro/post-copyright.swig","time":"2017-07-21T08:21:10.844Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_macro/reward.swig","time":"2017-07-21T08:21:10.844Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_macro/post.swig","time":"2017-07-21T08:21:10.844Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_macro/post-collapse.swig","time":"2017-07-21T08:21:10.844Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_macro/wechat-subscriber.swig","time":"2017-07-21T08:21:10.844Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_macro/sidebar.swig","time":"2017-07-21T08:21:10.844Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_scripts/boostrap.swig","time":"2017-07-21T08:21:10.844Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_scripts/commons.swig","time":"2017-07-21T08:21:10.844Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_partials/comments.swig","time":"2017-07-21T08:21:10.844Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_scripts/vendors.swig","time":"2017-07-21T08:21:10.844Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_partials/header.swig","time":"2017-07-21T08:21:10.848Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_partials/page-header.swig","time":"2017-07-21T08:21:10.848Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_partials/footer.swig","time":"2017-07-21T08:21:10.848Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_partials/head.swig","time":"2017-07-21T08:21:10.848Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_partials/pagination.swig","time":"2017-07-21T08:21:10.848Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_partials/search.swig","time":"2017-07-21T08:21:10.848Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/duoshuo-hot-articles.swig","time":"2017-07-21T08:21:10.848Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/exturl.swig","time":"2017-07-21T08:21:10.848Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/mathjax.swig","time":"2017-07-21T08:21:10.848Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/jquery/index.js","time":"2017-07-21T08:21:10.852Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/schedule.swig","time":"2017-07-21T08:21:10.880Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_scripts/schemes/muse.swig","time":"2017-07-21T08:21:10.884Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_scripts/schemes/mist.swig","time":"2017-07-21T08:21:10.884Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/js/src/schemes/pisces.js","time":"2017-07-21T08:21:10.892Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fancybox/source/blank.gif","time":"2017-07-21T08:21:10.892Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fancybox/source/fancybox_loading.gif","time":"2017-07-21T08:21:10.892Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fancybox/source/fancybox_loading@2x.gif","time":"2017-07-21T08:21:10.892Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fancybox/source/fancybox_overlay.png","time":"2017-07-21T08:21:10.896Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fancybox/source/fancybox_sprite.png","time":"2017-07-21T08:21:10.896Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fancybox/source/fancybox_sprite@2x.png","time":"2017-07-21T08:21:10.896Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fancybox/source/jquery.fancybox.css","time":"2017-07-21T08:21:10.896Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fancybox/source/jquery.fancybox.js","time":"2017-07-21T08:21:10.896Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fancybox/source/jquery.fancybox.pack.js","time":"2017-07-21T08:21:10.896Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fastclick/lib/fastclick.js","time":"2017-07-21T08:21:10.900Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fastclick/lib/fastclick.min.js","time":"2017-07-21T08:21:10.900Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/font-awesome/css/font-awesome.css.map","time":"2017-07-21T08:21:10.900Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/font-awesome/css/font-awesome.css","time":"2017-07-21T08:21:10.900Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/font-awesome/css/font-awesome.min.css","time":"2017-07-21T08:21:10.904Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/ua-parser-js/dist/ua-parser.min.js","time":"2017-07-21T08:21:10.904Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/ua-parser-js/dist/ua-parser.pack.js","time":"2017-07-21T08:21:10.904Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_scripts/pages/post-details.swig","time":"2017-07-21T08:21:11.032Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_scripts/schemes/pisces.swig","time":"2017-07-21T08:21:11.032Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_partials/head/custom-head.swig","time":"2017-07-21T08:21:11.032Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_partials/head/external-fonts.swig","time":"2017-07-21T08:21:11.032Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_partials/search/localsearch.swig","time":"2017-07-21T08:21:11.032Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_partials/search/swiftype.swig","time":"2017-07-21T08:21:11.032Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_partials/share/add-this.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_partials/share/baidushare.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_partials/search/tinysou.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_partials/share/duoshuo_share.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/analytics/application-insights.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/analytics/busuanzi-counter.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_partials/share/jiathis.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/analytics/baidu-analytics.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/analytics/facebook-sdk.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/analytics/google-analytics.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/analytics/cnzz-analytics.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/analytics/index.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/analytics/lean-analytics.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/analytics/tencent-mta.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/analytics/tencent-analytics.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/analytics/vkontakte-api.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/comments/disqus.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/comments/changyan.swig","time":"2017-07-21T08:21:11.036Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/comments/duoshuo.swig","time":"2017-07-21T08:21:11.040Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/comments/gentie.swig","time":"2017-07-21T08:21:11.040Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/comments/hypercomments.swig","time":"2017-07-21T08:21:11.040Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/comments/index.swig","time":"2017-07-21T08:21:11.040Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/comments/livere.swig","time":"2017-07-21T08:21:11.040Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/comments/youyan.swig","time":"2017-07-21T08:21:11.040Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/search/index.swig","time":"2017-07-21T08:21:11.040Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/seo/baidu-push.swig","time":"2017-07-21T08:21:11.040Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/search/localsearch.swig","time":"2017-07-21T08:21:11.040Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/search/tinysou.swig","time":"2017-07-21T08:21:11.040Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/fontawesome-webfont.woff","time":"2017-07-21T08:21:11.044Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/fontawesome-webfont.woff2","time":"2017-07-21T08:21:11.044Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/velocity/velocity.js","time":"2017-07-21T08:21:11.044Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/jquery.fancybox-buttons.css","time":"2017-07-21T08:21:11.064Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/fancybox_buttons.png","time":"2017-07-21T08:21:11.068Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/jquery.fancybox-buttons.js","time":"2017-07-21T08:21:11.068Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/jquery.fancybox-media.js","time":"2017-07-21T08:21:11.068Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/jquery.fancybox-thumbs.css","time":"2017-07-21T08:21:11.068Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/jquery.fancybox-thumbs.js","time":"2017-07-21T08:21:11.072Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/FontAwesome.otf","time":"2017-07-21T08:21:11.072Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/fontawesome-webfont.eot","time":"2017-07-21T08:21:11.072Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/fontawesome-webfont.ttf","time":"2017-07-21T08:21:11.072Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/search/algolia-search/assets.swig","time":"2017-07-21T08:21:11.084Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: layout/_third-party/search/algolia-search/dom.swig","time":"2017-07-21T08:21:11.084Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/algolia-instant-search/instantsearch.min.js","time":"2017-07-21T08:21:11.088Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/three/three.min.js","time":"2017-07-21T08:21:11.092Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/fontawesome-webfont.svg","time":"2017-07-21T08:21:11.104Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Generator: page","time":"2017-07-21T08:21:12.008Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Generator: post","time":"2017-07-21T08:21:12.012Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Generator: archive","time":"2017-07-21T08:21:12.012Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Generator: category","time":"2017-07-21T08:21:12.012Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Generator: tag","time":"2017-07-21T08:21:12.012Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Generator: index","time":"2017-07-21T08:21:12.012Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Generator: asset","time":"2017-07-21T08:21:12.012Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":30,"msg":"Hexo is running at http://localhost:4000/Blog/. Press Ctrl+C to stop.","time":"2017-07-21T08:21:12.048Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":8456,"level":20,"msg":"Database saved","time":"2017-07-21T08:21:12.100Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Hexo version: 3.3.8","time":"2017-07-21T08:21:29.891Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Working directory: E:\\Blog\\","time":"2017-07-21T08:21:29.903Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Config loaded: E:\\Blog\\_config.yml","time":"2017-07-21T08:21:30.415Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Script loaded: themes\\next\\scripts\\merge-configs.js","time":"2017-07-21T08:21:30.507Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Script loaded: themes\\next\\scripts\\merge.js","time":"2017-07-21T08:21:30.519Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\button.js","time":"2017-07-21T08:21:30.519Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\center-quote.js","time":"2017-07-21T08:21:30.523Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\exturl.js","time":"2017-07-21T08:21:30.523Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\full-image.js","time":"2017-07-21T08:21:30.527Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\group-pictures.js","time":"2017-07-21T08:21:30.539Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\note.js","time":"2017-07-21T08:21:30.539Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Plugin loaded: hexo-deployer-git","time":"2017-07-21T08:21:30.651Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Plugin loaded: hexo-generator-archive","time":"2017-07-21T08:21:30.663Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Plugin loaded: hexo-generator-category","time":"2017-07-21T08:21:30.671Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Plugin loaded: hexo-generator-index","time":"2017-07-21T08:21:30.679Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Plugin loaded: hexo-generator-tag","time":"2017-07-21T08:21:30.687Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Plugin loaded: hexo-renderer-ejs","time":"2017-07-21T08:21:30.699Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Plugin loaded: hexo-renderer-marked","time":"2017-07-21T08:21:30.727Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Plugin loaded: hexo-renderer-stylus","time":"2017-07-21T08:21:30.731Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Plugin loaded: hexo-server","time":"2017-07-21T08:21:31.031Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Loading database.","time":"2017-07-21T08:21:31.075Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":30,"msg":"Start processing","time":"2017-07-21T08:21:31.355Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: _posts/hello-world.md","time":"2017-07-21T08:21:31.751Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: debug.log","time":"2017-07-21T08:21:31.763Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Theme config loaded.","time":"2017-07-21T08:21:32.047Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: _config.yml","time":"2017-07-21T08:21:32.055Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/css/main.styl","time":"2017-07-21T08:21:32.055Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/images/algolia_logo.svg","time":"2017-07-21T08:21:32.055Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/images/avatar.gif","time":"2017-07-21T08:21:32.055Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/images/cc-by-nc-nd.svg","time":"2017-07-21T08:21:32.055Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/images/cc-by-nc-sa.svg","time":"2017-07-21T08:21:32.059Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/images/cc-by-nc.svg","time":"2017-07-21T08:21:32.059Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/images/cc-by-nd.svg","time":"2017-07-21T08:21:32.067Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/images/cc-by-sa.svg","time":"2017-07-21T08:21:32.079Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/images/cc-by.svg","time":"2017-07-21T08:21:32.083Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/images/cc-zero.svg","time":"2017-07-21T08:21:32.083Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/images/loading.gif","time":"2017-07-21T08:21:32.083Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/images/placeholder.gif","time":"2017-07-21T08:21:32.083Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/images/quote-l.svg","time":"2017-07-21T08:21:32.083Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/images/quote-r.svg","time":"2017-07-21T08:21:32.087Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/images/searchicon.png","time":"2017-07-21T08:21:32.087Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_layout.swig","time":"2017-07-21T08:21:32.979Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/archive.swig","time":"2017-07-21T08:21:32.979Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/category.swig","time":"2017-07-21T08:21:32.979Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/page.swig","time":"2017-07-21T08:21:32.979Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/post.swig","time":"2017-07-21T08:21:32.983Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/schedule.swig","time":"2017-07-21T08:21:32.983Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/tag.swig","time":"2017-07-21T08:21:32.983Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/index.swig","time":"2017-07-21T08:21:32.983Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":50,"err":{"message":"can not read a block mapping entry; a multiline key may not be an implicit key at line 5, column 1:\n    \n    ^","name":"YAMLException","stack":"YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 5, column 1:\n    \n    ^\n    at generateError (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:165:10)\n    at throwError (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:171:9)\n    at readBlockMapping (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:1046:9)\n    at composeNode (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:1332:12)\n    at readDocument (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:1492:3)\n    at loadDocuments (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:1548:5)\n    at Object.load (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:1569:19)\n    at parseYAML (E:\\Blog\\node_modules\\hexo-front-matter\\lib\\front_matter.js:80:21)\n    at parse (E:\\Blog\\node_modules\\hexo-front-matter\\lib\\front_matter.js:56:12)\n    at E:\\Blog\\node_modules\\hexo\\lib\\plugins\\processor\\asset.js:34:18\n    at tryCatcher (E:\\Blog\\node_modules\\bluebird\\js\\release\\util.js:16:23)\n    at Promise._settlePromiseFromHandler (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:509:35)\n    at Promise._settlePromise (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:569:18)\n    at Promise._settlePromise0 (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:614:10)\n    at Promise._settlePromises (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:693:18)\n    at Promise._fulfill (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:638:18)\n    at PromiseArray._resolve (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:126:19)\n    at PromiseArray._promiseFulfilled (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:144:14)\n    at PromiseArray._iterate (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:114:31)\n    at PromiseArray.init [as _init] (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:78:10)\n    at Promise._settlePromise (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:566:21)\n    at Promise._settlePromise0 (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:614:10)\n    at Promise._settlePromises (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:693:18)\n    at Promise._fulfill (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:638:18)\n    at PromiseArray._resolve (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:126:19)\n    at PromiseArray._promiseFulfilled (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:144:14)\n    at Promise._settlePromise (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:574:26)"},"msg":"Process failed: tags/index.md","time":"2017-07-21T08:21:32.999Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: languages/de.yml","time":"2017-07-21T08:21:33.023Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: languages/default.yml","time":"2017-07-21T08:21:33.023Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: languages/en.yml","time":"2017-07-21T08:21:33.027Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: languages/fr-FR.yml","time":"2017-07-21T08:21:33.027Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: languages/id.yml","time":"2017-07-21T08:21:33.027Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: languages/ja.yml","time":"2017-07-21T08:21:33.031Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: languages/ko.yml","time":"2017-07-21T08:21:33.031Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: languages/pt-BR.yml","time":"2017-07-21T08:21:33.031Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: languages/pt.yml","time":"2017-07-21T08:21:33.031Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: languages/ru.yml","time":"2017-07-21T08:21:33.035Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: languages/zh-Hans.yml","time":"2017-07-21T08:21:33.035Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: languages/zh-hk.yml","time":"2017-07-21T08:21:33.035Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: languages/zh-tw.yml","time":"2017-07-21T08:21:33.035Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/js/src/affix.js","time":"2017-07-21T08:21:33.167Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/js/src/algolia-search.js","time":"2017-07-21T08:21:33.167Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/js/src/bootstrap.js","time":"2017-07-21T08:21:33.167Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/js/src/exturl.js","time":"2017-07-21T08:21:33.167Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/js/src/hook-duoshuo.js","time":"2017-07-21T08:21:33.171Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/js/src/motion.js","time":"2017-07-21T08:21:33.171Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/js/src/post-details.js","time":"2017-07-21T08:21:33.171Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/js/src/utils.js","time":"2017-07-21T08:21:33.171Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/js/src/scrollspy.js","time":"2017-07-21T08:21:33.171Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/canvas-nest/canvas-nest.min.js","time":"2017-07-21T08:21:33.175Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/algolia-instant-search/instantsearch.min.css","time":"2017-07-21T08:21:33.179Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fastclick/README.md","time":"2017-07-21T08:21:33.183Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fastclick/LICENSE","time":"2017-07-21T08:21:33.187Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fastclick/bower.json","time":"2017-07-21T08:21:33.187Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/font-awesome/HELP-US-OUT.txt","time":"2017-07-21T08:21:33.187Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/font-awesome/bower.json","time":"2017-07-21T08:21:33.187Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/jquery_lazyload/CONTRIBUTING.md","time":"2017-07-21T08:21:33.191Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/jquery_lazyload/README.md","time":"2017-07-21T08:21:33.191Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/jquery_lazyload/bower.json","time":"2017-07-21T08:21:33.195Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/jquery_lazyload/jquery.lazyload.js","time":"2017-07-21T08:21:33.195Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/jquery_lazyload/jquery.scrollstop.js","time":"2017-07-21T08:21:33.195Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/three/three-waves.min.js","time":"2017-07-21T08:21:33.195Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/velocity/bower.json","time":"2017-07-21T08:21:33.195Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/velocity/velocity.min.js","time":"2017-07-21T08:21:33.199Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/velocity/velocity.ui.js","time":"2017-07-21T08:21:33.199Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/velocity/velocity.ui.min.js","time":"2017-07-21T08:21:33.199Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_custom/header.swig","time":"2017-07-21T08:21:33.479Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_custom/sidebar.swig","time":"2017-07-21T08:21:33.479Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_macro/post-collapse.swig","time":"2017-07-21T08:21:33.479Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_macro/post-copyright.swig","time":"2017-07-21T08:21:33.479Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_macro/post.swig","time":"2017-07-21T08:21:33.479Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_macro/sidebar.swig","time":"2017-07-21T08:21:33.479Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_macro/reward.swig","time":"2017-07-21T08:21:33.479Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_macro/wechat-subscriber.swig","time":"2017-07-21T08:21:33.483Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_partials/footer.swig","time":"2017-07-21T08:21:33.483Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_partials/comments.swig","time":"2017-07-21T08:21:33.483Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_partials/head.swig","time":"2017-07-21T08:21:33.483Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_partials/header.swig","time":"2017-07-21T08:21:33.483Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_partials/page-header.swig","time":"2017-07-21T08:21:33.483Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_partials/pagination.swig","time":"2017-07-21T08:21:33.483Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_partials/search.swig","time":"2017-07-21T08:21:33.483Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_scripts/boostrap.swig","time":"2017-07-21T08:21:33.483Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_scripts/commons.swig","time":"2017-07-21T08:21:33.483Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_scripts/vendors.swig","time":"2017-07-21T08:21:33.483Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/exturl.swig","time":"2017-07-21T08:21:33.483Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/duoshuo-hot-articles.swig","time":"2017-07-21T08:21:33.487Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/mathjax.swig","time":"2017-07-21T08:21:33.487Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/schedule.swig","time":"2017-07-21T08:21:33.487Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/jquery/index.js","time":"2017-07-21T08:21:33.495Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_scripts/schemes/mist.swig","time":"2017-07-21T08:21:33.511Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_scripts/schemes/muse.swig","time":"2017-07-21T08:21:33.511Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/js/src/schemes/pisces.js","time":"2017-07-21T08:21:33.515Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fancybox/source/blank.gif","time":"2017-07-21T08:21:33.515Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fancybox/source/fancybox_loading.gif","time":"2017-07-21T08:21:33.515Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fancybox/source/fancybox_loading@2x.gif","time":"2017-07-21T08:21:33.519Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fancybox/source/fancybox_overlay.png","time":"2017-07-21T08:21:33.519Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fancybox/source/fancybox_sprite.png","time":"2017-07-21T08:21:33.519Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fancybox/source/fancybox_sprite@2x.png","time":"2017-07-21T08:21:33.519Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fancybox/source/jquery.fancybox.css","time":"2017-07-21T08:21:33.519Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fancybox/source/jquery.fancybox.js","time":"2017-07-21T08:21:33.519Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fancybox/source/jquery.fancybox.pack.js","time":"2017-07-21T08:21:33.519Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fastclick/lib/fastclick.min.js","time":"2017-07-21T08:21:33.519Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fastclick/lib/fastclick.js","time":"2017-07-21T08:21:33.519Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/font-awesome/css/font-awesome.css.map","time":"2017-07-21T08:21:33.523Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/font-awesome/css/font-awesome.css","time":"2017-07-21T08:21:33.523Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/font-awesome/css/font-awesome.min.css","time":"2017-07-21T08:21:33.523Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/ua-parser-js/dist/ua-parser.min.js","time":"2017-07-21T08:21:33.523Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/ua-parser-js/dist/ua-parser.pack.js","time":"2017-07-21T08:21:33.523Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_partials/head/custom-head.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_partials/head/external-fonts.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_partials/search/localsearch.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_partials/search/swiftype.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_partials/search/tinysou.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_partials/share/baidushare.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_partials/share/add-this.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_partials/share/duoshuo_share.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_partials/share/jiathis.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_scripts/schemes/pisces.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/analytics/application-insights.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_scripts/pages/post-details.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/analytics/baidu-analytics.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/analytics/busuanzi-counter.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/analytics/cnzz-analytics.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/analytics/google-analytics.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/analytics/facebook-sdk.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/analytics/index.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/analytics/lean-analytics.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/analytics/tencent-analytics.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/analytics/tencent-mta.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/analytics/vkontakte-api.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/comments/changyan.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/comments/duoshuo.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/comments/disqus.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/comments/gentie.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/comments/hypercomments.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/comments/index.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/comments/livere.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/comments/youyan.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/search/index.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/search/localsearch.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/search/tinysou.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/seo/baidu-push.swig","time":"2017-07-21T08:21:33.619Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/fontawesome-webfont.woff","time":"2017-07-21T08:21:33.627Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/fontawesome-webfont.woff2","time":"2017-07-21T08:21:33.635Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/velocity/velocity.js","time":"2017-07-21T08:21:33.635Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/fancybox_buttons.png","time":"2017-07-21T08:21:33.647Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/jquery.fancybox-buttons.css","time":"2017-07-21T08:21:33.647Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/jquery.fancybox-buttons.js","time":"2017-07-21T08:21:33.651Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/jquery.fancybox-media.js","time":"2017-07-21T08:21:33.651Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/jquery.fancybox-thumbs.css","time":"2017-07-21T08:21:33.651Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/jquery.fancybox-thumbs.js","time":"2017-07-21T08:21:33.651Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/FontAwesome.otf","time":"2017-07-21T08:21:33.651Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/fontawesome-webfont.eot","time":"2017-07-21T08:21:33.651Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/fontawesome-webfont.ttf","time":"2017-07-21T08:21:33.651Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/search/algolia-search/dom.swig","time":"2017-07-21T08:21:33.663Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: layout/_third-party/search/algolia-search/assets.swig","time":"2017-07-21T08:21:33.663Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/algolia-instant-search/instantsearch.min.js","time":"2017-07-21T08:21:33.667Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/three/three.min.js","time":"2017-07-21T08:21:33.671Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/fontawesome-webfont.svg","time":"2017-07-21T08:21:33.671Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Generator: page","time":"2017-07-21T08:21:34.215Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Generator: post","time":"2017-07-21T08:21:34.215Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Generator: archive","time":"2017-07-21T08:21:34.219Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Generator: category","time":"2017-07-21T08:21:34.219Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Generator: index","time":"2017-07-21T08:21:34.219Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Generator: tag","time":"2017-07-21T08:21:34.219Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Generator: asset","time":"2017-07-21T08:21:34.223Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":30,"msg":"Hexo is running at http://localhost:4000/Blog/. Press Ctrl+C to stop.","time":"2017-07-21T08:21:34.267Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Database saved","time":"2017-07-21T08:21:34.315Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":17064,"level":20,"msg":"Rendering index: index.html","time":"2017-07-21T08:21:39.312Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Hexo version: 3.3.8","time":"2017-07-21T08:22:49.112Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Working directory: E:\\Blog\\","time":"2017-07-21T08:22:49.128Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Config loaded: E:\\Blog\\_config.yml","time":"2017-07-21T08:22:49.769Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Script loaded: themes\\next\\scripts\\merge-configs.js","time":"2017-07-21T08:22:49.862Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Script loaded: themes\\next\\scripts\\merge.js","time":"2017-07-21T08:22:49.878Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\button.js","time":"2017-07-21T08:22:49.878Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\center-quote.js","time":"2017-07-21T08:22:49.878Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\exturl.js","time":"2017-07-21T08:22:49.894Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\full-image.js","time":"2017-07-21T08:22:49.894Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\group-pictures.js","time":"2017-07-21T08:22:49.909Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Script loaded: themes\\next\\scripts\\tags\\note.js","time":"2017-07-21T08:22:49.909Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Plugin loaded: hexo-deployer-git","time":"2017-07-21T08:22:50.050Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Plugin loaded: hexo-generator-archive","time":"2017-07-21T08:22:50.065Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Plugin loaded: hexo-generator-category","time":"2017-07-21T08:22:50.081Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Plugin loaded: hexo-generator-index","time":"2017-07-21T08:22:50.081Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Plugin loaded: hexo-generator-tag","time":"2017-07-21T08:22:50.097Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Plugin loaded: hexo-renderer-ejs","time":"2017-07-21T08:22:50.112Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Plugin loaded: hexo-renderer-marked","time":"2017-07-21T08:22:50.144Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Plugin loaded: hexo-renderer-stylus","time":"2017-07-21T08:22:50.159Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Plugin loaded: hexo-server","time":"2017-07-21T08:22:50.550Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Loading database.","time":"2017-07-21T08:22:50.597Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":30,"msg":"Start processing","time":"2017-07-21T08:22:50.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: debug.log","time":"2017-07-21T08:22:51.362Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: _posts/hello-world.md","time":"2017-07-21T08:22:51.550Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Theme config loaded.","time":"2017-07-21T08:22:51.784Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: _config.yml","time":"2017-07-21T08:22:51.784Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/css/main.styl","time":"2017-07-21T08:22:51.784Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/images/algolia_logo.svg","time":"2017-07-21T08:22:51.784Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/images/avatar.gif","time":"2017-07-21T08:22:51.800Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/images/cc-by-nc-nd.svg","time":"2017-07-21T08:22:51.800Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/images/cc-by-nc-sa.svg","time":"2017-07-21T08:22:51.800Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/images/cc-by-nc.svg","time":"2017-07-21T08:22:51.800Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/images/cc-by-nd.svg","time":"2017-07-21T08:22:51.815Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/images/cc-by-sa.svg","time":"2017-07-21T08:22:51.815Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/images/cc-by.svg","time":"2017-07-21T08:22:51.815Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/images/cc-zero.svg","time":"2017-07-21T08:22:51.831Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/images/loading.gif","time":"2017-07-21T08:22:51.831Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/images/placeholder.gif","time":"2017-07-21T08:22:51.831Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/images/quote-l.svg","time":"2017-07-21T08:22:51.831Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/images/quote-r.svg","time":"2017-07-21T08:22:51.831Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/images/searchicon.png","time":"2017-07-21T08:22:51.831Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_layout.swig","time":"2017-07-21T08:22:53.081Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/archive.swig","time":"2017-07-21T08:22:53.097Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/category.swig","time":"2017-07-21T08:22:53.097Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/page.swig","time":"2017-07-21T08:22:53.097Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/index.swig","time":"2017-07-21T08:22:53.097Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/post.swig","time":"2017-07-21T08:22:53.097Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/schedule.swig","time":"2017-07-21T08:22:53.097Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/tag.swig","time":"2017-07-21T08:22:53.097Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":50,"err":{"message":"can not read a block mapping entry; a multiline key may not be an implicit key at line 5, column 1:\n    \n    ^","name":"YAMLException","stack":"YAMLException: can not read a block mapping entry; a multiline key may not be an implicit key at line 5, column 1:\n    \n    ^\n    at generateError (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:165:10)\n    at throwError (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:171:9)\n    at readBlockMapping (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:1046:9)\n    at composeNode (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:1332:12)\n    at readDocument (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:1492:3)\n    at loadDocuments (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:1548:5)\n    at Object.load (E:\\Blog\\node_modules\\js-yaml\\lib\\js-yaml\\loader.js:1569:19)\n    at parseYAML (E:\\Blog\\node_modules\\hexo-front-matter\\lib\\front_matter.js:80:21)\n    at parse (E:\\Blog\\node_modules\\hexo-front-matter\\lib\\front_matter.js:56:12)\n    at E:\\Blog\\node_modules\\hexo\\lib\\plugins\\processor\\asset.js:34:18\n    at tryCatcher (E:\\Blog\\node_modules\\bluebird\\js\\release\\util.js:16:23)\n    at Promise._settlePromiseFromHandler (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:509:35)\n    at Promise._settlePromise (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:569:18)\n    at Promise._settlePromise0 (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:614:10)\n    at Promise._settlePromises (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:693:18)\n    at Promise._fulfill (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:638:18)\n    at PromiseArray._resolve (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:126:19)\n    at PromiseArray._promiseFulfilled (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:144:14)\n    at PromiseArray._iterate (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:114:31)\n    at PromiseArray.init [as _init] (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:78:10)\n    at Promise._settlePromise (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:566:21)\n    at Promise._settlePromise0 (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:614:10)\n    at Promise._settlePromises (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:693:18)\n    at Promise._fulfill (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:638:18)\n    at PromiseArray._resolve (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:126:19)\n    at PromiseArray._promiseFulfilled (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise_array.js:144:14)\n    at Promise._settlePromise (E:\\Blog\\node_modules\\bluebird\\js\\release\\promise.js:574:26)"},"msg":"Process failed: tags/index.md","time":"2017-07-21T08:22:53.159Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: languages/de.yml","time":"2017-07-21T08:22:53.175Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: languages/default.yml","time":"2017-07-21T08:22:53.175Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: languages/fr-FR.yml","time":"2017-07-21T08:22:53.175Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: languages/en.yml","time":"2017-07-21T08:22:53.175Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: languages/id.yml","time":"2017-07-21T08:22:53.175Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: languages/ja.yml","time":"2017-07-21T08:22:53.175Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: languages/ko.yml","time":"2017-07-21T08:22:53.175Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: languages/pt-BR.yml","time":"2017-07-21T08:22:53.175Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: languages/ru.yml","time":"2017-07-21T08:22:53.175Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: languages/pt.yml","time":"2017-07-21T08:22:53.175Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: languages/zh-Hans.yml","time":"2017-07-21T08:22:53.175Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: languages/zh-hk.yml","time":"2017-07-21T08:22:53.175Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: languages/zh-tw.yml","time":"2017-07-21T08:22:53.175Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/js/src/affix.js","time":"2017-07-21T08:22:53.190Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/js/src/algolia-search.js","time":"2017-07-21T08:22:53.190Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/js/src/bootstrap.js","time":"2017-07-21T08:22:53.206Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/js/src/exturl.js","time":"2017-07-21T08:22:53.206Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/js/src/hook-duoshuo.js","time":"2017-07-21T08:22:53.206Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/js/src/motion.js","time":"2017-07-21T08:22:53.206Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/js/src/post-details.js","time":"2017-07-21T08:22:53.222Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/js/src/scrollspy.js","time":"2017-07-21T08:22:53.222Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/js/src/utils.js","time":"2017-07-21T08:22:53.222Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/algolia-instant-search/instantsearch.min.css","time":"2017-07-21T08:22:53.222Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/canvas-nest/canvas-nest.min.js","time":"2017-07-21T08:22:53.222Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fastclick/LICENSE","time":"2017-07-21T08:22:53.237Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fastclick/README.md","time":"2017-07-21T08:22:53.237Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fastclick/bower.json","time":"2017-07-21T08:22:53.237Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/font-awesome/HELP-US-OUT.txt","time":"2017-07-21T08:22:53.237Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/font-awesome/bower.json","time":"2017-07-21T08:22:53.237Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/jquery_lazyload/CONTRIBUTING.md","time":"2017-07-21T08:22:53.237Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/jquery_lazyload/README.md","time":"2017-07-21T08:22:53.237Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/jquery_lazyload/bower.json","time":"2017-07-21T08:22:53.253Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/jquery_lazyload/jquery.lazyload.js","time":"2017-07-21T08:22:53.253Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/jquery_lazyload/jquery.scrollstop.js","time":"2017-07-21T08:22:53.253Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/three/three-waves.min.js","time":"2017-07-21T08:22:53.253Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/velocity/bower.json","time":"2017-07-21T08:22:53.253Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/velocity/velocity.min.js","time":"2017-07-21T08:22:53.253Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/velocity/velocity.ui.js","time":"2017-07-21T08:22:53.253Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/velocity/velocity.ui.min.js","time":"2017-07-21T08:22:53.253Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/jquery/index.js","time":"2017-07-21T08:22:53.456Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_custom/header.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_custom/sidebar.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_macro/post-collapse.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_macro/post-copyright.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_macro/reward.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_macro/sidebar.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_macro/post.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_macro/wechat-subscriber.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_partials/comments.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_partials/footer.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_partials/head.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_partials/header.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_partials/page-header.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_partials/search.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_partials/pagination.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_scripts/boostrap.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_scripts/commons.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_scripts/vendors.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/duoshuo-hot-articles.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/exturl.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/mathjax.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/schedule.swig","time":"2017-07-21T08:22:53.722Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/js/src/schemes/pisces.js","time":"2017-07-21T08:22:53.737Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fancybox/source/blank.gif","time":"2017-07-21T08:22:53.737Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fancybox/source/fancybox_loading.gif","time":"2017-07-21T08:22:53.737Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fancybox/source/fancybox_loading@2x.gif","time":"2017-07-21T08:22:53.737Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fancybox/source/fancybox_overlay.png","time":"2017-07-21T08:22:53.753Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fancybox/source/fancybox_sprite@2x.png","time":"2017-07-21T08:22:53.753Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fancybox/source/fancybox_sprite.png","time":"2017-07-21T08:22:53.753Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fancybox/source/jquery.fancybox.css","time":"2017-07-21T08:22:53.753Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fancybox/source/jquery.fancybox.js","time":"2017-07-21T08:22:53.753Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fancybox/source/jquery.fancybox.pack.js","time":"2017-07-21T08:22:53.753Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fastclick/lib/fastclick.js","time":"2017-07-21T08:22:53.753Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fastclick/lib/fastclick.min.js","time":"2017-07-21T08:22:53.753Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/font-awesome/css/font-awesome.css","time":"2017-07-21T08:22:53.753Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/font-awesome/css/font-awesome.css.map","time":"2017-07-21T08:22:53.753Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/font-awesome/css/font-awesome.min.css","time":"2017-07-21T08:22:53.753Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/ua-parser-js/dist/ua-parser.min.js","time":"2017-07-21T08:22:53.753Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/ua-parser-js/dist/ua-parser.pack.js","time":"2017-07-21T08:22:53.753Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_scripts/schemes/mist.swig","time":"2017-07-21T08:22:53.784Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_scripts/schemes/muse.swig","time":"2017-07-21T08:22:53.784Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/fontawesome-webfont.woff","time":"2017-07-21T08:22:53.784Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/fontawesome-webfont.woff2","time":"2017-07-21T08:22:53.784Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/velocity/velocity.js","time":"2017-07-21T08:22:53.800Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_partials/head/custom-head.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_partials/head/external-fonts.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_partials/search/localsearch.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_partials/search/tinysou.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_partials/search/swiftype.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_partials/share/add-this.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_partials/share/duoshuo_share.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_partials/share/baidushare.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_partials/share/jiathis.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_scripts/pages/post-details.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_scripts/schemes/pisces.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/analytics/application-insights.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/analytics/baidu-analytics.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/analytics/busuanzi-counter.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/analytics/cnzz-analytics.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/analytics/facebook-sdk.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/analytics/google-analytics.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/analytics/index.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/analytics/lean-analytics.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/analytics/tencent-analytics.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/analytics/tencent-mta.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/analytics/vkontakte-api.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/comments/changyan.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/comments/disqus.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/comments/duoshuo.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/comments/gentie.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/comments/hypercomments.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/comments/index.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/comments/livere.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/comments/youyan.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/search/localsearch.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/search/index.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/search/tinysou.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/seo/baidu-push.swig","time":"2017-07-21T08:22:53.972Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/fancybox_buttons.png","time":"2017-07-21T08:22:53.987Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/jquery.fancybox-buttons.css","time":"2017-07-21T08:22:54.003Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/jquery.fancybox-buttons.js","time":"2017-07-21T08:22:54.003Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/jquery.fancybox-media.js","time":"2017-07-21T08:22:54.003Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/jquery.fancybox-thumbs.css","time":"2017-07-21T08:22:54.003Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/fancybox/source/helpers/jquery.fancybox-thumbs.js","time":"2017-07-21T08:22:54.003Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/FontAwesome.otf","time":"2017-07-21T08:22:54.003Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/fontawesome-webfont.eot","time":"2017-07-21T08:22:54.003Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/fontawesome-webfont.ttf","time":"2017-07-21T08:22:54.003Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/search/algolia-search/dom.swig","time":"2017-07-21T08:22:54.019Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: layout/_third-party/search/algolia-search/assets.swig","time":"2017-07-21T08:22:54.019Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/algolia-instant-search/instantsearch.min.js","time":"2017-07-21T08:22:54.019Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/three/three.min.js","time":"2017-07-21T08:22:54.034Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Processed: source/lib/font-awesome/fonts/fontawesome-webfont.svg","time":"2017-07-21T08:22:54.034Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Generator: page","time":"2017-07-21T08:22:54.862Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Generator: post","time":"2017-07-21T08:22:54.862Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Generator: archive","time":"2017-07-21T08:22:54.862Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Generator: category","time":"2017-07-21T08:22:54.862Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Generator: index","time":"2017-07-21T08:22:54.862Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Generator: tag","time":"2017-07-21T08:22:54.862Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Generator: asset","time":"2017-07-21T08:22:54.862Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":30,"msg":"Hexo is running at http://localhost:4000/Blog/. Press Ctrl+C to stop.","time":"2017-07-21T08:22:54.894Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Database saved","time":"2017-07-21T08:22:54.940Z","v":0}
+{"name":"hexo","hostname":"JohnC","pid":18932,"level":20,"msg":"Rendering index: index.html","time":"2017-07-21T08:22:57.868Z","v":0}
