@@ -1,0 +1,850 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Kali," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/tubiao.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="下定决心好好学web，然后发现大一安装的Kali2.0因为年少无知乱配置搞得一团糟，想想干脆重新装一个，顺便把配置过程记录一下。 本文长期更新，遇到的各种坑都会记一下。">
+<meta name="keywords" content="Kali">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kali Linux 2017 安装配置">
+<meta property="og:url" content="http://a2chitect.cn/2017/11/29/Kali-Linux-2017-安装配置/index.html">
+<meta property="og:site_name" content="Architect&#39;s Blog">
+<meta property="og:description" content="下定决心好好学web，然后发现大一安装的Kali2.0因为年少无知乱配置搞得一团糟，想想干脆重新装一个，顺便把配置过程记录一下。 本文长期更新，遇到的各种坑都会记一下。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-03T08:57:10.351Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kali Linux 2017 安装配置">
+<meta name="twitter:description" content="下定决心好好学web，然后发现大一安装的Kali2.0因为年少无知乱配置搞得一团糟，想想干脆重新装一个，顺便把配置过程记录一下。 本文长期更新，遇到的各种坑都会记一下。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://a2chitect.cn/2017/11/29/Kali-Linux-2017-安装配置/"/>
+
+
+
+
+
+  <title> Kali Linux 2017 安装配置 | Architect's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Architect's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://a2chitect.cn/2017/11/29/Kali-Linux-2017-安装配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Architect">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Architect's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Kali Linux 2017 安装配置
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-29T16:50:27+08:00">
+                2017-11-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web安全/" itemprop="url" rel="index">
+                    <span itemprop="name">Web安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>下定决心好好学web，然后发现大一安装的Kali2.0因为年少无知乱配置搞得一团糟，想想干脆重新装一个，顺便把配置过程记录一下。</p>
+<p>本文长期更新，遇到的各种坑都会记一下。</p>
+<a id="more"></a>
+<h4 id="0x01-下载与安装"><a href="#0x01-下载与安装" class="headerlink" title="0x01 下载与安装"></a>0x01 下载与安装</h4><p>下载没什么好说的，直接上官网www.kali.org/downloads/按步骤下载。</p>
+<p>可以直接下载ISO镜像然后往虚拟机里安装，也可以直接下载安装好的虚拟机文件导入VMware。</p>
+<h4 id="0x02-账户与网络设置"><a href="#0x02-账户与网络设置" class="headerlink" title="0x02 账户与网络设置"></a>0x02 账户与网络设置</h4><h5 id="给root用户设置密码"><a href="#给root用户设置密码" class="headerlink" title="给root用户设置密码"></a>给root用户设置密码</h5><p>su:鉴定故障</p>
+<p>终端窗口运行 su 输入密码，提示鉴定失败。</p>
+<p>原因：</p>
+<p>安装linux时，未输入ROOT密码；或新建用户，勾选“设为管理员”，仅为新用户设置密码。</p>
+<p>未设置ROOT密码，系统检测失败。</p>
+<p>在终端中输入如下命令设置密码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo passwd root</div></pre></td></tr></table></figure>
+<h5 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h5><p>虚拟机使用NAT模式则kali设置DHCP即可；若使用桥接模式，可以设置成静态IP。</p>
+<p>若网络突然坏掉，右上角网络图标消失，输入命令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#重启网络管理服务</span></div><div class="line">/etc/init.d/network-manager restart	</div><div class="line"><span class="comment">#重启网卡</span></div><div class="line">/etc/init.d/networking restart</div></pre></td></tr></table></figure>
+<h4 id="0x03-更新源配置"><a href="#0x03-更新源配置" class="headerlink" title="0x03 更新源配置"></a>0x03 更新源配置</h4><p>以su权限打开/etc/apt/sources.list，添加源即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">/打开存储更新源的文件</div><div class="line">sudo leafpad /etc/apt/sources.list</div><div class="line"></div><div class="line"><span class="comment">#auto</span></div><div class="line">deb http://http.kali.org/kali kali-rolling main non-free contrib</div><div class="line"></div><div class="line"><span class="comment">#中科大</span></div><div class="line">deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</div><div class="line">deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</div><div class="line"></div><div class="line"><span class="comment">#浙大</span></div><div class="line">deb http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free</div><div class="line">deb-src http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free</div><div class="line"></div><div class="line"><span class="comment">#东软大学</span></div><div class="line">deb http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib</div><div class="line">deb-src http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib</div><div class="line"></div><div class="line"><span class="comment">#重庆大学</span></div><div class="line">deb http://http.kali.org/kali kali-rolling main non-free contrib</div><div class="line">deb-src http://http.kali.org/kali ka	li-rolling main non-free contrib</div><div class="line"></div><div class="line"><span class="comment">#阿里源</span></div><div class="line">deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</div><div class="line"></div><div class="line"><span class="comment">#官方源</span></div><div class="line"><span class="comment">#deb http://http.kali.org/kali kali-rolling main non-free contrib</span></div><div class="line"><span class="comment">#deb-src http://http.kali.org/kali kali-rolling main non-free contrib</span></div></pre></td></tr></table></figure>
+<p>更新软件包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">apt-get clean    //清除缓存索引</div><div class="line">apt-get update    //更新索引文件</div><div class="line">apt-get upgrade    //更新实际的软件包文件</div><div class="line">apt-get dist-upgrade    //根据依赖关系更新</div><div class="line">//可以加 -y 参数，默认更新过程中所有选择全为 yes</div></pre></td></tr></table></figure>
+<h4 id="0x03-个性配置及软件安装"><a href="#0x03-个性配置及软件安装" class="headerlink" title="0x03 个性配置及软件安装"></a>0x03 个性配置及软件安装</h4><h5 id="设置开启终端快捷键"><a href="#设置开启终端快捷键" class="headerlink" title="设置开启终端快捷键"></a>设置开启终端快捷键</h5><p>名称：开启终端<br>命令：gnome-terminal<br>快捷键：（这个自己按就好）</p>
+<h5 id="中文输入法安装"><a href="#中文输入法安装" class="headerlink" title="中文输入法安装"></a>中文输入法安装</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//Google拼音</div><div class="line">sudo apt-get install fcitx fcitx-googlepinyin</div><div class="line">//云词组</div><div class="line">sudo apt-get install fcitx-module-cloudpinyin</div><div class="line">//配置工具</div><div class="line">im-config</div><div class="line">fcitx-configtool</div></pre></td></tr></table></figure>
+<h5 id="Firefox-ESR浏览器汉化"><a href="#Firefox-ESR浏览器汉化" class="headerlink" title="Firefox ESR浏览器汉化"></a>Firefox ESR浏览器汉化</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install iceweasel-l10n-zh-cn</div></pre></td></tr></table></figure>
+<h5 id="软件包安装工具gdebi"><a href="#软件包安装工具gdebi" class="headerlink" title="软件包安装工具gdebi"></a>软件包安装工具gdebi</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#gdebi安装</span></div><div class="line">apt-get install gdebi</div><div class="line"><span class="comment">#运行</span></div><div class="line">gdebi-gtk</div></pre></td></tr></table></figure>
+<h5 id="安装Typora（没安成功）"><a href="#安装Typora（没安成功）" class="headerlink" title="安装Typora（没安成功）"></a>安装Typora（没安成功）</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> optional, but recommended</span></div><div class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"> add Typora<span class="string">'s repository</span></span></div><div class="line">sudo add-apt-repository 'deb http://typora.io linux/'</div><div class="line">sudo apt-get update</div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"><span class="string"> install typora</span></span></div><div class="line">sudo apt-get install typora</div></pre></td></tr></table></figure>
+<h5 id="xampp相关"><a href="#xampp相关" class="headerlink" title="xampp相关"></a>xampp相关</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">启动Apache、MySQL、ProFTPd</span></div><div class="line">sudo /opt/lampp/lampp start </div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">停止xampp</span></div><div class="line">sudo /opt/lampp/lampp stop </div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">启动xampp UI</span></div><div class="line">cd /opt/lampp</div><div class="line">sudo ./manager-linux.run (or manager-linux-x64.run)</div></pre></td></tr></table></figure>
+<h4 id="0x04-各种问题整理"><a href="#0x04-各种问题整理" class="headerlink" title="0x04 各种问题整理"></a>0x04 各种问题整理</h4><h5 id="python2、python3完美共存"><a href="#python2、python3完美共存" class="headerlink" title="python2、python3完美共存"></a>python2、python3完美共存</h5><p>kali 2017中自带Python2.7和python3.5，但是只有python2.7安装了pip，给Python3.5 安装pip的方法如下：</p>
+<ul>
+<li>在pip官网的安装指南页面（<a href="https://pip.pypa.io/en/stable/installing/）下载**get-pip.py**" target="_blank" rel="external">https://pip.pypa.io/en/stable/installing/）下载**get-pip.py**</a> ；</li>
+<li>sudo python3 get-pip.py</li>
+<li>安装成功后查看pip -V，pip2 -V，pip3 -V版本：<ul>
+<li>pip、pip3命令对应Python3</li>
+<li>pip2命令对应Python2</li>
+</ul>
+</li>
+</ul>
+<h5 id="共享文件夹配置"><a href="#共享文件夹配置" class="headerlink" title="共享文件夹配置"></a>共享文件夹配置</h5><p>挂载命令<code>sudo vmhgfs-fuse .host:/ /mnt/hgfs</code></p>
+<h5 id="run文件的执行（修改文件权限）"><a href="#run文件的执行（修改文件权限）" class="headerlink" title=".run文件的执行（修改文件权限）"></a>.run文件的执行（修改文件权限）</h5><ul>
+<li>.run 文件的执行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod +x  *.run </div><div class="line">./*.run</div></pre></td></tr></table></figure>
+<h4 id="0x05-相关资料收集"><a href="#0x05-相关资料收集" class="headerlink" title="0x05 相关资料收集"></a>0x05 相关资料收集</h4><h5 id="kali配置教程"><a href="#kali配置教程" class="headerlink" title="kali配置教程"></a>kali配置教程</h5><p><a href="http://www.cnblogs.com/sqlsec/p/diykali.html" target="_blank" rel="external">http://www.cnblogs.com/sqlsec/p/diykali.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Kali/" rel="tag"><i class="fa fa-tag"></i> Kali</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/19/常见数据库注入技巧——SQL Server/" rel="next" title="常见数据库注入技巧——SQL Server">
+                <i class="fa fa-chevron-left"></i> 常见数据库注入技巧——SQL Server
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/03/数据包分析笔记（一）/" rel="prev" title="数据包分析笔记（一）">
+                数据包分析笔记（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/touxiang.jpg"
+               alt="Architect" />
+          <p class="site-author-name" itemprop="name">Architect</p>
+           
+              <p class="site-description motion-element" itemprop="description">Gather ye rosebuds while ye may.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://caligo.cc/" title="Caligo" target="_blank">Caligo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.xieldy.cn/" title="Xieldy" target="_blank">Xieldy</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://barriery.cn/" title="Barriery" target="_blank">Barriery</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#0x01-下载与安装"><span class="nav-number">1.</span> <span class="nav-text">0x01 下载与安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0x02-账户与网络设置"><span class="nav-number">2.</span> <span class="nav-text">0x02 账户与网络设置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#给root用户设置密码"><span class="nav-number">2.1.</span> <span class="nav-text">给root用户设置密码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#网络配置"><span class="nav-number">2.2.</span> <span class="nav-text">网络配置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0x03-更新源配置"><span class="nav-number">3.</span> <span class="nav-text">0x03 更新源配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0x03-个性配置及软件安装"><span class="nav-number">4.</span> <span class="nav-text">0x03 个性配置及软件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#设置开启终端快捷键"><span class="nav-number">4.1.</span> <span class="nav-text">设置开启终端快捷键</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#中文输入法安装"><span class="nav-number">4.2.</span> <span class="nav-text">中文输入法安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Firefox-ESR浏览器汉化"><span class="nav-number">4.3.</span> <span class="nav-text">Firefox ESR浏览器汉化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#软件包安装工具gdebi"><span class="nav-number">4.4.</span> <span class="nav-text">软件包安装工具gdebi</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#安装Typora（没安成功）"><span class="nav-number">4.5.</span> <span class="nav-text">安装Typora（没安成功）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#xampp相关"><span class="nav-number">4.6.</span> <span class="nav-text">xampp相关</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0x04-各种问题整理"><span class="nav-number">5.</span> <span class="nav-text">0x04 各种问题整理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#python2、python3完美共存"><span class="nav-number">5.1.</span> <span class="nav-text">python2、python3完美共存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#共享文件夹配置"><span class="nav-number">5.2.</span> <span class="nav-text">共享文件夹配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#run文件的执行（修改文件权限）"><span class="nav-number">5.3.</span> <span class="nav-text">.run文件的执行（修改文件权限）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0x05-相关资料收集"><span class="nav-number">6.</span> <span class="nav-text">0x05 相关资料收集</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#kali配置教程"><span class="nav-number">6.1.</span> <span class="nav-text">kali配置教程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Architect</span>
+</div>
+
+
+<!--<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+-->
+
+
+<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
