@@ -1,0 +1,991 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="数据包分析," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/tubiao.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="前言最近看了一个wireshark数据包分析的系列网课，算是……重温一下计网网络协议的一些知识。简单记录一下知识点，写给自己看的可能比较杂乱，访客（别做梦了你哪来的访客hhh）就见谅了。">
+<meta name="keywords" content="数据包分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据包分析笔记（一）">
+<meta property="og:url" content="http://a2chitect.cn/2017/12/03/数据包分析笔记（一）/index.html">
+<meta property="og:site_name" content="Architect&#39;s Blog">
+<meta property="og:description" content="前言最近看了一个wireshark数据包分析的系列网课，算是……重温一下计网网络协议的一些知识。简单记录一下知识点，写给自己看的可能比较杂乱，访客（别做梦了你哪来的访客hhh）就见谅了。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-03T08:47:05.128Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据包分析笔记（一）">
+<meta name="twitter:description" content="前言最近看了一个wireshark数据包分析的系列网课，算是……重温一下计网网络协议的一些知识。简单记录一下知识点，写给自己看的可能比较杂乱，访客（别做梦了你哪来的访客hhh）就见谅了。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://a2chitect.cn/2017/12/03/数据包分析笔记（一）/"/>
+
+
+
+
+
+  <title> 数据包分析笔记（一） | Architect's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Architect's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://a2chitect.cn/2017/12/03/数据包分析笔记（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Architect">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Architect's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                数据包分析笔记（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-03T16:34:17+08:00">
+                2017-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络协议/" itemprop="url" rel="index">
+                    <span itemprop="name">网络协议</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近看了一个wireshark数据包分析的系列网课，算是……重温一下<del>计网</del>网络协议的一些知识。简单记录一下知识点，写给自己看的可能比较杂乱，<del>访客</del>（别做梦了你哪来的访客hhh）就见谅了。</p>
+<a id="more"></a>
+<h3 id="第一章-基础篇"><a href="#第一章-基础篇" class="headerlink" title="第一章 基础篇"></a>第一章 基础篇</h3><h4 id="1-认识wireshark的界面"><a href="#1-认识wireshark的界面" class="headerlink" title="1.认识wireshark的界面"></a>1.认识wireshark的界面</h4><h5 id="packet-detail中需注意的几个字段"><a href="#packet-detail中需注意的几个字段" class="headerlink" title="packet detail中需注意的几个字段"></a>packet detail中需注意的几个字段</h5><ul>
+<li>物理层帧的结构：<ul>
+<li>Protocols in frame:包含该帧中各层次协议。</li>
+<li>Coloring Rule Name:着色规则名称（？）</li>
+</ul>
+</li>
+<li>数据链路层结构：<ul>
+<li>Destination/Source:目的/源MAC地址（前三个字节为厂商信息）</li>
+</ul>
+</li>
+<li>物理层数据帧的情况</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">Frame 3934: 310 bytes on wire (2480 bits), 310 bytes captured (2480 bits) on interface 0</div><div class="line"># 3934号帧，线路上有310个字节，实际捕获310个字节</div><div class="line">Interface id: 0 (\Device\NPF_&#123;EF10E4D3-713B-4239-8786-300C825A9D3F&#125;)</div><div class="line"># 接口id</div><div class="line">Encapsulation type: Ethernet (1)</div><div class="line"># 封装类型</div><div class="line">Arrival Time: Nov 26, 2015 11:54:10.987177000 中国标准时间</div><div class="line"># 捕获日期和时间</div><div class="line">[Time shift for this packet: 0.000000000 seconds]</div><div class="line">Epoch Time: 1448510050.987177000 seconds</div><div class="line">[Time delta from previous captured frame: 0.014178000 seconds]</div><div class="line"># 当前数据包与前一个数据包的时间间隔</div><div class="line">[Time delta from previous displayed frame: 0.311034000 seconds]</div><div class="line">[Time since reference or first frame: 10.449670000 seconds]</div><div class="line"># 当前数据包与第一个数据包的时间间隔</div><div class="line">Frame Number: 3934</div><div class="line"># 帧序号</div><div class="line">Frame Length: 310 bytes (2480 bits)</div><div class="line"># 帧长度</div><div class="line">Capture Length: 310 bytes (2480 bits)</div><div class="line"># 捕获长度</div><div class="line">[Frame is marked: False]</div><div class="line"># 此帧是否做了标记：否</div><div class="line">[Frame is ignored: False]</div><div class="line"># 此帧是否被忽略：否</div><div class="line">[Protocols in frame: eth:ethertype:ip:tcp:http:image-gif]</div><div class="line"># 帧内封装的协议层次结构</div><div class="line">[Number of per-protocol-data: 1]</div><div class="line">[Hypertext Transfer Protocol, key 0]</div><div class="line">[Coloring Rule Name: HTTP]</div><div class="line"># 着色标记的协议名称</div><div class="line">[Coloring Rule String: http || tcp.port == 80 || http2]</div><div class="line">着色规则显示的字符串</div></pre></td></tr></table></figure>
+<ul>
+<li>数据链路层以太网帧头部的信息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Ethernet II, Src: Qihoo360_61:0b:0c (d0:fa:1d:61:0b:0c), Dst: Giga-Byt_d4:be:c9 (94:de:80:d4:be:c9)</div><div class="line">Destination: Giga-Byt_d4:be:c9 (94:de:80:d4:be:c9)</div><div class="line"># 目标MAC地址</div><div class="line">Source: Qihoo360_61:0b:0c (d0:fa:1d:61:0b:0c)</div><div class="line"># 源MAC地址</div><div class="line">Type: IP (0x0800)</div><div class="line"># 需要说明的是，为什么上述的源MAC地址以及目标MAC地址的开头明明是“d0:fa:1d”以及“94:de:80”，但是Wireshark上显示出来的却是“Qihoo360”以及“Giga-Byt”呢？这是因为MAC地址的前3个字节表示厂商。而“d0:fa:1d”以及“94:de:80”被分配给了奇虎以及技嘉公司。这是全球统一标准，所以Wireshark干脆显示出厂商名称了。</div></pre></td></tr></table></figure>
+<ul>
+<li>网络层IP包的头部信息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">Internet Protocol Version 4, Src: 220.181.7.190 (220.181.7.190), Dst: 192.168.0.14 (192.168.0.14)</div><div class="line">Version: 4</div><div class="line"># 互联网协议IPv4</div><div class="line">Header Length: 20 bytes</div><div class="line"># IP包头部的长度</div><div class="line">Differentiated Services Field: 0x00 (DSCP 0x00: Default; ECN: 0x00: </div><div class="line">Not-ECT (Not ECN-Capable Transport))</div><div class="line"># 差分服务字段</div><div class="line">Total Length: 296</div><div class="line"># IP包的总长度</div><div class="line">Identification: 0x2863 (10339)</div><div class="line"># 标志字段</div><div class="line">Flags: 0x02 (Don&apos;t Fragment)</div><div class="line"># 标记字段</div><div class="line">Fragment offset: 0</div><div class="line"># 分片偏移</div><div class="line">Time to live: 49</div><div class="line"># 生存期</div><div class="line">Protocol: TCP (6)</div><div class="line"># 当前数据包所封装的上层协议为TCP协议</div><div class="line">Header checksum: 0x7b43 [validation disabled]</div><div class="line"># 头部数据的校验和</div><div class="line">Source: 220.181.7.190 (220.181.7.190)</div><div class="line"># 源IP地址</div><div class="line">Destination: 192.168.0.14 (192.168.0.14)</div><div class="line"># 目标IP地址</div></pre></td></tr></table></figure>
+<ul>
+<li>传输层TCP数据段的头部信息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">Transmission Control Protocol, Src Port: 80 (80), Dst Port: 2488 (2488), Seq: 422, Ack: 3024, Len: 256</div><div class="line">Source Port: 80 (80)</div><div class="line"># 源端口号</div><div class="line">Destination Port: 2488 (2488)</div><div class="line"># 目标端口号</div><div class="line">[Stream index: 16]</div><div class="line">[TCP Segment Len: 256]</div><div class="line">Sequence number: 422    (relative sequence number)</div><div class="line"># 序列号（相对序列号）</div><div class="line">[Next sequence number: 678    (relative sequence number)]</div><div class="line"># 下一个序列号（相对序列号）</div><div class="line">Acknowledgment number: 3024    (relative ack number)</div><div class="line"># 确认序列号</div><div class="line">Header Length: 20 bytes</div><div class="line"># 头部长度</div><div class="line">.... 0000 0001 1000 = Flags: 0x018 (PSH, ACK)</div><div class="line"># TCP标记字段</div><div class="line">Window size value: 162</div><div class="line"># 流量控制的窗口大小</div><div class="line">Checksum: 0x6fc4 [validation disabled]</div><div class="line"># TCP数据段的校验和</div></pre></td></tr></table></figure>
+<h4 id="2-Wireshark的实用表格"><a href="#2-Wireshark的实用表格" class="headerlink" title="2.Wireshark的实用表格"></a>2.Wireshark的实用表格</h4><ul>
+<li>常用统计功能<ul>
+<li>各层通信均需要相应的端点，从statistics菜单——&gt;endpoints中可以查看各层的端点。</li>
+<li>statistics——&gt;conversion可以查看数据包中的会话信息。</li>
+<li>statistics ——&gt;Protocol Hierarchy可以查看协议的分层统计信息。从协议种类及占比中可以分析用户特征。</li>
+</ul>
+</li>
+<li>GeoLiteCity插件可以在endpoint 中解析出IP地址的地理位置，并可以绘制地点图。</li>
+<li>最活跃的通信端点不一定包含了流量最大的会话。</li>
+</ul>
+<h4 id="3-Wireshark的图形显示"><a href="#3-Wireshark的图形显示" class="headerlink" title="3.Wireshark的图形显示"></a>3.Wireshark的图形显示</h4><p>​    图形能够直观地显示数据通信特征，和表格共同使用，有效辅助分析，以下功能在statistics菜单中。</p>
+<ul>
+<li>IO Graphs：分析网络吞吐量，可以利用filter来获取不同特征的吞吐量信息。<ul>
+<li>巧妙选择filter可以分析网络中的很多问题。例如：<ul>
+<li>tcp.analysis.duplicate_ack：tcp重发确认包</li>
+<li>tcp.analysis.lost_segment：tcp丢失的包</li>
+<li>tcp.analysis.retransmission：tcp重发包</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Round Trip Time Graph：分析数据包的往返时间，可用于分析网络中延迟等问题。</li>
+<li>Flow Graph：数据流图，将连接可视化，并且将一段时间中的数据流显示出来。数据流图一般以列的方式将主机之间的连接显示出来，并将数据组织到一起——如直观分析三次握手。</li>
+</ul>
+<h4 id="4-Wireshark的高级特性"><a href="#4-Wireshark的高级特性" class="headerlink" title="4.Wireshark的高级特性"></a>4.Wireshark的高级特性</h4><h5 id="协议解析与重新解码"><a href="#协议解析与重新解码" class="headerlink" title="协议解析与重新解码"></a>协议解析与重新解码</h5><p>​    Wireshark会根据数据包特征自动选择协议解析器，但当数据包采用了与标准不同的协议格式时，可能会导致解析错误。例如：若某ftp数据包使用了HTTPS常用的443端口，则易被误解析为SSL协议。</p>
+<p>​    此时需要右击数据包，设置decode as为合适解析器，从而重新解码分析。</p>
+<p>​    Decode as——&gt;Show current 可以显示最近的解析记录。</p>
+<h5 id="TCP流的跟踪"><a href="#TCP流的跟踪" class="headerlink" title="TCP流的跟踪"></a>TCP流的跟踪</h5><p>​    右键——&gt;跟踪TCP流，可以看到tcp连接两端的通信详情。</p>
+<h5 id="分析数据包长度"><a href="#分析数据包长度" class="headerlink" title="分析数据包长度"></a>分析数据包长度</h5><p>​    统计——&gt;数据包长度——&gt;create state可以查看数据包长度分布。</p>
+<p>​    可通过分析数据包长度分布判断网络中的行为（如数据传输）</p>
+<ul>
+<li>常见数据包长度范围及其特征：<ul>
+<li>1280-2559：包含应用层数据传输等。</li>
+<li>40-79：TCP控制数据包。</li>
+</ul>
+</li>
+</ul>
+<h5 id="专家分析"><a href="#专家分析" class="headerlink" title="专家分析"></a>专家分析</h5><p>​    Analyze——&gt;Expert Infos 专家信息，可以直观地看到数据通信中的错误特征等。</p>
+<ul>
+<li><p>包含Error、Warning、Notes、Chats、Details等等分类：</p>
+<ul>
+<li><strong>Error：</strong>数据包里面或者解析器解析时出现的错误。 </li>
+<li><strong>Warnings：</strong>不正常通信中的异常数据包。</li>
+<li><strong>Notes：</strong>正常通信中的异常数据包。 </li>
+<li><strong>Chats：</strong>网络通信的基本信息。 </li>
+<li><strong>Details：</strong>显示数据包的详细信息。</li>
+<li><strong>Packet Comments：</strong>数据包的描述信息。</li>
+</ul>
+<p>​</p>
+</li>
+</ul>
+<h4 id="5-Wireshark的命令行模式"><a href="#5-Wireshark的命令行模式" class="headerlink" title="5.Wireshark的命令行模式"></a>5.Wireshark的命令行模式</h4><h5 id="命令行模式优势"><a href="#命令行模式优势" class="headerlink" title="命令行模式优势"></a>命令行模式优势</h5><ul>
+<li>可以使用辅助工具（awk，grep等）</li>
+<li>常用工具：tshark、capinfos</li>
+</ul>
+<h5 id="利用命令行模式进行调优分析"><a href="#利用命令行模式进行调优分析" class="headerlink" title="利用命令行模式进行调优分析"></a>利用命令行模式进行调优分析</h5><p>​    进行性能调优主要是对Summary（概述信息）、Service Response Time（服务响应时间）以及Expert Info Composite（专家信息整合）的内容进行分析。</p>
+<h5 id="命令行工具的常用命令"><a href="#命令行工具的常用命令" class="headerlink" title="命令行工具的常用命令"></a>命令行工具的常用命令</h5><h5 id="命令行工具与第三方辅助工具的使用方法"><a href="#命令行工具与第三方辅助工具的使用方法" class="headerlink" title="命令行工具与第三方辅助工具的使用方法"></a>命令行工具与第三方辅助工具的使用方法</h5><h3 id="第二章-协议篇"><a href="#第二章-协议篇" class="headerlink" title="第二章 协议篇"></a>第二章 协议篇</h3><h4 id="6-ARP协议的数据包分析"><a href="#6-ARP协议的数据包分析" class="headerlink" title="6.ARP协议的数据包分析"></a>6.ARP协议的数据包分析</h4><h5 id="ARP基本概念"><a href="#ARP基本概念" class="headerlink" title="ARP基本概念"></a>ARP基本概念</h5><ul>
+<li>RFC-826文档记录了ARP协议的标准。</li>
+<li>ARP数据包分为请求（Request，广播）和响应（Reply，单播）两种。</li>
+<li>每一个主机都有一个ARP缓存表，在接收到请求和响应包时更新。</li>
+</ul>
+<h5 id="ARP数据包分析"><a href="#ARP数据包分析" class="headerlink" title="ARP数据包分析"></a>ARP数据包分析</h5><ul>
+<li>需注意的字段：<ul>
+<li>Opcode：操作码，1-请求；2-响应</li>
+<li>Target MAC address：请求中为全0（未知），响应中为响应主机的MAC地址。</li>
+</ul>
+</li>
+<li>免费ARP（？是<strong>Gratuitous ARP</strong>的翻译,私以为应翻译为<strong>无由（不经请求的）ARP</strong>？） <ul>
+<li>当某主机的IP地址发生变化，则会主动（不经过请求）向网络中广播（链路层Dst：ff:ff:ff:ff:ff:ff）新的地址映射以便其他主机更新缓存表。</li>
+<li>数据包特征：<ul>
+<li>Sender MAC address：本机MAC地址</li>
+<li>Sender IP address 和Target IP address：相同，均为本机目前的IP地址</li>
+<li>Target MAC address：为全0</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-Wireshark眼中的IP协议"><a href="#7-Wireshark眼中的IP协议" class="headerlink" title="7.Wireshark眼中的IP协议"></a>7.Wireshark眼中的IP协议</h4><h5 id="TTL与IP分片概念及其分析"><a href="#TTL与IP分片概念及其分析" class="headerlink" title="TTL与IP分片概念及其分析"></a>TTL与IP分片概念及其分析</h5><ul>
+<li>TTL：数据包被丢弃前能经过的最大路由数目。在数据包创建时确定，一般每经过一个路由-1，为0时丢弃数据包。</li>
+<li>IP数据包分片：将数据流分为更小片段，使其可以在跨越不同类型的网络时可靠传输。由第二层使用的网络类型的MTU决定。<ul>
+<li>Flag字段为1（more fragments）时为首个或中间的分片。</li>
+<li>fragment offset为分片偏移字段。</li>
+<li>Flag为0时表示不分片或是最后一个分片。</li>
+<li>同一个数据流的几个分片，其Identification字段相同。</li>
+</ul>
+</li>
+</ul>
+<h5 id="捕获IP数据包"><a href="#捕获IP数据包" class="headerlink" title="捕获IP数据包"></a>捕获IP数据包</h5><ul>
+<li>在Capture菜单——&gt;options中可以设置Capture Filter来为捕获数据包添加过滤器。</li>
+</ul>
+<h4 id="8-TCP与UDP协议详解"><a href="#8-TCP与UDP协议详解" class="headerlink" title="8.TCP与UDP协议详解"></a>8.TCP与UDP协议详解</h4><h5 id="TCP、UDP基本概念"><a href="#TCP、UDP基本概念" class="headerlink" title="TCP、UDP基本概念"></a>TCP、UDP基本概念</h5><ul>
+<li>TCP——Transmission Control Protocol</li>
+</ul>
+<h5 id="TCP三次握手、断开及重置"><a href="#TCP三次握手、断开及重置" class="headerlink" title="TCP三次握手、断开及重置"></a>TCP三次握手、断开及重置</h5><ul>
+<li>三次握手：略</li>
+<li>断开：略</li>
+<li>重置：正常情况下连接会正常断开，但由于某些原因出现连接意外中断或连接被拒绝时，发送RST标志位为1的数据包可以表示连接终止</li>
+</ul>
+<h5 id="TCP与UDP数据包分析"><a href="#TCP与UDP数据包分析" class="headerlink" title="TCP与UDP数据包分析"></a>TCP与UDP数据包分析</h5><ul>
+<li>Edit——&gt;Preferences——&gt;User Interface——&gt;Name Resolution，启用Resolve transport names项，可以解析常用端口及相应服务。</li>
+<li>Edit——&gt;Preferences——&gt;Protocols——&gt;TCP， 启用Analyze TCP sequence numbers项，可以将TCP的数据包的seq值解析为从0开始的相对值；关闭则为绝对值。</li>
+<li>Edit——&gt;Find Packet可以对特定数据包进行搜索和过滤。</li>
+<li>右击数据包——&gt;Colorize Conversation,可以对相关联（如同一TCP连接）的数据包进行着色。</li>
+</ul>
+<h4 id="9-TCP中也有一个窗口"><a href="#9-TCP中也有一个窗口" class="headerlink" title="9.TCP中也有一个窗口"></a>9.TCP中也有一个窗口</h4><h5 id="Ack、Seq、Len的概念及关系"><a href="#Ack、Seq、Len的概念及关系" class="headerlink" title="Ack、Seq、Len的概念及关系"></a>Ack、Seq、Len的概念及关系</h5><ul>
+<li>两端发送数据包的Seq值分别计算，下一个包的Seq = 上一个包Seq+上一个包Len</li>
+<li>接收方回复的Ack值 = 其接收到的上一个包的Seq+其接收到的上一个包的Len = 发送方的下一个Seq值</li>
+</ul>
+<h5 id="TCP滑动窗口"><a href="#TCP滑动窗口" class="headerlink" title="TCP滑动窗口"></a>TCP滑动窗口</h5><h5 id="TCP零窗口的概念及用途"><a href="#TCP零窗口的概念及用途" class="headerlink" title="TCP零窗口的概念及用途"></a>TCP零窗口的概念及用途</h5><ul>
+<li>当服务器因为某些原因不能接收数据时，会在ack包中更新窗口大小为0，客户端收到后会停止传输数据，只定期发送保活的数据包，等待服务器再次更新窗口大小。</li>
+</ul>
+<h5 id="TCP滑动窗口数据包分析"><a href="#TCP滑动窗口数据包分析" class="headerlink" title="TCP滑动窗口数据包分析"></a>TCP滑动窗口数据包分析</h5><ul>
+<li>TCP数据包中window size value(win)字段为窗口大小。</li>
+<li>窗口不断减小表示延迟不断增加。</li>
+<li>启用Analyze TCP sequence numbers项，可以解析出并标明zero window和keep-alive数据包。</li>
+</ul>
+<h4 id="10-TCP重传技术的研究"><a href="#10-TCP重传技术的研究" class="headerlink" title="10.TCP重传技术的研究"></a>10.TCP重传技术的研究</h4><h5 id="TCP重传原理"><a href="#TCP重传原理" class="headerlink" title="TCP重传原理"></a>TCP重传原理</h5><ul>
+<li>Retransmission Time Out（RTO）重传超时。</li>
+<li>重传极限次数：Windows——5次，Linux——15次。</li>
+</ul>
+<h5 id="快速重传（Fast-Retransmission）流程"><a href="#快速重传（Fast-Retransmission）流程" class="headerlink" title="快速重传（Fast Retransmission）流程"></a>快速重传（Fast Retransmission）流程</h5><ul>
+<li>当发送方累计收到3个相同seq的ack数据包时，触发快速重传机制，重新发送该seq号对应的数据包。</li>
+</ul>
+<h5 id="重传机制的分析"><a href="#重传机制的分析" class="headerlink" title="重传机制的分析"></a>重传机制的分析</h5><ul>
+<li><p><strong>当多个数据包丢失时如何重传？</strong> </p>
+<ul>
+<li>情景：1~8共8个包，其中2、5丢失，其余正常。</li>
+<li>方案：</li>
+</ul>
+<ol>
+<li>收到三个ack2后，重传2及以后的所有数据包。简单但效率低。</li>
+<li>（NewReno——rfc2582、3782）数据包2被重传后，接收方再发送一个ack5，待5重传成功后，接收方发送ack9（即下一个要接收的数据包）。在丢包量大的时候会占用多个往返时间。</li>
+<li>（ <strong>SACK </strong>——rfc2018）接收方在请求重传2号包时，附带已接收的所有包的序号。</li>
+</ol>
+</li>
+</ul>
+<h4 id="11-用途广泛的ICMP协议"><a href="#11-用途广泛的ICMP协议" class="headerlink" title="11.用途广泛的ICMP协议"></a>11.用途广泛的ICMP协议</h4><h5 id="ICMP基本概念"><a href="#ICMP基本概念" class="headerlink" title="ICMP基本概念"></a>ICMP基本概念</h5><ul>
+<li>Internet Control Message Protocol，因特网控制报文协议</li>
+<li>利用IP协议进行传输</li>
+<li>用于对网络的检测和诊断，亦可用于对网络的攻击（ICMP dos等）</li>
+</ul>
+<h5 id="ping及tracert数据包异同"><a href="#ping及tracert数据包异同" class="headerlink" title="ping及tracert数据包异同"></a>ping及tracert数据包异同</h5><ul>
+<li>ping<ul>
+<li>分Echo request（Type=8，code=0） 和Echo reply（Type=0， code=0）</li>
+<li>Identifier字段用于匹配对应的request和reply</li>
+<li>Data数据域内为随机字符串，对应的一对request和reply，其data中内容相同。</li>
+<li>对于攻击者，Data内容可用于推断目标主机操作系统，亦可在此处放置用于反向连接的数据位。</li>
+</ul>
+</li>
+<li>tracert<ul>
+<li>起始同样发送Echo request 数据包，但其TTL=1。</li>
+<li>上述数据包到达的第一个设备会返回TTL exceed响应（Type=11，code=0），且该响应数据包中还会包含上述请求包的ICMP头部信息，故称为ICMP双头包，在网络故障检修中很有用。</li>
+<li>将上述两过程重复数次后，发送方发送TTL+1的request数据包并获得响应。</li>
+<li>重复以上过程并递增TTL，直至数据包可以正常到达目的地。</li>
+</ul>
+</li>
+</ul>
+<p><strong>（未完待续……）</strong></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据包分析/" rel="tag"><i class="fa fa-tag"></i> 数据包分析</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/19/常见数据库注入技巧——SQL Server/" rel="next" title="常见数据库注入技巧——SQL Server">
+                <i class="fa fa-chevron-left"></i> 常见数据库注入技巧——SQL Server
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/touxiang.jpg"
+               alt="Architect" />
+          <p class="site-author-name" itemprop="name">Architect</p>
+           
+              <p class="site-description motion-element" itemprop="description">Gather ye rosebuds while ye may.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://caligo.cc/" title="Caligo" target="_blank">Caligo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.xieldy.cn/" title="Xieldy" target="_blank">Xieldy</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://barriery.cn/" title="Barriery" target="_blank">Barriery</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章-基础篇"><span class="nav-number">2.</span> <span class="nav-text">第一章 基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-认识wireshark的界面"><span class="nav-number">2.1.</span> <span class="nav-text">1.认识wireshark的界面</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#packet-detail中需注意的几个字段"><span class="nav-number">2.1.1.</span> <span class="nav-text">packet detail中需注意的几个字段</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Wireshark的实用表格"><span class="nav-number">2.2.</span> <span class="nav-text">2.Wireshark的实用表格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Wireshark的图形显示"><span class="nav-number">2.3.</span> <span class="nav-text">3.Wireshark的图形显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Wireshark的高级特性"><span class="nav-number">2.4.</span> <span class="nav-text">4.Wireshark的高级特性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#协议解析与重新解码"><span class="nav-number">2.4.1.</span> <span class="nav-text">协议解析与重新解码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP流的跟踪"><span class="nav-number">2.4.2.</span> <span class="nav-text">TCP流的跟踪</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分析数据包长度"><span class="nav-number">2.4.3.</span> <span class="nav-text">分析数据包长度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#专家分析"><span class="nav-number">2.4.4.</span> <span class="nav-text">专家分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Wireshark的命令行模式"><span class="nav-number">2.5.</span> <span class="nav-text">5.Wireshark的命令行模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#命令行模式优势"><span class="nav-number">2.5.1.</span> <span class="nav-text">命令行模式优势</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用命令行模式进行调优分析"><span class="nav-number">2.5.2.</span> <span class="nav-text">利用命令行模式进行调优分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#命令行工具的常用命令"><span class="nav-number">2.5.3.</span> <span class="nav-text">命令行工具的常用命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#命令行工具与第三方辅助工具的使用方法"><span class="nav-number">2.5.4.</span> <span class="nav-text">命令行工具与第三方辅助工具的使用方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二章-协议篇"><span class="nav-number">3.</span> <span class="nav-text">第二章 协议篇</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-ARP协议的数据包分析"><span class="nav-number">3.1.</span> <span class="nav-text">6.ARP协议的数据包分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ARP基本概念"><span class="nav-number">3.1.1.</span> <span class="nav-text">ARP基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ARP数据包分析"><span class="nav-number">3.1.2.</span> <span class="nav-text">ARP数据包分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-Wireshark眼中的IP协议"><span class="nav-number">3.2.</span> <span class="nav-text">7.Wireshark眼中的IP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TTL与IP分片概念及其分析"><span class="nav-number">3.2.1.</span> <span class="nav-text">TTL与IP分片概念及其分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#捕获IP数据包"><span class="nav-number">3.2.2.</span> <span class="nav-text">捕获IP数据包</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-TCP与UDP协议详解"><span class="nav-number">3.3.</span> <span class="nav-text">8.TCP与UDP协议详解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP、UDP基本概念"><span class="nav-number">3.3.1.</span> <span class="nav-text">TCP、UDP基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP三次握手、断开及重置"><span class="nav-number">3.3.2.</span> <span class="nav-text">TCP三次握手、断开及重置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP与UDP数据包分析"><span class="nav-number">3.3.3.</span> <span class="nav-text">TCP与UDP数据包分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-TCP中也有一个窗口"><span class="nav-number">3.4.</span> <span class="nav-text">9.TCP中也有一个窗口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Ack、Seq、Len的概念及关系"><span class="nav-number">3.4.1.</span> <span class="nav-text">Ack、Seq、Len的概念及关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP滑动窗口"><span class="nav-number">3.4.2.</span> <span class="nav-text">TCP滑动窗口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP零窗口的概念及用途"><span class="nav-number">3.4.3.</span> <span class="nav-text">TCP零窗口的概念及用途</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP滑动窗口数据包分析"><span class="nav-number">3.4.4.</span> <span class="nav-text">TCP滑动窗口数据包分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-TCP重传技术的研究"><span class="nav-number">3.5.</span> <span class="nav-text">10.TCP重传技术的研究</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP重传原理"><span class="nav-number">3.5.1.</span> <span class="nav-text">TCP重传原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#快速重传（Fast-Retransmission）流程"><span class="nav-number">3.5.2.</span> <span class="nav-text">快速重传（Fast Retransmission）流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#重传机制的分析"><span class="nav-number">3.5.3.</span> <span class="nav-text">重传机制的分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-用途广泛的ICMP协议"><span class="nav-number">3.6.</span> <span class="nav-text">11.用途广泛的ICMP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ICMP基本概念"><span class="nav-number">3.6.1.</span> <span class="nav-text">ICMP基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ping及tracert数据包异同"><span class="nav-number">3.6.2.</span> <span class="nav-text">ping及tracert数据包异同</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Architect</span>
+</div>
+
+
+<!--<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+-->
+
+
+<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
