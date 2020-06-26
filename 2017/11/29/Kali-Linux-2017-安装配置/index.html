@@ -112,17 +112,16 @@
 
 
 <meta name="description" content="下定决心好好学web，然后发现大一安装的Kali2.0因为年少无知乱配置搞得一团糟，想想干脆重新装一个，顺便把配置过程记录一下。 本文长期更新，遇到的各种坑都会记一下。">
-<meta name="keywords" content="Kali">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kali Linux 2017 安装配置">
-<meta property="og:url" content="http://a2chitect.cn/2017/11/29/Kali-Linux-2017-安装配置/index.html">
+<meta property="og:url" content="http://a2chitect.cn/2017/11/29/Kali-Linux-2017-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="Architect&#39;s Blog">
 <meta property="og:description" content="下定决心好好学web，然后发现大一安装的Kali2.0因为年少无知乱配置搞得一团糟，想想干脆重新装一个，顺便把配置过程记录一下。 本文长期更新，遇到的各种坑都会记一下。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-03T08:57:10.351Z">
+<meta property="article:published_time" content="2017-11-29T08:50:27.000Z">
+<meta property="article:modified_time" content="2017-12-03T08:57:10.351Z">
+<meta property="article:author" content="Architect">
+<meta property="article:tag" content="Kali">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kali Linux 2017 安装配置">
-<meta name="twitter:description" content="下定决心好好学web，然后发现大一安装的Kali2.0因为年少无知乱配置搞得一团糟，想想干脆重新装一个，顺便把配置过程记录一下。 本文长期更新，遇到的各种坑都会记一下。">
 
 
 
@@ -157,7 +156,7 @@
 
 
   <title> Kali Linux 2017 安装配置 | Architect's Blog </title>
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -295,7 +294,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://a2chitect.cn/2017/11/29/Kali-Linux-2017-安装配置/">
+    <link itemprop="mainEntityOfPage" href="http://a2chitect.cn/2017/11/29/Kali-Linux-2017-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Architect">
@@ -354,7 +353,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web安全/" itemprop="url" rel="index">
+                  <a href="/categories/Web%E5%AE%89%E5%85%A8/" itemprop="url" rel="index">
                     <span itemprop="name">Web安全</span>
                   </a>
                 </span>
@@ -397,7 +396,8 @@
         <p>下定决心好好学web，然后发现大一安装的Kali2.0因为年少无知乱配置搞得一团糟，想想干脆重新装一个，顺便把配置过程记录一下。</p>
 <p>本文长期更新，遇到的各种坑都会记一下。</p>
 <a id="more"></a>
-<h4 id="0x01-下载与安装"><a href="#0x01-下载与安装" class="headerlink" title="0x01 下载与安装"></a>0x01 下载与安装</h4><p>下载没什么好说的，直接上官网www.kali.org/downloads/按步骤下载。</p>
+
+<h4 id="0x01-下载与安装"><a href="#0x01-下载与安装" class="headerlink" title="0x01 下载与安装"></a>0x01 下载与安装</h4><p>下载没什么好说的，直接上官网<a href="http://www.kali.org/downloads/按步骤下载。" target="_blank" rel="noopener">www.kali.org/downloads/按步骤下载。</a></p>
 <p>可以直接下载ISO镜像然后往虚拟机里安装，也可以直接下载安装好的虚拟机文件导入VMware。</p>
 <h4 id="0x02-账户与网络设置"><a href="#0x02-账户与网络设置" class="headerlink" title="0x02 账户与网络设置"></a>0x02 账户与网络设置</h4><h5 id="给root用户设置密码"><a href="#给root用户设置密码" class="headerlink" title="给root用户设置密码"></a>给root用户设置密码</h5><p>su:鉴定故障</p>
 <p>终端窗口运行 su 输入密码，提示鉴定失败。</p>
@@ -405,23 +405,32 @@
 <p>安装linux时，未输入ROOT密码；或新建用户，勾选“设为管理员”，仅为新用户设置密码。</p>
 <p>未设置ROOT密码，系统检测失败。</p>
 <p>在终端中输入如下命令设置密码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo passwd root</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd root</span><br></pre></td></tr></table></figure>
+
 <h5 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h5><p>虚拟机使用NAT模式则kali设置DHCP即可；若使用桥接模式，可以设置成静态IP。</p>
 <p>若网络突然坏掉，右上角网络图标消失，输入命令:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#重启网络管理服务</span></div><div class="line">/etc/init.d/network-manager restart	</div><div class="line"><span class="comment">#重启网卡</span></div><div class="line">/etc/init.d/networking restart</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#重启网络管理服务</span></span><br><span class="line">/etc/init.d/network-manager restart	</span><br><span class="line"><span class="comment">#重启网卡</span></span><br><span class="line">/etc/init.d/networking restart</span><br></pre></td></tr></table></figure>
+
 <h4 id="0x03-更新源配置"><a href="#0x03-更新源配置" class="headerlink" title="0x03 更新源配置"></a>0x03 更新源配置</h4><p>以su权限打开/etc/apt/sources.list，添加源即可。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">/打开存储更新源的文件</div><div class="line">sudo leafpad /etc/apt/sources.list</div><div class="line"></div><div class="line"><span class="comment">#auto</span></div><div class="line">deb http://http.kali.org/kali kali-rolling main non-free contrib</div><div class="line"></div><div class="line"><span class="comment">#中科大</span></div><div class="line">deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</div><div class="line">deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</div><div class="line"></div><div class="line"><span class="comment">#浙大</span></div><div class="line">deb http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free</div><div class="line">deb-src http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free</div><div class="line"></div><div class="line"><span class="comment">#东软大学</span></div><div class="line">deb http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib</div><div class="line">deb-src http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib</div><div class="line"></div><div class="line"><span class="comment">#重庆大学</span></div><div class="line">deb http://http.kali.org/kali kali-rolling main non-free contrib</div><div class="line">deb-src http://http.kali.org/kali ka	li-rolling main non-free contrib</div><div class="line"></div><div class="line"><span class="comment">#阿里源</span></div><div class="line">deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</div><div class="line"></div><div class="line"><span class="comment">#官方源</span></div><div class="line"><span class="comment">#deb http://http.kali.org/kali kali-rolling main non-free contrib</span></div><div class="line"><span class="comment">#deb-src http://http.kali.org/kali kali-rolling main non-free contrib</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/打开存储更新源的文件</span><br><span class="line">sudo leafpad /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line"><span class="comment">#auto</span></span><br><span class="line">deb http://http.kali.org/kali kali-rolling main non-free contrib</span><br><span class="line"></span><br><span class="line"><span class="comment">#中科大</span></span><br><span class="line">deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line"></span><br><span class="line"><span class="comment">#浙大</span></span><br><span class="line">deb http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">deb-src http://mirrors.zju.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line"></span><br><span class="line"><span class="comment">#东软大学</span></span><br><span class="line">deb http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib</span><br><span class="line">deb-src http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib</span><br><span class="line"></span><br><span class="line"><span class="comment">#重庆大学</span></span><br><span class="line">deb http://http.kali.org/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://http.kali.org/kali ka	li-rolling main non-free contrib</span><br><span class="line"></span><br><span class="line"><span class="comment">#阿里源</span></span><br><span class="line">deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line"></span><br><span class="line"><span class="comment">#官方源</span></span><br><span class="line"><span class="comment">#deb http://http.kali.org/kali kali-rolling main non-free contrib</span></span><br><span class="line"><span class="comment">#deb-src http://http.kali.org/kali kali-rolling main non-free contrib</span></span><br></pre></td></tr></table></figure>
+
 <p>更新软件包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">apt-get clean    //清除缓存索引</div><div class="line">apt-get update    //更新索引文件</div><div class="line">apt-get upgrade    //更新实际的软件包文件</div><div class="line">apt-get dist-upgrade    //根据依赖关系更新</div><div class="line">//可以加 -y 参数，默认更新过程中所有选择全为 yes</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt-get clean    &#x2F;&#x2F;清除缓存索引</span><br><span class="line">apt-get update    &#x2F;&#x2F;更新索引文件</span><br><span class="line">apt-get upgrade    &#x2F;&#x2F;更新实际的软件包文件</span><br><span class="line">apt-get dist-upgrade    &#x2F;&#x2F;根据依赖关系更新</span><br><span class="line">&#x2F;&#x2F;可以加 -y 参数，默认更新过程中所有选择全为 yes</span><br></pre></td></tr></table></figure>
+
 <h4 id="0x03-个性配置及软件安装"><a href="#0x03-个性配置及软件安装" class="headerlink" title="0x03 个性配置及软件安装"></a>0x03 个性配置及软件安装</h4><h5 id="设置开启终端快捷键"><a href="#设置开启终端快捷键" class="headerlink" title="设置开启终端快捷键"></a>设置开启终端快捷键</h5><p>名称：开启终端<br>命令：gnome-terminal<br>快捷键：（这个自己按就好）</p>
-<h5 id="中文输入法安装"><a href="#中文输入法安装" class="headerlink" title="中文输入法安装"></a>中文输入法安装</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//Google拼音</div><div class="line">sudo apt-get install fcitx fcitx-googlepinyin</div><div class="line">//云词组</div><div class="line">sudo apt-get install fcitx-module-cloudpinyin</div><div class="line">//配置工具</div><div class="line">im-config</div><div class="line">fcitx-configtool</div></pre></td></tr></table></figure>
-<h5 id="Firefox-ESR浏览器汉化"><a href="#Firefox-ESR浏览器汉化" class="headerlink" title="Firefox ESR浏览器汉化"></a>Firefox ESR浏览器汉化</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install iceweasel-l10n-zh-cn</div></pre></td></tr></table></figure>
-<h5 id="软件包安装工具gdebi"><a href="#软件包安装工具gdebi" class="headerlink" title="软件包安装工具gdebi"></a>软件包安装工具gdebi</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#gdebi安装</span></div><div class="line">apt-get install gdebi</div><div class="line"><span class="comment">#运行</span></div><div class="line">gdebi-gtk</div></pre></td></tr></table></figure>
-<h5 id="安装Typora（没安成功）"><a href="#安装Typora（没安成功）" class="headerlink" title="安装Typora（没安成功）"></a>安装Typora（没安成功）</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> optional, but recommended</span></div><div class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"> add Typora<span class="string">'s repository</span></span></div><div class="line">sudo add-apt-repository 'deb http://typora.io linux/'</div><div class="line">sudo apt-get update</div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash"><span class="string"> install typora</span></span></div><div class="line">sudo apt-get install typora</div></pre></td></tr></table></figure>
-<h5 id="xampp相关"><a href="#xampp相关" class="headerlink" title="xampp相关"></a>xampp相关</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">启动Apache、MySQL、ProFTPd</span></div><div class="line">sudo /opt/lampp/lampp start </div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">停止xampp</span></div><div class="line">sudo /opt/lampp/lampp stop </div><div class="line"><span class="meta"></span></div><div class="line">#<span class="bash">启动xampp UI</span></div><div class="line">cd /opt/lampp</div><div class="line">sudo ./manager-linux.run (or manager-linux-x64.run)</div></pre></td></tr></table></figure>
+<h5 id="中文输入法安装"><a href="#中文输入法安装" class="headerlink" title="中文输入法安装"></a>中文输入法安装</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//Google拼音</span><br><span class="line">sudo apt-get install fcitx fcitx-googlepinyin</span><br><span class="line">//云词组</span><br><span class="line">sudo apt-get install fcitx-module-cloudpinyin</span><br><span class="line">//配置工具</span><br><span class="line">im-config</span><br><span class="line">fcitx-configtool</span><br></pre></td></tr></table></figure>
+
+<h5 id="Firefox-ESR浏览器汉化"><a href="#Firefox-ESR浏览器汉化" class="headerlink" title="Firefox ESR浏览器汉化"></a>Firefox ESR浏览器汉化</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install iceweasel-l10n-zh-cn</span><br></pre></td></tr></table></figure>
+
+<h5 id="软件包安装工具gdebi"><a href="#软件包安装工具gdebi" class="headerlink" title="软件包安装工具gdebi"></a>软件包安装工具gdebi</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#gdebi安装</span></span><br><span class="line">apt-get install gdebi</span><br><span class="line"><span class="comment">#运行</span></span><br><span class="line">gdebi-gtk</span><br></pre></td></tr></table></figure>
+
+<h5 id="安装Typora（没安成功）"><a href="#安装Typora（没安成功）" class="headerlink" title="安装Typora（没安成功）"></a>安装Typora（没安成功）</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> optional, but recommended</span></span><br><span class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> add Typora<span class="string">'s repository</span></span></span><br><span class="line">sudo add-apt-repository 'deb http://typora.io linux/'</span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> install typora</span></span><br><span class="line">sudo apt-get install typora</span><br></pre></td></tr></table></figure>
+
+<h5 id="xampp相关"><a href="#xampp相关" class="headerlink" title="xampp相关"></a>xampp相关</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">启动Apache、MySQL、ProFTPd</span></span><br><span class="line">sudo /opt/lampp/lampp start </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">停止xampp</span></span><br><span class="line">sudo /opt/lampp/lampp stop </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">启动xampp UI</span></span><br><span class="line">cd /opt/lampp</span><br><span class="line">sudo ./manager-linux.run (or manager-linux-x64.run)</span><br></pre></td></tr></table></figure>
+
 <h4 id="0x04-各种问题整理"><a href="#0x04-各种问题整理" class="headerlink" title="0x04 各种问题整理"></a>0x04 各种问题整理</h4><h5 id="python2、python3完美共存"><a href="#python2、python3完美共存" class="headerlink" title="python2、python3完美共存"></a>python2、python3完美共存</h5><p>kali 2017中自带Python2.7和python3.5，但是只有python2.7安装了pip，给Python3.5 安装pip的方法如下：</p>
 <ul>
-<li>在pip官网的安装指南页面（<a href="https://pip.pypa.io/en/stable/installing/）下载**get-pip.py**" target="_blank" rel="external">https://pip.pypa.io/en/stable/installing/）下载**get-pip.py**</a> ；</li>
+<li>在pip官网的安装指南页面（<a href="https://pip.pypa.io/en/stable/installing/）下载**get-pip.py" target="_blank" rel="noopener">https://pip.pypa.io/en/stable/installing/）下载**get-pip.py</a>** ；</li>
 <li>sudo python3 get-pip.py</li>
 <li>安装成功后查看pip -V，pip2 -V，pip3 -V版本：<ul>
 <li>pip、pip3命令对应Python3</li>
@@ -433,8 +442,9 @@
 <h5 id="run文件的执行（修改文件权限）"><a href="#run文件的执行（修改文件权限）" class="headerlink" title=".run文件的执行（修改文件权限）"></a>.run文件的执行（修改文件权限）</h5><ul>
 <li>.run 文件的执行</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">chmod +x  *.run </div><div class="line">./*.run</div></pre></td></tr></table></figure>
-<h4 id="0x05-相关资料收集"><a href="#0x05-相关资料收集" class="headerlink" title="0x05 相关资料收集"></a>0x05 相关资料收集</h4><h5 id="kali配置教程"><a href="#kali配置教程" class="headerlink" title="kali配置教程"></a>kali配置教程</h5><p><a href="http://www.cnblogs.com/sqlsec/p/diykali.html" target="_blank" rel="external">http://www.cnblogs.com/sqlsec/p/diykali.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x  *.run </span><br><span class="line">.&#x2F;*.run</span><br></pre></td></tr></table></figure>
+
+<h4 id="0x05-相关资料收集"><a href="#0x05-相关资料收集" class="headerlink" title="0x05 相关资料收集"></a>0x05 相关资料收集</h4><h5 id="kali配置教程"><a href="#kali配置教程" class="headerlink" title="kali配置教程"></a>kali配置教程</h5><p><a href="http://www.cnblogs.com/sqlsec/p/diykali.html" target="_blank" rel="noopener">http://www.cnblogs.com/sqlsec/p/diykali.html</a></p>
 
       
     </div>
@@ -477,7 +487,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/19/常见数据库注入技巧——SQL Server/" rel="next" title="常见数据库注入技巧——SQL Server">
+              <a href="/2017/11/19/%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B3%A8%E5%85%A5%E6%8A%80%E5%B7%A7%E2%80%94%E2%80%94SQL%20Server/" rel="next" title="常见数据库注入技巧——SQL Server">
                 <i class="fa fa-chevron-left"></i> 常见数据库注入技巧——SQL Server
               </a>
             
@@ -487,7 +497,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/03/数据包分析笔记（一）/" rel="prev" title="数据包分析笔记（一）">
+              <a href="/2017/12/03/%E6%95%B0%E6%8D%AE%E5%8C%85%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" rel="prev" title="数据包分析笔记（一）">
                 数据包分析笔记（一） <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -672,19 +682,19 @@
 
 
 <!--<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
     NexT.Pisces
   </a>
 </div>
 -->
 
 
-<p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+<p>Hosted by <a href="https://pages.coding.me" target="_blank" rel="noopener" style="font-weight: bold">Coding Pages</a></p>
         
 <div class="busuanzi-count">
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
