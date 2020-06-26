@@ -1,399 +1,210 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="zh-Hans">
 
 
 
-  
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="Gather ye rosebuds while ye may.">
+  <meta name="author" content="Architect">
+  <meta name="keywords" content="">
+  <title>数据包分析笔记（一） - Architect&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
 
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
   
-    
-    
-  
 
-  
-    
-      
-    
 
-    
-  
+<!-- 主题依赖的图标库，不要自行修改 -->
 
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
 
 
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
 
+<link  rel="stylesheet" href="/css/main.css" />
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="数据包分析," />
+<!-- 自定义样式保持在最底部 -->
 
 
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/images/tubiao.ico?v=5.1.0" />
-
-
-
-
-
-
-<meta name="description" content="前言最近看了一个wireshark数据包分析的系列网课，算是……重温一下计网网络协议的一些知识。简单记录一下知识点，写给自己看的可能比较杂乱，访客（别做梦了你哪来的访客hhh）就见谅了。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="数据包分析笔记（一）">
-<meta property="og:url" content="http://a2chitect.cn/2017/12/03/%E6%95%B0%E6%8D%AE%E5%8C%85%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
-<meta property="og:site_name" content="Architect&#39;s Blog">
-<meta property="og:description" content="前言最近看了一个wireshark数据包分析的系列网课，算是……重温一下计网网络协议的一些知识。简单记录一下知识点，写给自己看的可能比较杂乱，访客（别做梦了你哪来的访客hhh）就见谅了。">
-<meta property="article:published_time" content="2017-12-03T08:34:17.000Z">
-<meta property="article:modified_time" content="2017-12-03T08:47:05.129Z">
-<meta property="article:author" content="Architect">
-<meta property="article:tag" content="数据包分析">
-<meta name="twitter:card" content="summary">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://a2chitect.cn/2017/12/03/数据包分析笔记（一）/"/>
-
-
-
-
-
-  <title> 数据包分析笔记（一） | Architect's Blog </title>
+  <script  src="/js/utils.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Architect's Blog</strong>&nbsp;</a>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Architect's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
   </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
 </nav>
 
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://a2chitect.cn/2017/12/03/%E6%95%B0%E6%8D%AE%E5%8C%85%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Architect">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/touxiang.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Architect's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                数据包分析笔记（一）
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-03T16:34:17+08:00">
-                2017-12-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" itemprop="url" rel="index">
-                    <span itemprop="name">网络协议</span>
-                  </a>
-                </span>
-
-                
-                
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
               
             </span>
-          
 
-          
             
-          
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2017-12-03 16:34">
+      December 3, 2017 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      38
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
 
           
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
-            </span>
-          
-
-          
-
-          
-
         </div>
-      </header>
+      </div>
+    </div>
+  </header>
+
+  <main>
     
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
-      
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近看了一个wireshark数据包分析的系列网课，算是……重温一下<del>计网</del>网络协议的一些知识。简单记录一下知识点，写给自己看的可能比较杂乱，<del>访客</del>（别做梦了你哪来的访客hhh）就见谅了。</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近看了一个wireshark数据包分析的系列网课，算是……重温一下<del>计网</del>网络协议的一些知识。简单记录一下知识点，写给自己看的可能比较杂乱，<del>访客</del>（别做梦了你哪来的访客hhh）就见谅了。</p>
 <a id="more"></a>
 
 <h3 id="第一章-基础篇"><a href="#第一章-基础篇" class="headerlink" title="第一章 基础篇"></a>第一章 基础篇</h3><h4 id="1-认识wireshark的界面"><a href="#1-认识wireshark的界面" class="headerlink" title="1.认识wireshark的界面"></a>1.认识wireshark的界面</h4><h5 id="packet-detail中需注意的几个字段"><a href="#packet-detail中需注意的几个字段" class="headerlink" title="packet detail中需注意的几个字段"></a>packet detail中需注意的几个字段</h5><ul>
@@ -408,22 +219,105 @@
 </li>
 <li>物理层数据帧的情况</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">Frame 3934: 310 bytes on wire (2480 bits), 310 bytes captured (2480 bits) on interface 0</span><br><span class="line"># 3934号帧，线路上有310个字节，实际捕获310个字节</span><br><span class="line">Interface id: 0 (\Device\NPF_&#123;EF10E4D3-713B-4239-8786-300C825A9D3F&#125;)</span><br><span class="line"># 接口id</span><br><span class="line">Encapsulation type: Ethernet (1)</span><br><span class="line"># 封装类型</span><br><span class="line">Arrival Time: Nov 26, 2015 11:54:10.987177000 中国标准时间</span><br><span class="line"># 捕获日期和时间</span><br><span class="line">[Time shift for this packet: 0.000000000 seconds]</span><br><span class="line">Epoch Time: 1448510050.987177000 seconds</span><br><span class="line">[Time delta from previous captured frame: 0.014178000 seconds]</span><br><span class="line"># 当前数据包与前一个数据包的时间间隔</span><br><span class="line">[Time delta from previous displayed frame: 0.311034000 seconds]</span><br><span class="line">[Time since reference or first frame: 10.449670000 seconds]</span><br><span class="line"># 当前数据包与第一个数据包的时间间隔</span><br><span class="line">Frame Number: 3934</span><br><span class="line"># 帧序号</span><br><span class="line">Frame Length: 310 bytes (2480 bits)</span><br><span class="line"># 帧长度</span><br><span class="line">Capture Length: 310 bytes (2480 bits)</span><br><span class="line"># 捕获长度</span><br><span class="line">[Frame is marked: False]</span><br><span class="line"># 此帧是否做了标记：否</span><br><span class="line">[Frame is ignored: False]</span><br><span class="line"># 此帧是否被忽略：否</span><br><span class="line">[Protocols in frame: eth:ethertype:ip:tcp:http:image-gif]</span><br><span class="line"># 帧内封装的协议层次结构</span><br><span class="line">[Number of per-protocol-data: 1]</span><br><span class="line">[Hypertext Transfer Protocol, key 0]</span><br><span class="line">[Coloring Rule Name: HTTP]</span><br><span class="line"># 着色标记的协议名称</span><br><span class="line">[Coloring Rule String: http || tcp.port &#x3D;&#x3D; 80 || http2]</span><br><span class="line">着色规则显示的字符串</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yaml"><span class="hljs-attr">Frame 3934:</span> <span class="hljs-number">310</span> <span class="hljs-string">bytes</span> <span class="hljs-string">on</span> <span class="hljs-string">wire</span> <span class="hljs-string">(2480</span> <span class="hljs-string">bits),</span> <span class="hljs-number">310</span> <span class="hljs-string">bytes</span> <span class="hljs-string">captured</span> <span class="hljs-string">(2480</span> <span class="hljs-string">bits)</span> <span class="hljs-string">on</span> <span class="hljs-string">interface</span> <span class="hljs-number">0</span>
+<span class="hljs-comment"># 3934号帧，线路上有310个字节，实际捕获310个字节</span>
+<span class="hljs-attr">Interface id:</span> <span class="hljs-number">0</span> <span class="hljs-string">(\Device\NPF_&#123;EF10E4D3-713B-4239-8786-300C825A9D3F&#125;)</span>
+<span class="hljs-comment"># 接口id</span>
+<span class="hljs-attr">Encapsulation type:</span> <span class="hljs-string">Ethernet</span> <span class="hljs-string">(1)</span>
+<span class="hljs-comment"># 封装类型</span>
+<span class="hljs-attr">Arrival Time:</span> <span class="hljs-string">Nov</span> <span class="hljs-number">26</span><span class="hljs-string">,</span> <span class="hljs-number">2015</span> <span class="hljs-number">11</span><span class="hljs-string">:54:10.987177000</span> <span class="hljs-string">中国标准时间</span>
+<span class="hljs-comment"># 捕获日期和时间</span>
+<span class="hljs-string">[Time</span> <span class="hljs-attr">shift for this packet:</span> <span class="hljs-number">0.000000000</span> <span class="hljs-string">seconds]</span>
+<span class="hljs-attr">Epoch Time:</span> <span class="hljs-number">1448510050.987177000</span> <span class="hljs-string">seconds</span>
+<span class="hljs-string">[Time</span> <span class="hljs-attr">delta from previous captured frame:</span> <span class="hljs-number">0.014178000</span> <span class="hljs-string">seconds]</span>
+<span class="hljs-comment"># 当前数据包与前一个数据包的时间间隔</span>
+<span class="hljs-string">[Time</span> <span class="hljs-attr">delta from previous displayed frame:</span> <span class="hljs-number">0.311034000</span> <span class="hljs-string">seconds]</span>
+<span class="hljs-string">[Time</span> <span class="hljs-attr">since reference or first frame:</span> <span class="hljs-number">10.449670000</span> <span class="hljs-string">seconds]</span>
+<span class="hljs-comment"># 当前数据包与第一个数据包的时间间隔</span>
+<span class="hljs-attr">Frame Number:</span> <span class="hljs-number">3934</span>
+<span class="hljs-comment"># 帧序号</span>
+<span class="hljs-attr">Frame Length:</span> <span class="hljs-number">310</span> <span class="hljs-string">bytes</span> <span class="hljs-string">(2480</span> <span class="hljs-string">bits)</span>
+<span class="hljs-comment"># 帧长度</span>
+<span class="hljs-attr">Capture Length:</span> <span class="hljs-number">310</span> <span class="hljs-string">bytes</span> <span class="hljs-string">(2480</span> <span class="hljs-string">bits)</span>
+<span class="hljs-comment"># 捕获长度</span>
+<span class="hljs-string">[Frame</span> <span class="hljs-attr">is marked:</span> <span class="hljs-literal">False</span><span class="hljs-string">]</span>
+<span class="hljs-comment"># 此帧是否做了标记：否</span>
+<span class="hljs-string">[Frame</span> <span class="hljs-attr">is ignored:</span> <span class="hljs-literal">False</span><span class="hljs-string">]</span>
+<span class="hljs-comment"># 此帧是否被忽略：否</span>
+<span class="hljs-string">[Protocols</span> <span class="hljs-attr">in frame:</span> <span class="hljs-string">eth:ethertype:ip:tcp:http:image-gif]</span>
+<span class="hljs-comment"># 帧内封装的协议层次结构</span>
+<span class="hljs-string">[Number</span> <span class="hljs-attr">of per-protocol-data:</span> <span class="hljs-number">1</span><span class="hljs-string">]</span>
+<span class="hljs-string">[Hypertext</span> <span class="hljs-string">Transfer</span> <span class="hljs-string">Protocol,</span> <span class="hljs-string">key</span> <span class="hljs-number">0</span><span class="hljs-string">]</span>
+<span class="hljs-string">[Coloring</span> <span class="hljs-attr">Rule Name:</span> <span class="hljs-string">HTTP]</span>
+<span class="hljs-comment"># 着色标记的协议名称</span>
+<span class="hljs-string">[Coloring</span> <span class="hljs-attr">Rule String:</span> <span class="hljs-string">http</span> <span class="hljs-string">||</span> <span class="hljs-string">tcp.port</span> <span class="hljs-string">==</span> <span class="hljs-number">80</span> <span class="hljs-string">||</span> <span class="hljs-string">http2]</span>
+<span class="hljs-string">着色规则显示的字符串</span></code></pre>
 
 <ul>
 <li>数据链路层以太网帧头部的信息</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Ethernet II, Src: Qihoo360_61:0b:0c (d0:fa:1d:61:0b:0c), Dst: Giga-Byt_d4:be:c9 (94:de:80:d4:be:c9)</span><br><span class="line">Destination: Giga-Byt_d4:be:c9 (94:de:80:d4:be:c9)</span><br><span class="line"># 目标MAC地址</span><br><span class="line">Source: Qihoo360_61:0b:0c (d0:fa:1d:61:0b:0c)</span><br><span class="line"># 源MAC地址</span><br><span class="line">Type: IP (0x0800)</span><br><span class="line"># 需要说明的是，为什么上述的源MAC地址以及目标MAC地址的开头明明是“d0:fa:1d”以及“94:de:80”，但是Wireshark上显示出来的却是“Qihoo360”以及“Giga-Byt”呢？这是因为MAC地址的前3个字节表示厂商。而“d0:fa:1d”以及“94:de:80”被分配给了奇虎以及技嘉公司。这是全球统一标准，所以Wireshark干脆显示出厂商名称了。</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs css"><span class="hljs-selector-tag">Ethernet</span> <span class="hljs-selector-tag">II</span>, <span class="hljs-selector-tag">Src</span>: <span class="hljs-selector-tag">Qihoo360_61</span><span class="hljs-selector-pseudo">:0b</span><span class="hljs-selector-pseudo">:0c</span> (<span class="hljs-selector-tag">d0</span><span class="hljs-selector-pseudo">:fa</span><span class="hljs-selector-pseudo">:1d</span><span class="hljs-selector-pseudo">:61</span><span class="hljs-selector-pseudo">:0b</span><span class="hljs-selector-pseudo">:0c)</span>, <span class="hljs-selector-tag">Dst</span>: <span class="hljs-selector-tag">Giga-Byt_d4</span><span class="hljs-selector-pseudo">:be</span><span class="hljs-selector-pseudo">:c9</span> (94<span class="hljs-selector-pseudo">:de</span><span class="hljs-selector-pseudo">:80</span><span class="hljs-selector-pseudo">:d4</span><span class="hljs-selector-pseudo">:be</span><span class="hljs-selector-pseudo">:c9)</span>
+<span class="hljs-selector-tag">Destination</span>: <span class="hljs-selector-tag">Giga-Byt_d4</span><span class="hljs-selector-pseudo">:be</span><span class="hljs-selector-pseudo">:c9</span> (94<span class="hljs-selector-pseudo">:de</span><span class="hljs-selector-pseudo">:80</span><span class="hljs-selector-pseudo">:d4</span><span class="hljs-selector-pseudo">:be</span><span class="hljs-selector-pseudo">:c9)</span>
+# 目标<span class="hljs-selector-tag">MAC</span>地址
+<span class="hljs-selector-tag">Source</span>: <span class="hljs-selector-tag">Qihoo360_61</span><span class="hljs-selector-pseudo">:0b</span><span class="hljs-selector-pseudo">:0c</span> (<span class="hljs-selector-tag">d0</span><span class="hljs-selector-pseudo">:fa</span><span class="hljs-selector-pseudo">:1d</span><span class="hljs-selector-pseudo">:61</span><span class="hljs-selector-pseudo">:0b</span><span class="hljs-selector-pseudo">:0c)</span>
+# 源<span class="hljs-selector-tag">MAC</span>地址
+<span class="hljs-selector-tag">Type</span>: <span class="hljs-selector-tag">IP</span> (0<span class="hljs-selector-tag">x0800</span>)
+# 需要说明的是，为什么上述的源<span class="hljs-selector-tag">MAC</span>地址以及目标<span class="hljs-selector-tag">MAC</span>地址的开头明明是“<span class="hljs-selector-tag">d0</span><span class="hljs-selector-pseudo">:fa</span><span class="hljs-selector-pseudo">:1d</span>”以及“94<span class="hljs-selector-pseudo">:de</span><span class="hljs-selector-pseudo">:80</span>”，但是<span class="hljs-selector-tag">Wireshark</span>上显示出来的却是“<span class="hljs-selector-tag">Qihoo360</span>”以及“<span class="hljs-selector-tag">Giga-Byt</span>”呢？这是因为<span class="hljs-selector-tag">MAC</span>地址的前3个字节表示厂商。而“<span class="hljs-selector-tag">d0</span><span class="hljs-selector-pseudo">:fa</span><span class="hljs-selector-pseudo">:1d</span>”以及“94<span class="hljs-selector-pseudo">:de</span><span class="hljs-selector-pseudo">:80</span>”被分配给了奇虎以及技嘉公司。这是全球统一标准，所以<span class="hljs-selector-tag">Wireshark</span>干脆显示出厂商名称了。</code></pre>
 
 <ul>
 <li>网络层IP包的头部信息</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">Internet Protocol Version 4, Src: 220.181.7.190 (220.181.7.190), Dst: 192.168.0.14 (192.168.0.14)</span><br><span class="line">Version: 4</span><br><span class="line"># 互联网协议IPv4</span><br><span class="line">Header Length: 20 bytes</span><br><span class="line"># IP包头部的长度</span><br><span class="line">Differentiated Services Field: 0x00 (DSCP 0x00: Default; ECN: 0x00: </span><br><span class="line">Not-ECT (Not ECN-Capable Transport))</span><br><span class="line"># 差分服务字段</span><br><span class="line">Total Length: 296</span><br><span class="line"># IP包的总长度</span><br><span class="line">Identification: 0x2863 (10339)</span><br><span class="line"># 标志字段</span><br><span class="line">Flags: 0x02 (Don&#39;t Fragment)</span><br><span class="line"># 标记字段</span><br><span class="line">Fragment offset: 0</span><br><span class="line"># 分片偏移</span><br><span class="line">Time to live: 49</span><br><span class="line"># 生存期</span><br><span class="line">Protocol: TCP (6)</span><br><span class="line"># 当前数据包所封装的上层协议为TCP协议</span><br><span class="line">Header checksum: 0x7b43 [validation disabled]</span><br><span class="line"># 头部数据的校验和</span><br><span class="line">Source: 220.181.7.190 (220.181.7.190)</span><br><span class="line"># 源IP地址</span><br><span class="line">Destination: 192.168.0.14 (192.168.0.14)</span><br><span class="line"># 目标IP地址</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yaml"><span class="hljs-string">Internet</span> <span class="hljs-string">Protocol</span> <span class="hljs-string">Version</span> <span class="hljs-number">4</span><span class="hljs-string">,</span> <span class="hljs-attr">Src:</span> <span class="hljs-number">220.181</span><span class="hljs-number">.7</span><span class="hljs-number">.190</span> <span class="hljs-string">(220.181.7.190),</span> <span class="hljs-attr">Dst:</span> <span class="hljs-number">192.168</span><span class="hljs-number">.0</span><span class="hljs-number">.14</span> <span class="hljs-string">(192.168.0.14)</span>
+<span class="hljs-attr">Version:</span> <span class="hljs-number">4</span>
+<span class="hljs-comment"># 互联网协议IPv4</span>
+<span class="hljs-attr">Header Length:</span> <span class="hljs-number">20</span> <span class="hljs-string">bytes</span>
+<span class="hljs-comment"># IP包头部的长度</span>
+<span class="hljs-attr">Differentiated Services Field:</span> <span class="hljs-number">0x00</span> <span class="hljs-string">(DSCP</span> <span class="hljs-attr">0x00:</span> <span class="hljs-string">Default;</span> <span class="hljs-attr">ECN: 0x00:</span> 
+<span class="hljs-string">Not-ECT</span> <span class="hljs-string">(Not</span> <span class="hljs-string">ECN-Capable</span> <span class="hljs-string">Transport))</span>
+<span class="hljs-comment"># 差分服务字段</span>
+<span class="hljs-attr">Total Length:</span> <span class="hljs-number">296</span>
+<span class="hljs-comment"># IP包的总长度</span>
+<span class="hljs-attr">Identification:</span> <span class="hljs-number">0x2863</span> <span class="hljs-string">(10339)</span>
+<span class="hljs-comment"># 标志字段</span>
+<span class="hljs-attr">Flags:</span> <span class="hljs-number">0x02</span> <span class="hljs-string">(Don't</span> <span class="hljs-string">Fragment)</span>
+<span class="hljs-comment"># 标记字段</span>
+<span class="hljs-attr">Fragment offset:</span> <span class="hljs-number">0</span>
+<span class="hljs-comment"># 分片偏移</span>
+<span class="hljs-attr">Time to live:</span> <span class="hljs-number">49</span>
+<span class="hljs-comment"># 生存期</span>
+<span class="hljs-attr">Protocol:</span> <span class="hljs-string">TCP</span> <span class="hljs-string">(6)</span>
+<span class="hljs-comment"># 当前数据包所封装的上层协议为TCP协议</span>
+<span class="hljs-attr">Header checksum:</span> <span class="hljs-number">0x7b43</span> <span class="hljs-string">[validation</span> <span class="hljs-string">disabled]</span>
+<span class="hljs-comment"># 头部数据的校验和</span>
+<span class="hljs-attr">Source:</span> <span class="hljs-number">220.181</span><span class="hljs-number">.7</span><span class="hljs-number">.190</span> <span class="hljs-string">(220.181.7.190)</span>
+<span class="hljs-comment"># 源IP地址</span>
+<span class="hljs-attr">Destination:</span> <span class="hljs-number">192.168</span><span class="hljs-number">.0</span><span class="hljs-number">.14</span> <span class="hljs-string">(192.168.0.14)</span>
+<span class="hljs-comment"># 目标IP地址</span></code></pre>
 
 <ul>
 <li>传输层TCP数据段的头部信息</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Transmission Control Protocol, Src Port: 80 (80), Dst Port: 2488 (2488), Seq: 422, Ack: 3024, Len: 256</span><br><span class="line">Source Port: 80 (80)</span><br><span class="line"># 源端口号</span><br><span class="line">Destination Port: 2488 (2488)</span><br><span class="line"># 目标端口号</span><br><span class="line">[Stream index: 16]</span><br><span class="line">[TCP Segment Len: 256]</span><br><span class="line">Sequence number: 422    (relative sequence number)</span><br><span class="line"># 序列号（相对序列号）</span><br><span class="line">[Next sequence number: 678    (relative sequence number)]</span><br><span class="line"># 下一个序列号（相对序列号）</span><br><span class="line">Acknowledgment number: 3024    (relative ack number)</span><br><span class="line"># 确认序列号</span><br><span class="line">Header Length: 20 bytes</span><br><span class="line"># 头部长度</span><br><span class="line">.... 0000 0001 1000 &#x3D; Flags: 0x018 (PSH, ACK)</span><br><span class="line"># TCP标记字段</span><br><span class="line">Window size value: 162</span><br><span class="line"># 流量控制的窗口大小</span><br><span class="line">Checksum: 0x6fc4 [validation disabled]</span><br><span class="line"># TCP数据段的校验和</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yaml"><span class="hljs-string">Transmission</span> <span class="hljs-string">Control</span> <span class="hljs-string">Protocol,</span> <span class="hljs-attr">Src Port:</span> <span class="hljs-number">80</span> <span class="hljs-string">(80),</span> <span class="hljs-attr">Dst Port:</span> <span class="hljs-number">2488</span> <span class="hljs-string">(2488),</span> <span class="hljs-attr">Seq:</span> <span class="hljs-number">422</span><span class="hljs-string">,</span> <span class="hljs-attr">Ack:</span> <span class="hljs-number">3024</span><span class="hljs-string">,</span> <span class="hljs-attr">Len:</span> <span class="hljs-number">256</span>
+<span class="hljs-attr">Source Port:</span> <span class="hljs-number">80</span> <span class="hljs-string">(80)</span>
+<span class="hljs-comment"># 源端口号</span>
+<span class="hljs-attr">Destination Port:</span> <span class="hljs-number">2488</span> <span class="hljs-string">(2488)</span>
+<span class="hljs-comment"># 目标端口号</span>
+<span class="hljs-string">[Stream</span> <span class="hljs-attr">index:</span> <span class="hljs-number">16</span><span class="hljs-string">]</span>
+<span class="hljs-string">[TCP</span> <span class="hljs-attr">Segment Len:</span> <span class="hljs-number">256</span><span class="hljs-string">]</span>
+<span class="hljs-attr">Sequence number:</span> <span class="hljs-number">422</span>    <span class="hljs-string">(relative</span> <span class="hljs-string">sequence</span> <span class="hljs-string">number)</span>
+<span class="hljs-comment"># 序列号（相对序列号）</span>
+<span class="hljs-string">[Next</span> <span class="hljs-attr">sequence number:</span> <span class="hljs-number">678</span>    <span class="hljs-string">(relative</span> <span class="hljs-string">sequence</span> <span class="hljs-string">number)]</span>
+<span class="hljs-comment"># 下一个序列号（相对序列号）</span>
+<span class="hljs-attr">Acknowledgment number:</span> <span class="hljs-number">3024</span>    <span class="hljs-string">(relative</span> <span class="hljs-string">ack</span> <span class="hljs-string">number)</span>
+<span class="hljs-comment"># 确认序列号</span>
+<span class="hljs-attr">Header Length:</span> <span class="hljs-number">20</span> <span class="hljs-string">bytes</span>
+<span class="hljs-comment"># 头部长度</span>
+<span class="hljs-string">....</span> <span class="hljs-number">0000</span> <span class="hljs-number">0001</span> <span class="hljs-number">1000</span> <span class="hljs-string">=</span> <span class="hljs-attr">Flags:</span> <span class="hljs-number">0x018</span> <span class="hljs-string">(PSH,</span> <span class="hljs-string">ACK)</span>
+<span class="hljs-comment"># TCP标记字段</span>
+<span class="hljs-attr">Window size value:</span> <span class="hljs-number">162</span>
+<span class="hljs-comment"># 流量控制的窗口大小</span>
+<span class="hljs-attr">Checksum:</span> <span class="hljs-number">0x6fc4</span> <span class="hljs-string">[validation</span> <span class="hljs-string">disabled]</span>
+<span class="hljs-comment"># TCP数据段的校验和</span></code></pre>
 
 <h4 id="2-Wireshark的实用表格"><a href="#2-Wireshark的实用表格" class="headerlink" title="2.Wireshark的实用表格"></a>2.Wireshark的实用表格</h4><ul>
 <li>常用统计功能<ul>
@@ -585,415 +479,261 @@
 </ul>
 <p><strong>（未完待续……）</strong></p>
 
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%8C%85%E5%88%86%E6%9E%90/" rel="tag"><i class="fa fa-tag"></i> 数据包分析</a>
-          
-        </div>
-      
-
-      
-        
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/11/29/Kali-Linux-2017-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="next" title="Kali Linux 2017 安装配置">
-                <i class="fa fa-chevron-left"></i> Kali Linux 2017 安装配置
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/02/%E5%8D%97%E9%82%AECTF%E5%B9%B3%E5%8F%B0-Web-%E7%BB%BC%E5%90%88%E9%A2%982-Writeup/" rel="prev" title="南邮CTF平台-Web-综合题2 Writeup">
-                南邮CTF平台-Web-综合题2 Writeup <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/touxiang.jpg"
-               alt="Architect" />
-          <p class="site-author-name" itemprop="name">Architect</p>
-           
-              <p class="site-description motion-element" itemprop="description">Gather ye rosebuds while ye may.</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">网络协议</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E5%8C%85%E5%88%86%E6%9E%90/">数据包分析</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/02/02/%E5%8D%97%E9%82%AECTF%E5%B9%B3%E5%8F%B0-Web-%E7%BB%BC%E5%90%88%E9%A2%982-Writeup/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">南邮CTF平台-Web-综合题2 Writeup</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2017/11/29/Kali-Linux-2017-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">
+                        <span class="hidden-mobile">Kali Linux 2017 安装配置</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
             </div>
-          
 
-          
             
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
+          </div>
         </div>
-
-        
-        
-
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              友情链接
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://caligo.cc/" title="Caligo" target="_blank">Caligo</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://blog.xieldy.cn/" title="Xieldy" target="_blank">Xieldy</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://barriery.cn/" title="Barriery" target="_blank">Barriery</a>
-                </li>
-              
-            </ul>
-          </div>
-        
-
-        
-
-
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章-基础篇"><span class="nav-number">2.</span> <span class="nav-text">第一章 基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-认识wireshark的界面"><span class="nav-number">2.1.</span> <span class="nav-text">1.认识wireshark的界面</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#packet-detail中需注意的几个字段"><span class="nav-number">2.1.1.</span> <span class="nav-text">packet detail中需注意的几个字段</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Wireshark的实用表格"><span class="nav-number">2.2.</span> <span class="nav-text">2.Wireshark的实用表格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Wireshark的图形显示"><span class="nav-number">2.3.</span> <span class="nav-text">3.Wireshark的图形显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Wireshark的高级特性"><span class="nav-number">2.4.</span> <span class="nav-text">4.Wireshark的高级特性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#协议解析与重新解码"><span class="nav-number">2.4.1.</span> <span class="nav-text">协议解析与重新解码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP流的跟踪"><span class="nav-number">2.4.2.</span> <span class="nav-text">TCP流的跟踪</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分析数据包长度"><span class="nav-number">2.4.3.</span> <span class="nav-text">分析数据包长度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#专家分析"><span class="nav-number">2.4.4.</span> <span class="nav-text">专家分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Wireshark的命令行模式"><span class="nav-number">2.5.</span> <span class="nav-text">5.Wireshark的命令行模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#命令行模式优势"><span class="nav-number">2.5.1.</span> <span class="nav-text">命令行模式优势</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用命令行模式进行调优分析"><span class="nav-number">2.5.2.</span> <span class="nav-text">利用命令行模式进行调优分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#命令行工具的常用命令"><span class="nav-number">2.5.3.</span> <span class="nav-text">命令行工具的常用命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#命令行工具与第三方辅助工具的使用方法"><span class="nav-number">2.5.4.</span> <span class="nav-text">命令行工具与第三方辅助工具的使用方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二章-协议篇"><span class="nav-number">3.</span> <span class="nav-text">第二章 协议篇</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-ARP协议的数据包分析"><span class="nav-number">3.1.</span> <span class="nav-text">6.ARP协议的数据包分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ARP基本概念"><span class="nav-number">3.1.1.</span> <span class="nav-text">ARP基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ARP数据包分析"><span class="nav-number">3.1.2.</span> <span class="nav-text">ARP数据包分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-Wireshark眼中的IP协议"><span class="nav-number">3.2.</span> <span class="nav-text">7.Wireshark眼中的IP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TTL与IP分片概念及其分析"><span class="nav-number">3.2.1.</span> <span class="nav-text">TTL与IP分片概念及其分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#捕获IP数据包"><span class="nav-number">3.2.2.</span> <span class="nav-text">捕获IP数据包</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-TCP与UDP协议详解"><span class="nav-number">3.3.</span> <span class="nav-text">8.TCP与UDP协议详解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP、UDP基本概念"><span class="nav-number">3.3.1.</span> <span class="nav-text">TCP、UDP基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP三次握手、断开及重置"><span class="nav-number">3.3.2.</span> <span class="nav-text">TCP三次握手、断开及重置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP与UDP数据包分析"><span class="nav-number">3.3.3.</span> <span class="nav-text">TCP与UDP数据包分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-TCP中也有一个窗口"><span class="nav-number">3.4.</span> <span class="nav-text">9.TCP中也有一个窗口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Ack、Seq、Len的概念及关系"><span class="nav-number">3.4.1.</span> <span class="nav-text">Ack、Seq、Len的概念及关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP滑动窗口"><span class="nav-number">3.4.2.</span> <span class="nav-text">TCP滑动窗口</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP零窗口的概念及用途"><span class="nav-number">3.4.3.</span> <span class="nav-text">TCP零窗口的概念及用途</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP滑动窗口数据包分析"><span class="nav-number">3.4.4.</span> <span class="nav-text">TCP滑动窗口数据包分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-TCP重传技术的研究"><span class="nav-number">3.5.</span> <span class="nav-text">10.TCP重传技术的研究</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP重传原理"><span class="nav-number">3.5.1.</span> <span class="nav-text">TCP重传原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#快速重传（Fast-Retransmission）流程"><span class="nav-number">3.5.2.</span> <span class="nav-text">快速重传（Fast Retransmission）流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#重传机制的分析"><span class="nav-number">3.5.3.</span> <span class="nav-text">重传机制的分析</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-用途广泛的ICMP协议"><span class="nav-number">3.6.</span> <span class="nav-text">11.用途广泛的ICMP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ICMP基本概念"><span class="nav-number">3.6.1.</span> <span class="nav-text">ICMP基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ping及tracert数据包异同"><span class="nav-number">3.6.2.</span> <span class="nav-text">ping及tracert数据包异同</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Architect</span>
-</div>
-
-
-<!--<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
-    NexT.Pisces
-  </a>
-</div>
--->
-
-
-<p>Hosted by <a href="https://pages.coding.me" target="_blank" rel="noopener" style="font-weight: bold">Coding Pages</a></p>
-        
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv">
-      <i class="fa fa-user"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
-    </span>
-  
-
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
-    </span>
-  
-</div>
-
-
-        
-      </div>
-    </footer>
-
+    </div>
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
       </div>
     
-
   </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
 
   
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
   
 
-
   
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-  
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
   
 
   
 
   
 
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
   
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "数据包分析笔记（一）&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>

