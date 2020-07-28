@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="Gather ye rosebuds while ye may.">
+  <meta name="author" content="Architect">
+  <meta name="keywords" content="">
+  <title>信息泄露漏洞-Web Security Academy学习笔记 - Architect&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Architect's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-07-28 19:34">
+      2020年7月28日 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="信息泄露漏洞-Web-Security-Academy学习笔记"><a href="#信息泄露漏洞-Web-Security-Academy学习笔记" class="headerlink" title="信息泄露漏洞-Web Security Academy学习笔记"></a>信息泄露漏洞-Web Security Academy学习笔记</h1><h2 id="什么是信息泄露？"><a href="#什么是信息泄露？" class="headerlink" title="什么是信息泄露？"></a>什么是信息泄露？</h2><p>Information disclosure （aka，information leakage）：网站在设计意图外向用户暴露敏感数据，如：</p>
+<ul>
+<li>用户信息，如用户名、资产信息</li>
+<li>敏感的商业数据或业务数据</li>
+<li>站点（及其架构）的技术细节信息</li>
+</ul>
+<p>前二者的危害显而易见，而技术信息有时会为攻击者进行攻击提供线索，危害也十分严重。</p>
+<a id="more"></a>
+
+<h2 id="信息泄露的例子"><a href="#信息泄露的例子" class="headerlink" title="信息泄露的例子"></a>信息泄露的例子</h2><ul>
+<li>robots.txt 或目录列表文件会泄露站点隐藏路径，目录结构和内容</li>
+<li>通过临时备份文件访问到部分源代码</li>
+<li>报错信息泄露数据库表名、列名等信息</li>
+<li>源代码中hard-coded的API keys，IP地址，数据库用户名密码等</li>
+<li>通过应用行为的细微差异，提示资源、用户名等信息（e.g. 时间盲注，布尔盲注等）</li>
+</ul>
+<h2 id="信息泄露的途径"><a href="#信息泄露的途径" class="headerlink" title="信息泄露的途径"></a>信息泄露的途径</h2><ul>
+<li>没有从公开的内容中移除内部信息（e.g. 源代码中的开发者注释没有删除）</li>
+<li>站点相关的技术配置不安全（e.g. 没有禁用调试和诊断功能；使用默认配置导致输出包含敏感信息的报错）</li>
+<li>应用设计和行为存在缺陷（e.g. 在不同错误发生时返回不同的响应，可能被攻击者利用来枚举敏感数据等）</li>
+</ul>
+<h2 id="信息泄露的影响"><a href="#信息泄露的影响" class="headerlink" title="信息泄露的影响"></a>信息泄露的影响</h2><ul>
+<li>泄露用户身份、财产等敏感信息：不用说了</li>
+<li>泄露技术信息：帮攻击者打开思路，缩小尝试范围，如使用某站点架构特定版本的漏洞。严重程度取决于攻击者如何利用这些信息</li>
+</ul>
+<h2 id="如何寻找并利用信息泄露漏洞"><a href="#如何寻找并利用信息泄露漏洞" class="headerlink" title="如何寻找并利用信息泄露漏洞"></a>如何寻找并利用信息泄露漏洞</h2><h3 id="常见信息泄露源"><a href="#常见信息泄露源" class="headerlink" title="常见信息泄露源"></a>常见信息泄露源</h3><ul>
+<li><p>爬虫相关文件</p>
+<p>/robots.txt 和 /sitemap.xml 包含了站点中不想让爬虫扫描的路径，这些路径通常不与站点内其他页面链接，因此可能不出现在 Burpsuite 等扫描器的 site map中。可以尝试手动访问获取有用信息。</p>
+</li>
+<li><p>目录列表</p>
+<p>Web 服务器可以被配置为，对没有index页面的目录，自动列出路径下内容。大大方便攻击者确定站点结构，寻找敏感信息。</p>
+<p>目录列表本身并不一定是安全漏洞，但当站点没有很好地实现访问控制时。目录列表对敏感资源位置的泄露就十分危险了。</p>
+</li>
+<li><p>开发者注释</p>
+<p>开发过程中的HTML行间注释可能出于疏忽或开发者安全意识不足而未被删除，从而部署至生产环境。这些注释很容易通过工具定位。并有可能包含对攻击者有用的信息，如提示隐藏的目录或包含业务逻辑的线索。</p>
+</li>
+<li><p>错误信息</p>
+<p>过于冗长的错误信息是最常见的信息泄露方式之一。在渗透测试过程中，需要对触发的每一个错误信息加以关注。</p>
+<p>错误信息可能提示的信息举例：</p>
+<ul>
+<li>输入的数据类型与预期参数类型；这可以帮助攻击者确定可供攻击的参数。</li>
+<li>站点使用的技术信息：web engine、数据库、服务器的类型及版本号等；攻击者可以针对特定版本进行后续攻击。如站点使用开源架构，可以针对其源码进行代码审计以寻找攻击点。</li>
+<li>错误信息的差异可以提示web应用行为的不同，观察错误信息的差异是很多攻击技术的重要方面。如SQL注入（盲注）、用户名枚举（Username不存在 or Username或password不正确）。</li>
+</ul>
+</li>
+<li><p>调试数据</p>
+<p>站点因调试目的而生成的错误信息和日志可能包含大量攻击者需要的信息，如：</p>
+<ul>
+<li>Values for key session variables that can be manipulated via user input</li>
+<li>Hostnames and credentials for back-end components</li>
+<li>File and directory names on the server</li>
+<li>Keys used to encrypt data transmitted via the client</li>
+</ul>
+</li>
+<li><p>用户账户页</p>
+<p>某些站点在访问用户个人账户页面时存在逻辑缺陷，如<code>GET /user/personal-info?user=carlos</code>改变user参数可能导致访问任意用户账户页。</p>
+</li>
+<li><p>包含源代码的备份文件</p>
+<p>源代码可以：</p>
+<ul>
+<li>帮助攻击者理解站点应用行为和业务逻辑</li>
+<li>一些敏感信息（API keys，访问后端组件的认证信息（如数据库用户名密码））可能硬写在源代码中。</li>
+</ul>
+<p>在站点中发现的源代码文件（如.php）通常不能直接访问文本而是被执行。但在某些情况下可以尝试获取源码文本。</p>
+<p>文本编辑器常在文件变动时创建临时备份文件，通常在文件名前加~，或者添加特定后缀（如.bak），尝试访问这些文件可能会得到源代码文本。</p>
+</li>
+<li><p>不安全配置导致的泄露</p>
+<p>站点的不正确配置常常会导致安全漏洞，这是由于站点普遍使用第三方技术，这些技术有大量的接口和配置项，配置站点人员并未完整理解。</p>
+<p>此外，开发者常常忘记在生产环境中禁用一些调试项。例如，HTTP 的 <strong>TRACE方法</strong> 是为诊断目的而设计，使用该方法会返回exact request that was received。通常是无害的，但有可能会导致信息泄露。如internal authentication headers可能会被反向代理添加到用户请求后。</p>
+</li>
+<li><p>版本控制历史</p>
+<p>/.git 目录包含站点所有的版本控制数据，可能被部署到生产环境。可以直接访问路径，也可用本地的git来访问。</p>
+<p>可能不能得到全部的源代码，但对比各版本的diff可以读到部分代码片段，或许能找到敏感信息（如上文所述的hard-coded的key或者credentials）。</p>
+</li>
+</ul>
+<h2 id="如何预防信息泄露漏洞"><a href="#如何预防信息泄露漏洞" class="headerlink" title="如何预防信息泄露漏洞"></a>如何预防信息泄露漏洞</h2><p>信息泄露漏洞可能在各种地方出现，预防此类漏洞的原则如下；</p>
+<ul>
+<li>所有开发者应明确什么信息是敏感信息</li>
+<li>生产过程中对所有代码进行审计</li>
+</ul>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Web%E5%AE%89%E5%85%A8/">Web安全</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Web-Security-Academy/">Web Security Academy</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/11/Windows-Terminal-%E9%85%8D%E7%BD%AE%E7%BE%8E%E5%8C%96/">
+                        <span class="hidden-mobile">Windows Terminal 配置美化</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "信息泄露漏洞-Web Security Academy学习笔记&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
