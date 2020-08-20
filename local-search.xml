@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>认证（Authentication）-Web-Security-Academy学习笔记</title>
+    <link href="/2020/08/20/%E8%AE%A4%E8%AF%81%EF%BC%88Authentication%EF%BC%89-Web-Security-Academy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <url>/2020/08/20/%E8%AE%A4%E8%AF%81%EF%BC%88Authentication%EF%BC%89-Web-Security-Academy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="认证（Authentication）"><a href="#认证（Authentication）" class="headerlink" title="认证（Authentication）"></a>认证（Authentication）</h1><h2 id="什么是认证"><a href="#什么是认证" class="headerlink" title="什么是认证"></a>什么是认证</h2><p>认证是验证和识别特定用户或客户端的过程。简而言之，即是“确认某人的身份是如其声明”。网站至少会部分暴露给任何连接到互联网的人。因此，健壮的认证机制是Web安全的基本组成部分。</p><p>不同的认证机制可以分类为以下<strong>三种认证因素</strong>：</p><ul><li>Something you <strong>know</strong>，比如密码、安全问题的答案。这种因素被称作”knowledge factors”（知识因素）；</li><li>Something you <strong>have</strong>,  如一个实物（比如手机）或一个安全令牌。这种因素被称作“possession factors”（占有因素）.</li><li>Something you <strong>are</strong> or do, 比如你的生物特征或行为模式，这种因素被称作 “inherence factors”（固有因素）.</li></ul><p>认证机制使用一系列技术来验证这些因素中的一个或多个。</p><h2 id="认证（authentication）和授权（authorization）的区别"><a href="#认证（authentication）和授权（authorization）的区别" class="headerlink" title="认证（authentication）和授权（authorization）的区别"></a>认证（authentication）和授权（authorization）的区别</h2><p>认证是验证一个用户是否是他声明的身份的过程，而授权是验证一个用户是否被允许做某些事情。</p><p>在Web站点或Web应用的语境下，认证确定了某个试图使用用户名Carlos123访问站点的人是否和创建该账户的人相同。一旦Carlos123通过了认证，他的权限决定了他是否被授权做某事，例如：访问其他用户的个人信息或进行删除其他用户账户的行为。</p><h2 id="认证漏洞是如何产生的"><a href="#认证漏洞是如何产生的" class="headerlink" title="认证漏洞是如何产生的"></a>认证漏洞是如何产生的</h2><p>广义上讲，身份验证机制中的大多数漏洞是通过以下两种方式之一产生的：</p><ul><li>认证机制由于其无法充分防御暴力破解攻击而脆弱。</li><li>由于逻辑缺陷或实现的代码错误，使得攻击者可以完全绕过认证机制。这有时被称为”broken authentication”。</li></ul><p>在Web开发的许多领域，逻辑缺陷只会导致网站异常运行，这可能是安全问题，也可能不是安全问题。但是，由于身份验证对于安全性至关重要，因此，有缺陷的身份验证逻辑使网站暴露于安全问题的可能性明显增加。</p><h2 id="认证漏洞的影响"><a href="#认证漏洞的影响" class="headerlink" title="认证漏洞的影响"></a>认证漏洞的影响</h2><p>认证漏洞的影响可能非常严重。一旦攻击者绕过认证或爆破攻击成功，进入另一个用户的帐户，他们就可以访问该帐户拥有的所有数据和功能。如果他们能够入侵系统管理员等高特权帐户，则他们可以完全控制整个应用程序，并有可能获得对内部基础结构的访问权限。</p><p>即使受攻击的是低特权帐户，也仍可能使攻击者获得他们不应该拥有的数据的访问权限，例如敏感的商业信息。即使该帐户无法访问任何敏感数据，它仍可能允许攻击者访问其他页面，从而提供了进一步的攻击面。通常，从公开访问的页面上将无法进行某些高严重性攻击，但是从内部页面上则是可能的。</p><h2 id="认证机制中的漏洞"><a href="#认证机制中的漏洞" class="headerlink" title="认证机制中的漏洞"></a>认证机制中的漏洞</h2><p>网站的身份验证系统通常由几种可能发生漏洞的不同机制组成。一些漏洞广泛适用于所有这些情况，而其他漏洞则更特定于所提供的功能。</p><h3 id="基于密码的登录中的漏洞"><a href="#基于密码的登录中的漏洞" class="headerlink" title="基于密码的登录中的漏洞"></a>基于密码的登录中的漏洞</h3><p>password-based login process：用户自行注册，或由管理员分配账户；账户与一组独特的username和password关联。用户在登录表单中输入以进行认证。</p><p>在这种情况下，某人知道密码的事实即足以证明其身份。因此，若攻击者能够猜测或获取其他用户的登录凭据。站点的安全性就会受损。</p><p>这可以通过以下方式实现：</p><h4 id="暴力破解攻击（Brute-force-attacks）"><a href="#暴力破解攻击（Brute-force-attacks）" class="headerlink" title="暴力破解攻击（Brute-force attacks）"></a>暴力破解攻击（Brute-force attacks）</h4><p>暴力破解的概念略。</p><p>暴力破解不总是随机数猜测用户名和密码。通过利用一些基本的逻辑或公开的知识，攻击者可微调攻击方式以进行更有效的猜测，有助于提高攻击效率。如果没有对暴力破解进行有效的防护，仅使用基于密码的登录作为认证方式的站点可能会非常脆弱。</p><h5 id="暴力破解用户名"><a href="#暴力破解用户名" class="headerlink" title="暴力破解用户名"></a>暴力破解用户名</h5><p>若用户名符合可识别的模式，则较容易猜测，例如：</p><ul><li>电子邮箱：如常见格式 firstname.lastname @ somecompany.com</li><li>高权限用户名：常见如admin、administrator</li></ul><p>在对站点安全性审计的过程中，检查其是否公开披露了潜在的用户名。如：是否无需登录即可访问用户档案页面？即使此类页面的实际信息是隐藏的，也可能泄露其用户名。</p><p>此外应检查HTTP响应，以查看是否公开了电子邮箱。有时响应中会包含管理员或IT支持人员等高权限账户的email地址。</p><h5 id="暴力破解密码"><a href="#暴力破解密码" class="headerlink" title="暴力破解密码"></a>暴力破解密码</h5><p>很多站点会要求用户设置足够复杂的密码，以使其难以单纯被爆破，常见要求如：</p><ul><li>最少字符数量</li><li>大小写字母混合</li><li>至少一个特殊字符</li></ul><p>然而，尽管对于电脑来说爆破这种密码很难，但可以利用对人类行为的基础知识来破解。比起完全随机的字符组合，用户常会使用自己能记住的常用密码，并微调使其符合站点对密码的要求。如：mypassword可能改为Mypassword1！，或是Myp4$$w0rd。</p><p>如果站点策略要求定期修改密码，可能有：Mypassword1！、Mypassword2！……</p><p>对可能的用户凭证和可预测的用户行为模式的了解，可以使暴力破解攻击更加复杂而有效。</p><h5 id="用户名枚举"><a href="#用户名枚举" class="headerlink" title="用户名枚举"></a>用户名枚举</h5><p>Username enumeration：攻击者通过观察站点行为变化，以确定特定的用户名是否是有效的。</p><p>如登录时提示输入了有效用户名和错误的密码，或注册时提示填入了已被占用的用户名。可据此生成有效的用户名列表，能极大减少爆破所需的时间和精力。</p><p>在尝试暴力破解一个登录页面时，要注意如下方面的任何差异：</p><ul><li>状态码：爆破中大部分错误猜测的HTTP响应状态码应一致，若出现不一致的状态码，很可能是猜测用户名有效。对站点而言最佳选择是不论认证结果如何，都使状态码保持一致。</li><li>错误信息：有时根据是用户名、密码都错误，或是仅密码错误，返回的错误信息会不同。最好的做法是在两种情况下都使用一个通用的错误信息。并注意不要有细微之处的差异。</li><li>响应时间：若大多数请求的响应时间相似，任何偏离此时间的请求表明后台发生的事情不同。比如，站点仅在验证用户名有效时才验证密码是否正确。这可能指示猜测到了正确的用户名。这种差别可能很细微，但攻击者可以通过输入过长的密码来使延时更明显。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Web安全</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Web Security Academy</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>信息泄露漏洞-Web Security Academy学习笔记</title>
     <link href="/2020/07/28/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E-Web-Security-Academy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <url>/2020/07/28/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E-Web-Security-Academy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>

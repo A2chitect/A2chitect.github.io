@@ -17,7 +17,7 @@
   <meta name="description" content="Gather ye rosebuds while ye may.">
   <meta name="author" content="Architect">
   <meta name="keywords" content="">
-  <title>信息泄露漏洞-Web Security Academy学习笔记 - Architect&#39;s Blog</title>
+  <title>认证（Authentication）-Web-Security-Academy学习笔记 - Architect&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -152,8 +152,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-07-28 19:34">
-      2020年7月28日 晚上
+    <time datetime="2020-08-20 22:02">
+      2020年8月20日 晚上
     </time>
   </div>
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      1.9k 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      16
+      19
        分钟
     </span>
   
@@ -212,85 +212,53 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h1 id="信息泄露漏洞-Web-Security-Academy学习笔记"><a href="#信息泄露漏洞-Web-Security-Academy学习笔记" class="headerlink" title="信息泄露漏洞-Web Security Academy学习笔记"></a>信息泄露漏洞-Web Security Academy学习笔记</h1><h2 id="什么是信息泄露？"><a href="#什么是信息泄露？" class="headerlink" title="什么是信息泄露？"></a>什么是信息泄露？</h2><p>Information disclosure （aka，information leakage）：网站在设计意图外向用户暴露敏感数据，如：</p>
+              <h1 id="认证（Authentication）"><a href="#认证（Authentication）" class="headerlink" title="认证（Authentication）"></a>认证（Authentication）</h1><h2 id="什么是认证"><a href="#什么是认证" class="headerlink" title="什么是认证"></a>什么是认证</h2><p>认证是验证和识别特定用户或客户端的过程。简而言之，即是“确认某人的身份是如其声明”。网站至少会部分暴露给任何连接到互联网的人。因此，健壮的认证机制是Web安全的基本组成部分。</p>
+<p>不同的认证机制可以分类为以下<strong>三种认证因素</strong>：</p>
 <ul>
-<li>用户信息，如用户名、资产信息</li>
-<li>敏感的商业数据或业务数据</li>
-<li>站点（及其架构）的技术细节信息</li>
+<li>Something you <strong>know</strong>，比如密码、安全问题的答案。这种因素被称作”knowledge factors”（知识因素）；</li>
+<li>Something you <strong>have</strong>,  如一个实物（比如手机）或一个安全令牌。这种因素被称作“possession factors”（占有因素）.</li>
+<li>Something you <strong>are</strong> or do, 比如你的生物特征或行为模式，这种因素被称作 “inherence factors”（固有因素）.</li>
 </ul>
-<p>前二者的危害显而易见，而技术信息有时会为攻击者进行攻击提供线索，危害也十分严重。</p>
-<a id="more"></a>
-
-<h2 id="信息泄露的例子"><a href="#信息泄露的例子" class="headerlink" title="信息泄露的例子"></a>信息泄露的例子</h2><ul>
-<li>robots.txt 或目录列表文件会泄露站点隐藏路径，目录结构和内容</li>
-<li>通过临时备份文件访问到部分源代码</li>
-<li>报错信息泄露数据库表名、列名等信息</li>
-<li>源代码中hard-coded的API keys，IP地址，数据库用户名密码等</li>
-<li>通过应用行为的细微差异，提示资源、用户名等信息（e.g. 时间盲注，布尔盲注等）</li>
-</ul>
-<h2 id="信息泄露的途径"><a href="#信息泄露的途径" class="headerlink" title="信息泄露的途径"></a>信息泄露的途径</h2><ul>
-<li>没有从公开的内容中移除内部信息（e.g. 源代码中的开发者注释没有删除）</li>
-<li>站点相关的技术配置不安全（e.g. 没有禁用调试和诊断功能；使用默认配置导致输出包含敏感信息的报错）</li>
-<li>应用设计和行为存在缺陷（e.g. 在不同错误发生时返回不同的响应，可能被攻击者利用来枚举敏感数据等）</li>
-</ul>
-<h2 id="信息泄露的影响"><a href="#信息泄露的影响" class="headerlink" title="信息泄露的影响"></a>信息泄露的影响</h2><ul>
-<li>泄露用户身份、财产等敏感信息：不用说了</li>
-<li>泄露技术信息：帮攻击者打开思路，缩小尝试范围，如使用某站点架构特定版本的漏洞。严重程度取决于攻击者如何利用这些信息</li>
-</ul>
-<h2 id="如何寻找并利用信息泄露漏洞"><a href="#如何寻找并利用信息泄露漏洞" class="headerlink" title="如何寻找并利用信息泄露漏洞"></a>如何寻找并利用信息泄露漏洞</h2><h3 id="常见信息泄露源"><a href="#常见信息泄露源" class="headerlink" title="常见信息泄露源"></a>常见信息泄露源</h3><ul>
-<li><p>爬虫相关文件</p>
-<p>/robots.txt 和 /sitemap.xml 包含了站点中不想让爬虫扫描的路径，这些路径通常不与站点内其他页面链接，因此可能不出现在 Burpsuite 等扫描器的 site map中。可以尝试手动访问获取有用信息。</p>
-</li>
-<li><p>目录列表</p>
-<p>Web 服务器可以被配置为，对没有index页面的目录，自动列出路径下内容。大大方便攻击者确定站点结构，寻找敏感信息。</p>
-<p>目录列表本身并不一定是安全漏洞，但当站点没有很好地实现访问控制时。目录列表对敏感资源位置的泄露就十分危险了。</p>
-</li>
-<li><p>开发者注释</p>
-<p>开发过程中的HTML行间注释可能出于疏忽或开发者安全意识不足而未被删除，从而部署至生产环境。这些注释很容易通过工具定位。并有可能包含对攻击者有用的信息，如提示隐藏的目录或包含业务逻辑的线索。</p>
-</li>
-<li><p>错误信息</p>
-<p>过于冗长的错误信息是最常见的信息泄露方式之一。在渗透测试过程中，需要对触发的每一个错误信息加以关注。</p>
-<p>错误信息可能提示的信息举例：</p>
+<p>认证机制使用一系列技术来验证这些因素中的一个或多个。</p>
+<h2 id="认证（authentication）和授权（authorization）的区别"><a href="#认证（authentication）和授权（authorization）的区别" class="headerlink" title="认证（authentication）和授权（authorization）的区别"></a>认证（authentication）和授权（authorization）的区别</h2><p>认证是验证一个用户是否是他声明的身份的过程，而授权是验证一个用户是否被允许做某些事情。</p>
+<p>在Web站点或Web应用的语境下，认证确定了某个试图使用用户名Carlos123访问站点的人是否和创建该账户的人相同。一旦Carlos123通过了认证，他的权限决定了他是否被授权做某事，例如：访问其他用户的个人信息或进行删除其他用户账户的行为。</p>
+<h2 id="认证漏洞是如何产生的"><a href="#认证漏洞是如何产生的" class="headerlink" title="认证漏洞是如何产生的"></a>认证漏洞是如何产生的</h2><p>广义上讲，身份验证机制中的大多数漏洞是通过以下两种方式之一产生的：</p>
 <ul>
-<li>输入的数据类型与预期参数类型；这可以帮助攻击者确定可供攻击的参数。</li>
-<li>站点使用的技术信息：web engine、数据库、服务器的类型及版本号等；攻击者可以针对特定版本进行后续攻击。如站点使用开源架构，可以针对其源码进行代码审计以寻找攻击点。</li>
-<li>错误信息的差异可以提示web应用行为的不同，观察错误信息的差异是很多攻击技术的重要方面。如SQL注入（盲注）、用户名枚举（Username不存在 or Username或password不正确）。</li>
+<li>认证机制由于其无法充分防御暴力破解攻击而脆弱。</li>
+<li>由于逻辑缺陷或实现的代码错误，使得攻击者可以完全绕过认证机制。这有时被称为”broken authentication”。</li>
 </ul>
-</li>
-<li><p>调试数据</p>
-<p>站点因调试目的而生成的错误信息和日志可能包含大量攻击者需要的信息，如：</p>
+<p>在Web开发的许多领域，逻辑缺陷只会导致网站异常运行，这可能是安全问题，也可能不是安全问题。但是，由于身份验证对于安全性至关重要，因此，有缺陷的身份验证逻辑使网站暴露于安全问题的可能性明显增加。</p>
+<h2 id="认证漏洞的影响"><a href="#认证漏洞的影响" class="headerlink" title="认证漏洞的影响"></a>认证漏洞的影响</h2><p>认证漏洞的影响可能非常严重。一旦攻击者绕过认证或爆破攻击成功，进入另一个用户的帐户，他们就可以访问该帐户拥有的所有数据和功能。如果他们能够入侵系统管理员等高特权帐户，则他们可以完全控制整个应用程序，并有可能获得对内部基础结构的访问权限。</p>
+<p>即使受攻击的是低特权帐户，也仍可能使攻击者获得他们不应该拥有的数据的访问权限，例如敏感的商业信息。即使该帐户无法访问任何敏感数据，它仍可能允许攻击者访问其他页面，从而提供了进一步的攻击面。通常，从公开访问的页面上将无法进行某些高严重性攻击，但是从内部页面上则是可能的。</p>
+<h2 id="认证机制中的漏洞"><a href="#认证机制中的漏洞" class="headerlink" title="认证机制中的漏洞"></a>认证机制中的漏洞</h2><p>网站的身份验证系统通常由几种可能发生漏洞的不同机制组成。一些漏洞广泛适用于所有这些情况，而其他漏洞则更特定于所提供的功能。</p>
+<h3 id="基于密码的登录中的漏洞"><a href="#基于密码的登录中的漏洞" class="headerlink" title="基于密码的登录中的漏洞"></a>基于密码的登录中的漏洞</h3><p>password-based login process：用户自行注册，或由管理员分配账户；账户与一组独特的username和password关联。用户在登录表单中输入以进行认证。</p>
+<p>在这种情况下，某人知道密码的事实即足以证明其身份。因此，若攻击者能够猜测或获取其他用户的登录凭据。站点的安全性就会受损。</p>
+<p>这可以通过以下方式实现：</p>
+<h4 id="暴力破解攻击（Brute-force-attacks）"><a href="#暴力破解攻击（Brute-force-attacks）" class="headerlink" title="暴力破解攻击（Brute-force attacks）"></a>暴力破解攻击（Brute-force attacks）</h4><p>暴力破解的概念略。</p>
+<p>暴力破解不总是随机数猜测用户名和密码。通过利用一些基本的逻辑或公开的知识，攻击者可微调攻击方式以进行更有效的猜测，有助于提高攻击效率。如果没有对暴力破解进行有效的防护，仅使用基于密码的登录作为认证方式的站点可能会非常脆弱。</p>
+<h5 id="暴力破解用户名"><a href="#暴力破解用户名" class="headerlink" title="暴力破解用户名"></a>暴力破解用户名</h5><p>若用户名符合可识别的模式，则较容易猜测，例如：</p>
 <ul>
-<li>Values for key session variables that can be manipulated via user input</li>
-<li>Hostnames and credentials for back-end components</li>
-<li>File and directory names on the server</li>
-<li>Keys used to encrypt data transmitted via the client</li>
+<li>电子邮箱：如常见格式 firstname.lastname @ somecompany.com</li>
+<li>高权限用户名：常见如admin、administrator</li>
 </ul>
-</li>
-<li><p>用户账户页</p>
-<p>某些站点在访问用户个人账户页面时存在逻辑缺陷，如<code>GET /user/personal-info?user=carlos</code>改变user参数可能导致访问任意用户账户页。</p>
-</li>
-<li><p>包含源代码的备份文件</p>
-<p>源代码可以：</p>
+<p>在对站点安全性审计的过程中，检查其是否公开披露了潜在的用户名。如：是否无需登录即可访问用户档案页面？即使此类页面的实际信息是隐藏的，也可能泄露其用户名。</p>
+<p>此外应检查HTTP响应，以查看是否公开了电子邮箱。有时响应中会包含管理员或IT支持人员等高权限账户的email地址。</p>
+<h5 id="暴力破解密码"><a href="#暴力破解密码" class="headerlink" title="暴力破解密码"></a>暴力破解密码</h5><p>很多站点会要求用户设置足够复杂的密码，以使其难以单纯被爆破，常见要求如：</p>
 <ul>
-<li>帮助攻击者理解站点应用行为和业务逻辑</li>
-<li>一些敏感信息（API keys，访问后端组件的认证信息（如数据库用户名密码））可能硬写在源代码中。</li>
+<li>最少字符数量</li>
+<li>大小写字母混合</li>
+<li>至少一个特殊字符</li>
 </ul>
-<p>在站点中发现的源代码文件（如.php）通常不能直接访问文本而是被执行。但在某些情况下可以尝试获取源码文本。</p>
-<p>文本编辑器常在文件变动时创建临时备份文件，通常在文件名前加~，或者添加特定后缀（如.bak），尝试访问这些文件可能会得到源代码文本。</p>
-</li>
-<li><p>不安全配置导致的泄露</p>
-<p>站点的不正确配置常常会导致安全漏洞，这是由于站点普遍使用第三方技术，这些技术有大量的接口和配置项，配置站点人员并未完整理解。</p>
-<p>此外，开发者常常忘记在生产环境中禁用一些调试项。例如，HTTP 的 <strong>TRACE方法</strong> 是为诊断目的而设计，使用该方法会返回exact request that was received。通常是无害的，但有可能会导致信息泄露。如internal authentication headers可能会被反向代理添加到用户请求后。</p>
-</li>
-<li><p>版本控制历史</p>
-<p>/.git 目录包含站点所有的版本控制数据，可能被部署到生产环境。可以直接访问路径，也可用本地的git来访问。</p>
-<p>可能不能得到全部的源代码，但对比各版本的diff可以读到部分代码片段，或许能找到敏感信息（如上文所述的hard-coded的key或者credentials）。</p>
-</li>
-</ul>
-<h2 id="如何预防信息泄露漏洞"><a href="#如何预防信息泄露漏洞" class="headerlink" title="如何预防信息泄露漏洞"></a>如何预防信息泄露漏洞</h2><p>信息泄露漏洞可能在各种地方出现，预防此类漏洞的原则如下；</p>
+<p>然而，尽管对于电脑来说爆破这种密码很难，但可以利用对人类行为的基础知识来破解。比起完全随机的字符组合，用户常会使用自己能记住的常用密码，并微调使其符合站点对密码的要求。如：mypassword可能改为Mypassword1！，或是Myp4$$w0rd。</p>
+<p>如果站点策略要求定期修改密码，可能有：Mypassword1！、Mypassword2！……</p>
+<p>对可能的用户凭证和可预测的用户行为模式的了解，可以使暴力破解攻击更加复杂而有效。</p>
+<h5 id="用户名枚举"><a href="#用户名枚举" class="headerlink" title="用户名枚举"></a>用户名枚举</h5><p>Username enumeration：攻击者通过观察站点行为变化，以确定特定的用户名是否是有效的。</p>
+<p>如登录时提示输入了有效用户名和错误的密码，或注册时提示填入了已被占用的用户名。可据此生成有效的用户名列表，能极大减少爆破所需的时间和精力。</p>
+<p>在尝试暴力破解一个登录页面时，要注意如下方面的任何差异：</p>
 <ul>
-<li>所有开发者应明确什么信息是敏感信息</li>
-<li>生产过程中对所有代码进行审计</li>
+<li>状态码：爆破中大部分错误猜测的HTTP响应状态码应一致，若出现不一致的状态码，很可能是猜测用户名有效。对站点而言最佳选择是不论认证结果如何，都使状态码保持一致。</li>
+<li>错误信息：有时根据是用户名、密码都错误，或是仅密码错误，返回的错误信息会不同。最好的做法是在两种情况下都使用一个通用的错误信息。并注意不要有细微之处的差异。</li>
+<li>响应时间：若大多数请求的响应时间相似，任何偏离此时间的请求表明后台发生的事情不同。比如，站点仅在验证用户名有效时才验证密码是否正确。这可能指示猜测到了正确的用户名。这种差别可能很细微，但攻击者可以通过输入过长的密码来使延时更明显。</li>
 </ul>
 
             </article>
@@ -322,18 +290,12 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/20/%E8%AE%A4%E8%AF%81%EF%BC%88Authentication%EF%BC%89-Web-Security-Academy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">认证（Authentication）-Web-Security-Academy学习笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/07/11/Windows-Terminal-%E9%85%8D%E7%BD%AE%E7%BE%8E%E5%8C%96/">
-                        <span class="hidden-mobile">Windows Terminal 配置美化</span>
+                      <a href="/2020/07/28/%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E-Web-Security-Academy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">信息泄露漏洞-Web Security Academy学习笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -498,7 +460,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "信息泄露漏洞-Web Security Academy学习笔记&nbsp;",
+        "认证（Authentication）-Web-Security-Academy学习笔记&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
